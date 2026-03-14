@@ -1,5 +1,4 @@
 telegram_config.json
-review_data.json
 __pycache__/
 *.pyc
 .ipynb_checkpoints/

@@ -111,7 +111,7 @@
     "id": "2.9",
     "chapitre": "Fonctionnement des Marchés Futures",
     "question": "Listez les différences entre contrats forward et contrats futures.",
-    "reponse": "Elles sont listées au tableau 2.3."
+    "reponse": "<table><thead><tr><th>Forward</th><th>Futures</th></tr></thead><tbody><tr><td>Contrat privé entre deux parties</td><td>Négocié sur un marché organisé</td></tr><tr><td>Non standardisé</td><td>Standardisé</td></tr><tr><td>Une date de livraison</td><td>Une période de livraison</td></tr><tr><td>Un seul flux à la fin du contrat</td><td><em>Marking to market</em> quotidien</td></tr><tr><td>Livraison ou dénouement en cash sont la norme</td><td>Positions le plus souvent dénouées avant l'échéance</td></tr><tr><td>Existence d'un risque de crédit</td><td>Absence (ou presque) de risque de crédit</td></tr></tbody></table>"
   },
   {
     "id": "3.1",

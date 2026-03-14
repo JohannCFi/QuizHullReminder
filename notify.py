@@ -114,7 +114,7 @@ def send_notification_if_due():
             lines.append(f"\u2022 {ch} : {count}")
         lines.append("")
 
-    lines.append("[Lance ton quiz](https://johanncfi.github.io/QuizHullReminder/quiz.html)")
+    lines.append("[Lance ton quiz](https://johanncfi.github.io/QuizHullReminder/quiz.html?mode=revision)")
 
     message = "\n".join(lines)
 

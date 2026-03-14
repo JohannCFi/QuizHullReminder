@@ -833,31 +833,39 @@
     localStorage.setItem('reviewData', JSON.stringify(reviewData));
   }
 
+  function mergeReviewData(serverData) {
+    for (const key in serverData) {
+      if (!reviewData[key]) {
+        reviewData[key] = serverData[key];
+      } else {
+        const localLen = (reviewData[key].history || []).length;
+        const serverLen = (serverData[key].history || []).length;
+        if (serverLen > localLen) {
+          reviewData[key] = serverData[key];
+        }
+      }
+    }
+    saveReviewDataLocal();
+  }
+
   async function loadReviewData() {
     // Always load from localStorage first
     reviewData = loadReviewDataLocal();
-    // Try to merge with server data if available
+    // Try local server API first
     try {
       const res = await fetch('/api/review');
       if (res.ok) {
-        const serverData = await res.json();
-        // Merge: keep whichever has the most recent history entry
-        for (const key in serverData) {
-          if (!reviewData[key]) {
-            reviewData[key] = serverData[key];
-          } else {
-            const localLen = (reviewData[key].history || []).length;
-            const serverLen = (serverData[key].history || []).length;
-            if (serverLen > localLen) {
-              reviewData[key] = serverData[key];
-            }
-          }
-        }
-        saveReviewDataLocal();
+        mergeReviewData(await res.json());
+        return;
       }
-    } catch (e) {
-      // Server not available (GitHub Pages), localStorage is sufficient
-    }
+    } catch (e) {}
+    // Fallback: load review_data.json as static file (GitHub Pages)
+    try {
+      const res = await fetch('review_data.json');
+      if (res.ok) {
+        mergeReviewData(await res.json());
+      }
+    } catch (e) {}
   }
 
   async function saveReviewData() {
@@ -1008,6 +1016,12 @@
     buildChapters();
     updateAvailable();
     updateRevisionButton();
+
+    // Auto-start revision if ?mode=revision
+    if (new URLSearchParams(window.location.search).get('mode') === 'revision') {
+      const due = getDueQuestions();
+      if (due.length > 0) startRevision();
+    }
   }
 
   function buildChapters() {
@@ -1519,6 +1533,11 @@
   document.getElementById('revision-btn').addEventListener('click', startRevision);
   document.getElementById('dark-mode-toggle').addEventListener('click', toggleDarkMode);
   attachQuizListeners();
+
+  // Sync review data to GitHub when leaving the page
+  window.addEventListener('beforeunload', () => {
+    navigator.sendBeacon('/api/sync');
+  });
 
   loadData();
 </script>
