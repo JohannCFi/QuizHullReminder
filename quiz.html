@@ -327,6 +327,30 @@
     .answer-text td { text-align: center; }
     .answer-text svg { display: block; margin: 12px auto; }
 
+    /* Demonstration toggle */
+    .demo-toggle-btn {
+      background: none;
+      border: 1.5px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 8px 16px;
+      cursor: pointer;
+      font-size: 0.85rem;
+      color: #718096;
+      margin-top: 12px;
+      transition: all 0.2s;
+      display: none;
+    }
+    .demo-toggle-btn:hover { border-color: #a0aec0; color: #4a5568; }
+    .demo-section {
+      display: none;
+      margin-top: 12px;
+      padding: 16px;
+      background: #f7fafc;
+      border-radius: 8px;
+      border-left: 3px solid #3182ce;
+    }
+    .demo-section .answer-text { font-size: 0.95rem; }
+
     /* Rating buttons (replace next-btn) */
     .rating-buttons {
       display: none;
@@ -618,6 +642,9 @@
     body.dark .faq-tag-btn { border-color: #4a5568; }
     body.dark .faq-tag-btn.active { border-color: #68d391; background: #22543d; }
     body.dark .faq-chevron { color: #718096; }
+    body.dark .demo-toggle-btn { border-color: #4a5568; color: #a0aec0; }
+    body.dark .demo-toggle-btn:hover { border-color: #718096; color: #cbd5e0; }
+    body.dark .demo-section { background: #1a202c; border-left-color: #63b3ed; }
   </style>
 </head>
 <body>
@@ -685,6 +712,10 @@
       <div class="answer-section" id="answer-section">
         <div class="answer-label">Réponse</div>
         <div class="answer-text" id="a-text"></div>
+        <button class="demo-toggle-btn" id="demo-toggle-btn">Voir la démonstration</button>
+        <div class="demo-section" id="demo-section">
+          <div class="answer-text" id="demo-text"></div>
+        </div>
       </div>
       <div class="rating-buttons" id="rating-buttons">
         <button class="rating-btn rating-again" data-rating="again">À revoir<small>Pas su</small></button>
@@ -1085,6 +1116,20 @@
     document.getElementById('q-text').innerHTML = q.question.replace(/\n/g, '<br>');
     document.getElementById('a-text').innerHTML = q.reponse.replace(/\n/g, '<br>');
 
+    // Demonstration toggle
+    const demoBtn = document.getElementById('demo-toggle-btn');
+    const demoSection = document.getElementById('demo-section');
+    const demoText = document.getElementById('demo-text');
+    if (q.demonstration) {
+      demoBtn.style.display = 'inline-block';
+      demoBtn.textContent = 'Voir la démonstration';
+      demoSection.style.display = 'none';
+      demoText.innerHTML = q.demonstration.replace(/\n/g, '<br>');
+    } else {
+      demoBtn.style.display = 'none';
+      demoSection.style.display = 'none';
+    }
+
     document.getElementById('answer-section').style.display = 'none';
     document.getElementById('reveal-btn').style.display = 'block';
     document.getElementById('rating-buttons').style.display = 'none';
@@ -1194,6 +1239,10 @@
       <div class="answer-section" id="answer-section">
         <div class="answer-label">Réponse</div>
         <div class="answer-text" id="a-text"></div>
+        <button class="demo-toggle-btn" id="demo-toggle-btn">Voir la démonstration</button>
+        <div class="demo-section" id="demo-section">
+          <div class="answer-text" id="demo-text"></div>
+        </div>
       </div>
       <div class="rating-buttons" id="rating-buttons">
         <button class="rating-btn rating-again" data-rating="again">À revoir<small>Pas su</small></button>
@@ -1234,6 +1283,17 @@
       if (currentIndex < quizQuestions.length) {
         toggleTag(getQuestionKey(quizQuestions[currentIndex]), 'revoir');
         updateTagButtons();
+      }
+    });
+
+    // Demo toggle
+    document.getElementById('demo-toggle-btn').addEventListener('click', function() {
+      const section = document.getElementById('demo-section');
+      const visible = section.style.display === 'block';
+      section.style.display = visible ? 'none' : 'block';
+      this.textContent = visible ? 'Voir la démonstration' : 'Masquer la démonstration';
+      if (!visible && window.MathJax && MathJax.typesetPromise) {
+        MathJax.typesetPromise([section]);
       }
     });
   }
@@ -1348,6 +1408,12 @@
           <div style="border-top:2px solid #edf2f7;padding-top:12px">
             <div class="answer-label">Réponse</div>
             <div class="faq-answer-text">${q.reponse.replace(/\n/g, '<br>')}</div>
+            ${q.demonstration ? `
+              <button class="demo-toggle-btn" style="display:inline-block;margin-top:12px">Voir la démonstration</button>
+              <div class="demo-section">
+                <div class="faq-answer-text">${q.demonstration.replace(/\n/g, '<br>')}</div>
+              </div>
+            ` : ''}
           </div>
         </div>
       `;
@@ -1361,6 +1427,21 @@
           MathJax.typesetPromise([item]);
         }
       });
+
+      // Demo toggle in FAQ
+      const faqDemoBtn = item.querySelector('.demo-toggle-btn');
+      if (faqDemoBtn) {
+        faqDemoBtn.addEventListener('click', function(e) {
+          e.stopPropagation();
+          const demoSec = this.nextElementSibling;
+          const visible = demoSec.style.display === 'block';
+          demoSec.style.display = visible ? 'none' : 'block';
+          this.textContent = visible ? 'Voir la démonstration' : 'Masquer la démonstration';
+          if (!visible && window.MathJax && MathJax.typesetPromise) {
+            MathJax.typesetPromise([demoSec]);
+          }
+        });
+      }
 
       // Tag buttons in FAQ
       item.querySelectorAll('.faq-tag-btn').forEach(btn => {

@@ -135,7 +135,8 @@
     "id": "3.4",
     "chapitre": "Stratégies de Couverture par les Contrats Futures",
     "question": "Quelle est la formule du ratio de couverture assurant la variance minimale quand on ignore la compensation journalière des contrats ?",
-    "reponse": "Voir équation (3.1) pour \\(h^*\\)."
+    "reponse": "\\[ h^* = \\rho \\frac{\\sigma_S}{\\sigma_F} \\]\noù \\(\\rho\\) est la corrélation entre \\(\\Delta S\\) et \\(\\Delta F\\), \\(\\sigma_S\\) la volatilité du spot et \\(\\sigma_F\\) la volatilité du futures.\n\n<strong>Interprétation :</strong> \\(h^*\\) est aussi la pente de la régression linéaire de \\(\\Delta S\\) sur \\(\\Delta F\\).",
+    "demonstration": "<strong>1. Position couverte</strong>\nLa variation de la valeur d'une position couverte est :\n\\[ \\Delta P = \\Delta S - h \\Delta F \\]\n\n<strong>2. Variance de la position</strong>\nOn développe :\n\\[ \\text{Var}(\\Delta P) = \\sigma_S^2 + h^2 \\sigma_F^2 - 2h\\rho\\sigma_S\\sigma_F \\]\n\n<strong>3. Minimisation</strong>\nOn dérive par rapport à \\(h\\) et on annule :\n\\[ \\frac{d}{dh} \\text{Var}(\\Delta P) = 2h\\sigma_F^2 - 2\\rho\\sigma_S\\sigma_F = 0 \\]\n\nDonc :\n\\[ h\\sigma_F^2 = \\rho\\sigma_S\\sigma_F \\]\n\n\\[ \\boxed{h^* = \\rho \\frac{\\sigma_S}{\\sigma_F}} \\]\n\n<strong>4. Interprétation statistique</strong>\nLa régression \\(\\Delta S = a + b\\Delta F + \\varepsilon\\) donne :\n\\[ b = \\frac{\\text{Cov}(\\Delta S, \\Delta F)}{\\text{Var}(\\Delta F)} = \\frac{\\rho\\sigma_S\\sigma_F}{\\sigma_F^2} = \\rho\\frac{\\sigma_S}{\\sigma_F} = h^* \\]\n\nLe ratio optimal est donc la pente de la régression de \\(\\Delta S\\) sur \\(\\Delta F\\).\n\n<strong>5. Interprétation économique</strong>\n• Si \\(\\rho = 1\\) → couverture parfaite possible\n• Si \\(\\rho < 1\\) → couverture imparfaite\n• Si le spot est plus volatil (\\(\\sigma_S > \\sigma_F\\)), il faut plus de futures pour couvrir"
   },
   {
     "id": "3.5",
