@@ -1,0 +1,1446 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz Hull — Options, Futures et Autres Actifs Dérivés</title>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: #f5f7fa;
+      color: #2d3748;
+      line-height: 1.6;
+      min-height: 100vh;
+      transition: background 0.3s, color 0.3s;
+    }
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      position: relative;
+    }
+    h1 {
+      text-align: center;
+      font-size: 1.6rem;
+      color: #1a365d;
+      margin: 20px 0 30px;
+      font-weight: 700;
+      transition: color 0.3s;
+    }
+    h1 small {
+      display: block;
+      font-size: 0.85rem;
+      color: #718096;
+      font-weight: 400;
+      margin-top: 4px;
+    }
+
+    /* Dark mode toggle */
+    .dark-mode-btn {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: none;
+      border: 1.5px solid #e2e8f0;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1.3rem;
+      padding: 6px 10px;
+      transition: all 0.2s;
+      line-height: 1;
+    }
+    .dark-mode-btn:hover { border-color: #a0aec0; background: #f7fafc; }
+
+    /* Config screen */
+    .config-section {
+      background: white;
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 16px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+      transition: background 0.3s, box-shadow 0.3s;
+    }
+    .config-section h2 {
+      font-size: 1rem;
+      color: #4a5568;
+      margin-bottom: 14px;
+      font-weight: 600;
+      transition: color 0.3s;
+    }
+    .type-toggles {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .type-toggle {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      padding: 10px 18px;
+      border-radius: 8px;
+      border: 2px solid #e2e8f0;
+      transition: all 0.2s;
+      user-select: none;
+    }
+    .type-toggle:hover { border-color: #a0aec0; }
+    .type-toggle.active-theorique { border-color: #3182ce; background: #ebf8ff; }
+    .type-toggle.active-probleme { border-color: #dd6b20; background: #fffaf0; }
+    .type-toggle.active-pertinent { border-color: #d69e2e; background: #fffff0; }
+    .type-toggle.active-revoir { border-color: #3182ce; background: #ebf8ff; }
+    .type-toggle input { display: none; }
+    .badge {
+      display: inline-block;
+      padding: 2px 10px;
+      border-radius: 12px;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+    .badge-theorique { background: #bee3f8; color: #2b6cb0; }
+    .badge-probleme { background: #feebc8; color: #c05621; }
+
+    /* Chapter checkboxes */
+    .chapter-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .chapter-chip {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      border-radius: 20px;
+      border: 1.5px solid #e2e8f0;
+      cursor: pointer;
+      font-size: 0.85rem;
+      transition: all 0.2s;
+      user-select: none;
+    }
+    .chapter-chip:hover { border-color: #a0aec0; }
+    .chapter-chip.active { border-color: #48bb78; background: #f0fff4; color: #276749; }
+    .chapter-chip input { display: none; }
+    .select-all-btn {
+      background: none;
+      border: none;
+      color: #3182ce;
+      cursor: pointer;
+      font-size: 0.85rem;
+      padding: 4px 0;
+      margin-bottom: 10px;
+    }
+    .select-all-btn:hover { text-decoration: underline; }
+
+    /* Number input */
+    .num-input {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .num-input input {
+      width: 80px;
+      padding: 8px 12px;
+      border: 2px solid #e2e8f0;
+      border-radius: 8px;
+      font-size: 1rem;
+      text-align: center;
+      transition: border-color 0.2s, background 0.3s, color 0.3s;
+    }
+    .num-input input:focus { outline: none; border-color: #3182ce; }
+    .num-input .available { color: #718096; font-size: 0.85rem; }
+
+    /* Start button */
+    .start-btn {
+      display: block;
+      width: 100%;
+      padding: 14px;
+      background: #3182ce;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+      margin-top: 8px;
+    }
+    .start-btn:hover { background: #2c5282; }
+    .start-btn:disabled { background: #a0aec0; cursor: not-allowed; }
+
+    /* Revision button */
+    .revision-btn {
+      display: block;
+      width: 100%;
+      padding: 14px;
+      background: #d69e2e;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+      margin-top: 10px;
+    }
+    .revision-btn:hover { background: #b7791f; }
+    .revision-btn:disabled { background: #a0aec0; cursor: not-allowed; }
+    .revision-btn .revision-count {
+      display: inline-block;
+      background: rgba(255,255,255,0.3);
+      border-radius: 12px;
+      padding: 0 10px;
+      margin-left: 8px;
+      font-size: 0.9rem;
+    }
+
+    /* FAQ button */
+    .faq-btn {
+      display: block;
+      width: 100%;
+      padding: 14px;
+      background: white;
+      color: #3182ce;
+      border: 2px solid #3182ce;
+      border-radius: 10px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      margin-top: 10px;
+    }
+    .faq-btn:hover { background: #ebf8ff; }
+
+    /* Quiz screen */
+    #quiz-screen { display: none; }
+    .quiz-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+    .progress {
+      font-size: 0.95rem;
+      color: #718096;
+      font-weight: 600;
+    }
+    .back-btn {
+      background: none;
+      border: 1.5px solid #e2e8f0;
+      padding: 6px 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 0.85rem;
+      color: #4a5568;
+      transition: all 0.2s;
+    }
+    .back-btn:hover { border-color: #a0aec0; background: #f7fafc; }
+
+    .question-card {
+      background: white;
+      border-radius: 12px;
+      padding: 28px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      transition: background 0.3s, box-shadow 0.3s;
+    }
+    .question-meta {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+    .chapter-name {
+      font-size: 0.85rem;
+      color: #718096;
+      font-weight: 500;
+    }
+    .question-id {
+      font-size: 0.85rem;
+      color: #a0aec0;
+      font-weight: 600;
+    }
+    .question-text {
+      font-size: 1.05rem;
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
+    .question-text table {
+      border-collapse: collapse;
+      margin: 10px 0;
+      width: 100%;
+      font-size: 0.9rem;
+    }
+    .question-text th, .question-text td {
+      border: 1px solid #e2e8f0;
+      padding: 8px;
+      text-align: center;
+    }
+    .question-text th { background: #f7fafc; }
+    .question-text svg { display: block; margin: 12px auto; }
+
+    .reveal-btn {
+      display: block;
+      width: 100%;
+      padding: 12px;
+      background: #edf2f7;
+      color: #4a5568;
+      border: 2px solid #e2e8f0;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .reveal-btn:hover { background: #e2e8f0; }
+
+    .answer-section {
+      display: none;
+      margin-top: 20px;
+      padding-top: 20px;
+      border-top: 2px solid #edf2f7;
+    }
+    .answer-label {
+      font-size: 0.85rem;
+      color: #48bb78;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 10px;
+    }
+    .answer-text {
+      font-size: 1rem;
+      line-height: 1.7;
+    }
+    .answer-text table {
+      border-collapse: collapse;
+      margin: 10px 0;
+      width: 100%;
+      font-size: 0.9rem;
+    }
+    .answer-text th, .answer-text td {
+      border: 1px solid #e2e8f0;
+      padding: 8px;
+    }
+    .answer-text th { background: #f7fafc; text-align: center; }
+    .answer-text td { text-align: center; }
+    .answer-text svg { display: block; margin: 12px auto; }
+
+    /* Rating buttons (replace next-btn) */
+    .rating-buttons {
+      display: none;
+      gap: 8px;
+      margin-top: 16px;
+    }
+    .rating-btn {
+      flex: 1;
+      padding: 12px 6px;
+      border: none;
+      border-radius: 8px;
+      color: white;
+      font-weight: 600;
+      cursor: pointer;
+      font-size: 0.85rem;
+      transition: opacity 0.2s, transform 0.1s;
+      text-align: center;
+      line-height: 1.3;
+    }
+    .rating-btn:hover { opacity: 0.85; transform: translateY(-1px); }
+    .rating-btn:active { transform: translateY(0); }
+    .rating-btn.rating-again { background: #e53e3e; }
+    .rating-btn.rating-hard { background: #dd6b20; }
+    .rating-btn.rating-good { background: #3182ce; }
+    .rating-btn.rating-easy { background: #48bb78; }
+    .rating-btn small {
+      display: block;
+      font-weight: 400;
+      font-size: 0.7rem;
+      opacity: 0.85;
+      margin-top: 2px;
+    }
+
+    /* Tag buttons */
+    .tag-btn {
+      background: none;
+      border: 1.5px solid #e2e8f0;
+      border-radius: 8px;
+      cursor: pointer;
+      padding: 4px 8px;
+      opacity: 0.4;
+      transition: all 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .tag-btn:hover { opacity: 0.8; }
+    .tag-btn.active { opacity: 1; background: #f0fff4; border-color: #48bb78; }
+    .tag-icon { width: 20px; height: 20px; vertical-align: middle; }
+
+    /* End screen */
+    .end-screen {
+      text-align: center;
+      padding: 40px 20px;
+    }
+    .end-screen h2 {
+      font-size: 1.4rem;
+      color: #2d3748;
+      margin-bottom: 10px;
+    }
+    .end-screen p {
+      color: #718096;
+      margin-bottom: 24px;
+    }
+    .end-score {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin: 20px 0 8px;
+    }
+    .end-percentage {
+      font-size: 1.1rem;
+      color: #718096;
+      margin-bottom: 24px;
+    }
+    .end-progress-bar {
+      width: 100%;
+      height: 12px;
+      background: #edf2f7;
+      border-radius: 6px;
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .end-progress-fill {
+      height: 100%;
+      border-radius: 6px;
+      transition: width 0.5s ease;
+    }
+    .end-details {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+    }
+    .end-detail {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+    .end-detail-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .end-buttons {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .end-buttons .start-btn,
+    .end-buttons .revision-btn {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    /* FAQ screen */
+    #faq-screen { display: none; }
+    .faq-item {
+      background: white;
+      border-radius: 12px;
+      margin-bottom: 10px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+      overflow: hidden;
+      transition: background 0.3s, box-shadow 0.3s;
+    }
+    .faq-item-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 16px 20px;
+      cursor: pointer;
+      user-select: none;
+      flex-wrap: wrap;
+    }
+    .faq-item-header:hover { background: #f7fafc; }
+    .faq-chevron {
+      margin-left: auto;
+      font-size: 0.85rem;
+      color: #a0aec0;
+      transition: transform 0.2s;
+      flex-shrink: 0;
+    }
+    .faq-item.open .faq-chevron { transform: rotate(90deg); }
+    .faq-question-text {
+      flex: 1;
+      min-width: 200px;
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+    .faq-answer {
+      display: none;
+      padding: 0 20px 16px;
+      border-top: 2px solid #edf2f7;
+      margin: 0 20px;
+      padding-top: 16px;
+    }
+    .faq-item.open .faq-answer { display: block; }
+    .faq-answer-text {
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+    .faq-answer-text table {
+      border-collapse: collapse;
+      margin: 10px 0;
+      width: 100%;
+      font-size: 0.9rem;
+    }
+    .faq-answer-text th, .faq-answer-text td {
+      border: 1px solid #e2e8f0;
+      padding: 8px;
+      text-align: center;
+    }
+    .faq-answer-text th { background: #f7fafc; }
+    .faq-answer-text svg { display: block; margin: 12px auto; }
+    .faq-tags {
+      display: flex;
+      gap: 4px;
+      flex-shrink: 0;
+    }
+    .faq-tag-btn {
+      background: none;
+      border: 1.5px solid #e2e8f0;
+      border-radius: 6px;
+      cursor: pointer;
+      padding: 2px 6px;
+      opacity: 0.35;
+      transition: all 0.2s;
+    }
+    .faq-tag-btn:hover { opacity: 0.7; }
+    .faq-tag-btn.active { opacity: 1; background: #f0fff4; border-color: #48bb78; }
+    .faq-tag-icon { width: 16px; height: 16px; vertical-align: middle; }
+
+    .faq-toggle-icon { width: 18px; height: 18px; vertical-align: middle; }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      .container { padding: 12px; }
+      h1 { font-size: 1.3rem; }
+      .question-card { padding: 18px; }
+      .type-toggle { padding: 8px 14px; }
+      .dark-mode-btn { top: 12px; right: 12px; }
+      .rating-btn { font-size: 0.75rem; padding: 10px 4px; }
+      .rating-btn small { font-size: 0.65rem; }
+    }
+
+    /* MathJax overflows */
+    .MathJax { overflow-x: auto; }
+
+    /* ========== DARK MODE ========== */
+    body.dark {
+      background: #1a202c;
+      color: #e2e8f0;
+    }
+    body.dark h1 { color: #e2e8f0; }
+    body.dark h1 small { color: #a0aec0; }
+    body.dark .config-section,
+    body.dark .question-card,
+    body.dark .faq-item {
+      background: #2d3748;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+    }
+    body.dark .config-section h2 { color: #cbd5e0; }
+    body.dark .type-toggle { border-color: #4a5568; }
+    body.dark .type-toggle:hover { border-color: #718096; }
+    body.dark .type-toggle.active-theorique { border-color: #63b3ed; background: #2a4365; }
+    body.dark .type-toggle.active-probleme { border-color: #ed8936; background: #652b19; }
+    body.dark .type-toggle.active-pertinent { border-color: #ecc94b; background: #5f4b08; }
+    body.dark .type-toggle.active-revoir { border-color: #63b3ed; background: #2a4365; }
+    body.dark .badge-theorique { background: #2a4365; color: #90cdf4; }
+    body.dark .badge-probleme { background: #652b19; color: #fbd38d; }
+    body.dark .chapter-chip { border-color: #4a5568; color: #e2e8f0; }
+    body.dark .chapter-chip:hover { border-color: #718096; }
+    body.dark .chapter-chip.active { border-color: #68d391; background: #22543d; color: #c6f6d5; }
+    body.dark .select-all-btn { color: #63b3ed; }
+    body.dark .num-input input {
+      border-color: #4a5568;
+      background: #2d3748;
+      color: #e2e8f0;
+    }
+    body.dark .num-input input:focus { border-color: #63b3ed; }
+    body.dark .num-input .available { color: #a0aec0; }
+    body.dark .start-btn { background: #3182ce; }
+    body.dark .start-btn:hover { background: #2b6cb0; }
+    body.dark .start-btn:disabled { background: #4a5568; }
+    body.dark .revision-btn { background: #b7791f; }
+    body.dark .revision-btn:hover { background: #975a16; }
+    body.dark .revision-btn:disabled { background: #4a5568; }
+    body.dark .faq-btn {
+      background: #2d3748;
+      color: #63b3ed;
+      border-color: #63b3ed;
+    }
+    body.dark .faq-btn:hover { background: #2a4365; }
+    body.dark .back-btn {
+      border-color: #4a5568;
+      color: #cbd5e0;
+    }
+    body.dark .back-btn:hover { border-color: #718096; background: #2d3748; }
+    body.dark .progress { color: #a0aec0; }
+    body.dark .chapter-name { color: #a0aec0; }
+    body.dark .question-id { color: #718096; }
+    body.dark .reveal-btn {
+      background: #4a5568;
+      color: #e2e8f0;
+      border-color: #4a5568;
+    }
+    body.dark .reveal-btn:hover { background: #718096; }
+    body.dark .answer-section { border-top-color: #4a5568; }
+    body.dark .answer-label { color: #68d391; }
+    body.dark .question-text th,
+    body.dark .answer-text th { background: #4a5568; color: #e2e8f0; }
+    body.dark .question-text th, body.dark .question-text td,
+    body.dark .answer-text th, body.dark .answer-text td { border-color: #4a5568; }
+    body.dark .faq-answer-text th { background: #4a5568; color: #e2e8f0; }
+    body.dark .faq-answer-text th, body.dark .faq-answer-text td { border-color: #4a5568; }
+    body.dark .end-screen h2 { color: #e2e8f0; }
+    body.dark .end-screen p { color: #a0aec0; }
+    body.dark .end-percentage { color: #a0aec0; }
+    body.dark .end-progress-bar { background: #4a5568; }
+    body.dark .dark-mode-btn { border-color: #4a5568; }
+    body.dark .dark-mode-btn:hover { border-color: #718096; background: #2d3748; }
+    body.dark .tag-btn { border-color: #4a5568; }
+    body.dark .tag-btn.active { border-color: #68d391; background: #22543d; }
+    body.dark .faq-item-header:hover { background: #374151; }
+    body.dark .faq-answer { border-top-color: #4a5568; }
+    body.dark .faq-tag-btn { border-color: #4a5568; }
+    body.dark .faq-tag-btn.active { border-color: #68d391; background: #22543d; }
+    body.dark .faq-chevron { color: #718096; }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <button id="dark-mode-toggle" class="dark-mode-btn" title="Mode sombre">&#127769;</button>
+  <h1>
+    Quiz Hull
+    <small>Options, Futures et Autres Actifs Dérivés</small>
+  </h1>
+
+  <!-- CONFIG SCREEN -->
+  <div id="config-screen">
+    <div class="config-section">
+      <h2>Type de questions</h2>
+      <div class="type-toggles">
+        <div class="type-toggle active-theorique" id="toggle-theorique" data-checked="true">
+          <span class="badge badge-theorique">Théorique</span>
+        </div>
+        <div class="type-toggle active-probleme" id="toggle-probleme" data-checked="true">
+          <span class="badge badge-probleme">Problème</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="config-section">
+      <h2>Chapitres</h2>
+      <button class="select-all-btn" id="select-all-btn">Tout sélectionner</button>
+      <div class="chapter-list" id="chapter-list"></div>
+    </div>
+
+    <div class="config-section">
+      <h2>Nombre de questions</h2>
+      <div class="num-input">
+        <input type="number" id="num-questions" value="5" min="1">
+        <span class="available" id="available-count"></span>
+      </div>
+    </div>
+
+    <button class="start-btn" id="start-btn">Lancer le quiz</button>
+    <button class="revision-btn" id="revision-btn" disabled>Révision du jour <span class="revision-count" id="revision-count">0</span></button>
+    <button class="faq-btn" id="faq-btn">Foire aux Questions</button>
+  </div>
+
+  <!-- QUIZ SCREEN -->
+  <div id="quiz-screen">
+    <div class="quiz-header">
+      <button class="back-btn" id="back-btn">Terminer</button>
+      <span class="progress" id="progress"></span>
+    </div>
+    <div class="question-card">
+      <div class="question-meta">
+        <span class="badge" id="q-type-badge"></span>
+        <span class="chapter-name" id="q-chapter"></span>
+        <span class="question-id" id="q-id"></span>
+        <button class="tag-btn" id="tag-pertinent" title="Marquer comme pertinent">
+          <img src="pertinent.png" alt="Pertinent" class="tag-icon">
+        </button>
+        <button class="tag-btn" id="tag-revoir" title="Marquer à revoir">
+          <img src="revoir.png" alt="Revoir" class="tag-icon">
+        </button>
+      </div>
+      <div class="question-text" id="q-text"></div>
+      <button class="reveal-btn" id="reveal-btn">Voir la réponse</button>
+      <div class="answer-section" id="answer-section">
+        <div class="answer-label">Réponse</div>
+        <div class="answer-text" id="a-text"></div>
+      </div>
+      <div class="rating-buttons" id="rating-buttons">
+        <button class="rating-btn rating-again" data-rating="again">À revoir<small>Pas su</small></button>
+        <button class="rating-btn rating-hard" data-rating="hard">Difficile<small>Hésitant</small></button>
+        <button class="rating-btn rating-good" data-rating="good">Bien<small>Su</small></button>
+        <button class="rating-btn rating-easy" data-rating="easy">Facile<small>Parfait</small></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- FAQ SCREEN -->
+  <div id="faq-screen">
+    <div class="quiz-header">
+      <button class="back-btn" id="faq-back-btn">Retour</button>
+      <span class="progress" id="faq-count"></span>
+    </div>
+    <div class="config-section">
+      <h2>Filtres</h2>
+      <div class="type-toggles" id="faq-type-toggles">
+        <div class="type-toggle active-theorique" id="faq-toggle-theorique" data-checked="true">
+          <span class="badge badge-theorique">Théorique</span>
+        </div>
+        <div class="type-toggle active-probleme" id="faq-toggle-probleme" data-checked="true">
+          <span class="badge badge-probleme">Problème</span>
+        </div>
+        <div class="type-toggle" id="faq-toggle-pertinent" data-checked="false">
+          <img src="pertinent.png" alt="Pertinent" class="faq-toggle-icon"> Pertinent
+        </div>
+        <div class="type-toggle" id="faq-toggle-revoir" data-checked="false">
+          <img src="revoir.png" alt="Revoir" class="faq-toggle-icon"> Revoir
+        </div>
+      </div>
+      <button class="select-all-btn" id="faq-select-all-btn" style="margin-top:14px">Tout désélectionner</button>
+      <div class="chapter-list" id="faq-chapter-list"></div>
+    </div>
+    <div id="faq-questions-list"></div>
+  </div>
+</div>
+
+<script>
+  let theoriques = [];
+  let problemes = [];
+  let quizQuestions = [];
+  let currentIndex = 0;
+  let allChapters = [];
+  let allSelectState = true;
+  let faqSelectState = true;
+  let reviewData = {};
+  let quizRatings = []; // ratings for current quiz session
+
+  // ========== DARK MODE ==========
+  function initDarkMode() {
+    const isDark = localStorage.getItem('darkMode') === 'true';
+    if (isDark) document.body.classList.add('dark');
+    updateDarkModeBtn();
+  }
+  function toggleDarkMode() {
+    document.body.classList.toggle('dark');
+    const isDark = document.body.classList.contains('dark');
+    localStorage.setItem('darkMode', isDark);
+    updateDarkModeBtn();
+  }
+  function updateDarkModeBtn() {
+    const btn = document.getElementById('dark-mode-toggle');
+    btn.innerHTML = document.body.classList.contains('dark') ? '&#9788;' : '&#127769;';
+  }
+  initDarkMode();
+
+  // ========== TAGS (localStorage) ==========
+  function getQuestionKey(q) {
+    return q.type + '-' + q.id;
+  }
+  function loadTags() {
+    try {
+      return JSON.parse(localStorage.getItem('questionTags')) || {};
+    } catch (e) { return {}; }
+  }
+  function saveTags(tags) {
+    localStorage.setItem('questionTags', JSON.stringify(tags));
+  }
+  function toggleTag(questionKey, tagName) {
+    const tags = loadTags();
+    if (!tags[questionKey]) tags[questionKey] = [];
+    const idx = tags[questionKey].indexOf(tagName);
+    if (idx === -1) {
+      tags[questionKey].push(tagName);
+    } else {
+      tags[questionKey].splice(idx, 1);
+    }
+    if (tags[questionKey].length === 0) delete tags[questionKey];
+    saveTags(tags);
+  }
+  function hasTag(questionKey, tagName) {
+    const tags = loadTags();
+    return tags[questionKey] && tags[questionKey].includes(tagName);
+  }
+  function updateTagButtons() {
+    if (currentIndex >= quizQuestions.length) return;
+    const q = quizQuestions[currentIndex];
+    const key = getQuestionKey(q);
+    const btnP = document.getElementById('tag-pertinent');
+    const btnR = document.getElementById('tag-revoir');
+    if (btnP) btnP.classList.toggle('active', hasTag(key, 'pertinent'));
+    if (btnR) btnR.classList.toggle('active', hasTag(key, 'revoir'));
+  }
+
+  // ========== REVIEW DATA (localStorage + server sync optionnel) ==========
+  function loadReviewDataLocal() {
+    try {
+      return JSON.parse(localStorage.getItem('reviewData')) || {};
+    } catch (e) { return {}; }
+  }
+
+  function saveReviewDataLocal() {
+    localStorage.setItem('reviewData', JSON.stringify(reviewData));
+  }
+
+  async function loadReviewData() {
+    // Always load from localStorage first
+    reviewData = loadReviewDataLocal();
+    // Try to merge with server data if available
+    try {
+      const res = await fetch('/api/review');
+      if (res.ok) {
+        const serverData = await res.json();
+        // Merge: keep whichever has the most recent history entry
+        for (const key in serverData) {
+          if (!reviewData[key]) {
+            reviewData[key] = serverData[key];
+          } else {
+            const localLen = (reviewData[key].history || []).length;
+            const serverLen = (serverData[key].history || []).length;
+            if (serverLen > localLen) {
+              reviewData[key] = serverData[key];
+            }
+          }
+        }
+        saveReviewDataLocal();
+      }
+    } catch (e) {
+      // Server not available (GitHub Pages), localStorage is sufficient
+    }
+  }
+
+  async function saveReviewData() {
+    saveReviewDataLocal();
+    // Try to sync to server (silent fail if not available)
+    try {
+      await fetch('/api/review', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(reviewData)
+      });
+    } catch (e) {
+      // Server not available, data is safe in localStorage
+    }
+  }
+
+  // ========== SM-2 SPACED REPETITION ==========
+  function todayStr() {
+    return new Date().toISOString().split('T')[0];
+  }
+
+  function addDays(dateStr, days) {
+    const d = new Date(dateStr);
+    d.setDate(d.getDate() + Math.round(days));
+    return d.toISOString().split('T')[0];
+  }
+
+  function processRating(questionKey, rating) {
+    const today = todayStr();
+    let card = reviewData[questionKey] || {
+      easeFactor: 2.5,
+      interval: 0,
+      repetitions: 0,
+      nextReview: today,
+      lastRating: null,
+      history: []
+    };
+
+    card.history.push({ date: today, rating: rating });
+    card.lastRating = rating;
+
+    if (card.repetitions === 0) {
+      // New card or reset
+      switch (rating) {
+        case 'again':
+          card.interval = 0;
+          card.easeFactor = Math.max(1.3, card.easeFactor - 0.2);
+          break;
+        case 'hard':
+          card.interval = 0;
+          card.easeFactor = Math.max(1.3, card.easeFactor - 0.15);
+          break;
+        case 'good':
+          card.interval = 1;
+          card.repetitions = 1;
+          break;
+        case 'easy':
+          card.interval = 4;
+          card.repetitions = 1;
+          card.easeFactor = Math.max(1.3, card.easeFactor + 0.15);
+          break;
+      }
+    } else {
+      // Existing card
+      switch (rating) {
+        case 'again':
+          card.repetitions = 0;
+          card.interval = 0;
+          card.easeFactor = Math.max(1.3, card.easeFactor - 0.2);
+          break;
+        case 'hard':
+          card.interval = Math.max(1, Math.round(card.interval * 1.2));
+          card.easeFactor = Math.max(1.3, card.easeFactor - 0.15);
+          card.repetitions++;
+          break;
+        case 'good':
+          card.interval = Math.max(1, Math.round(card.interval * card.easeFactor));
+          card.repetitions++;
+          break;
+        case 'easy':
+          card.interval = Math.max(1, Math.round(card.interval * card.easeFactor * 1.3));
+          card.easeFactor += 0.15;
+          card.repetitions++;
+          break;
+      }
+    }
+
+    card.nextReview = addDays(today, card.interval);
+    reviewData[questionKey] = card;
+    saveReviewData();
+  }
+
+  function getDueQuestions() {
+    const today = todayStr();
+    const allQuestions = getAllQuestions();
+    const due = [];
+
+    allQuestions.forEach(q => {
+      const key = getQuestionKey(q);
+      const card = reviewData[key];
+      if (!card || card.nextReview <= today) {
+        due.push(q);
+      }
+    });
+
+    // Sort: overdue first (oldest nextReview), then never-seen
+    due.sort((a, b) => {
+      const cardA = reviewData[getQuestionKey(a)];
+      const cardB = reviewData[getQuestionKey(b)];
+      const dateA = cardA ? cardA.nextReview : '9999-99-99';
+      const dateB = cardB ? cardB.nextReview : '9999-99-99';
+      return dateA.localeCompare(dateB);
+    });
+
+    return due;
+  }
+
+  function getAllQuestions() {
+    const pool = [];
+    theoriques.forEach(q => pool.push({...q, type: 'theorique'}));
+    problemes.forEach(q => pool.push({...q, type: 'probleme'}));
+    return pool;
+  }
+
+  function updateRevisionButton() {
+    const due = getDueQuestions();
+    const btn = document.getElementById('revision-btn');
+    const countEl = document.getElementById('revision-count');
+    countEl.textContent = due.length;
+    btn.disabled = due.length === 0;
+  }
+
+  // ========== DATA LOADING ==========
+  async function loadData() {
+    try {
+      const [tRes, pRes] = await Promise.all([
+        fetch('questions_theoriques.json'),
+        fetch('problemes.json')
+      ]);
+      theoriques = await tRes.json();
+      problemes = await pRes.json();
+    } catch (e) {
+      console.error('Erreur de chargement des données:', e);
+      document.body.innerHTML = '<div style="padding:40px;text-align:center;color:#e53e3e"><h2>Erreur de chargement</h2><p>Impossible de charger les fichiers JSON. Assurez-vous de lancer l\'application via <code>lancer_quiz.bat</code> ou <code>python serve.py</code>.</p></div>';
+      return;
+    }
+    await loadReviewData();
+    buildChapters();
+    updateAvailable();
+    updateRevisionButton();
+  }
+
+  function buildChapters() {
+    const chapSet = new Set();
+    theoriques.forEach(q => chapSet.add(q.chapitre));
+    problemes.forEach(q => chapSet.add(q.chapitre));
+    allChapters = [...chapSet];
+
+    const list = document.getElementById('chapter-list');
+    list.innerHTML = '';
+    allChapters.forEach(ch => {
+      const div = document.createElement('div');
+      div.className = 'chapter-chip active';
+      div.dataset.chapter = ch;
+      div.dataset.checked = 'true';
+      div.textContent = ch;
+      div.addEventListener('click', () => {
+        const isChecked = div.dataset.checked === 'true';
+        div.dataset.checked = !isChecked;
+        div.classList.toggle('active', !isChecked);
+        updateAvailable();
+      });
+      list.appendChild(div);
+    });
+  }
+
+  function getSelectedChapters() {
+    return [...document.querySelectorAll('#chapter-list .chapter-chip')]
+      .filter(div => div.dataset.checked === 'true')
+      .map(div => div.dataset.chapter);
+  }
+
+  function getFilteredQuestions() {
+    const chapters = getSelectedChapters();
+    const includeTheo = document.getElementById('toggle-theorique').dataset.checked === 'true';
+    const includeProb = document.getElementById('toggle-probleme').dataset.checked === 'true';
+    let pool = [];
+    if (includeTheo) {
+      pool = pool.concat(theoriques.filter(q => chapters.includes(q.chapitre)).map(q => ({...q, type: 'theorique'})));
+    }
+    if (includeProb) {
+      pool = pool.concat(problemes.filter(q => chapters.includes(q.chapitre)).map(q => ({...q, type: 'probleme'})));
+    }
+    return pool;
+  }
+
+  function updateAvailable() {
+    const pool = getFilteredQuestions();
+    document.getElementById('available-count').textContent = `(${pool.length} disponibles)`;
+    const numInput = document.getElementById('num-questions');
+    numInput.max = pool.length;
+    document.getElementById('start-btn').disabled = pool.length === 0;
+  }
+
+  function shuffle(arr) {
+    const a = [...arr];
+    for (let i = a.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [a[i], a[j]] = [a[j], a[i]];
+    }
+    return a;
+  }
+
+  // ========== QUIZ ==========
+  function startQuiz() {
+    const pool = getFilteredQuestions();
+    const num = Math.min(parseInt(document.getElementById('num-questions').value) || 5, pool.length);
+    quizQuestions = shuffle(pool).slice(0, num);
+    quizRatings = [];
+    currentIndex = 0;
+    document.getElementById('config-screen').style.display = 'none';
+    document.getElementById('quiz-screen').style.display = 'block';
+    showQuestion();
+  }
+
+  function startRevision() {
+    const due = getDueQuestions();
+    if (due.length === 0) return;
+    quizQuestions = due;
+    quizRatings = [];
+    currentIndex = 0;
+    document.getElementById('config-screen').style.display = 'none';
+    document.getElementById('quiz-screen').style.display = 'block';
+    showQuestion();
+  }
+
+  function showQuestion() {
+    if (currentIndex >= quizQuestions.length) {
+      showEnd();
+      return;
+    }
+    const q = quizQuestions[currentIndex];
+    document.getElementById('progress').textContent = `${currentIndex + 1} / ${quizQuestions.length}`;
+
+    const badge = document.getElementById('q-type-badge');
+    if (q.type === 'theorique') {
+      badge.className = 'badge badge-theorique';
+      badge.textContent = 'Théorique';
+    } else {
+      badge.className = 'badge badge-probleme';
+      badge.textContent = 'Problème';
+    }
+
+    document.getElementById('q-chapter').textContent = q.chapitre;
+    document.getElementById('q-id').textContent = `Question ${q.id}`;
+    document.getElementById('q-text').innerHTML = q.question.replace(/\n/g, '<br>');
+    document.getElementById('a-text').innerHTML = q.reponse.replace(/\n/g, '<br>');
+
+    document.getElementById('answer-section').style.display = 'none';
+    document.getElementById('reveal-btn').style.display = 'block';
+    document.getElementById('rating-buttons').style.display = 'none';
+
+    updateTagButtons();
+
+    if (window.MathJax && MathJax.typesetPromise) {
+      MathJax.typesetPromise();
+    }
+  }
+
+  function revealAnswer() {
+    document.getElementById('answer-section').style.display = 'block';
+    document.getElementById('reveal-btn').style.display = 'none';
+    document.getElementById('rating-buttons').style.display = 'flex';
+
+    if (window.MathJax && MathJax.typesetPromise) {
+      MathJax.typesetPromise();
+    }
+  }
+
+  function rateQuestion(rating) {
+    const q = quizQuestions[currentIndex];
+    const key = getQuestionKey(q);
+    quizRatings.push(rating);
+    processRating(key, rating);
+    currentIndex++;
+    showQuestion();
+  }
+
+  function showEnd() {
+    const total = quizRatings.length;
+    const counts = { again: 0, hard: 0, good: 0, easy: 0 };
+    quizRatings.forEach(r => counts[r]++);
+    const validated = counts.good + counts.easy;
+    const pct = total > 0 ? Math.round((validated / total) * 100) : 0;
+
+    // Color for progress bar
+    let barColor;
+    if (pct >= 80) barColor = '#48bb78';
+    else if (pct >= 60) barColor = '#3182ce';
+    else if (pct >= 40) barColor = '#dd6b20';
+    else barColor = '#e53e3e';
+
+    // Color for score text
+    let scoreColor;
+    if (pct >= 80) scoreColor = '#48bb78';
+    else if (pct >= 60) scoreColor = '#3182ce';
+    else if (pct >= 40) scoreColor = '#dd6b20';
+    else scoreColor = '#e53e3e';
+
+    document.getElementById('quiz-screen').innerHTML = `
+      <div class="end-screen">
+        <h2>Quiz terminé !</h2>
+        <div class="end-score" style="color:${scoreColor}">${validated} / ${total}</div>
+        <div class="end-percentage">${pct}% de réussite</div>
+        <div class="end-progress-bar">
+          <div class="end-progress-fill" style="width:${pct}%;background:${barColor}"></div>
+        </div>
+        <div class="end-details">
+          <div class="end-detail">
+            <span class="end-detail-dot" style="background:#e53e3e"></span>
+            À revoir : ${counts.again}
+          </div>
+          <div class="end-detail">
+            <span class="end-detail-dot" style="background:#dd6b20"></span>
+            Difficile : ${counts.hard}
+          </div>
+          <div class="end-detail">
+            <span class="end-detail-dot" style="background:#3182ce"></span>
+            Bien : ${counts.good}
+          </div>
+          <div class="end-detail">
+            <span class="end-detail-dot" style="background:#48bb78"></span>
+            Facile : ${counts.easy}
+          </div>
+        </div>
+        <div class="end-buttons">
+          <button class="start-btn" onclick="location.reload()">Nouveau quiz</button>
+          <button class="revision-btn" onclick="location.reload(); setTimeout(startRevision, 500)">Révision du jour</button>
+        </div>
+      </div>
+    `;
+
+    updateRevisionButton();
+  }
+
+  const quizScreenTemplate = `
+    <div class="quiz-header">
+      <button class="back-btn" id="back-btn">Terminer</button>
+      <span class="progress" id="progress"></span>
+    </div>
+    <div class="question-card">
+      <div class="question-meta">
+        <span class="badge" id="q-type-badge"></span>
+        <span class="chapter-name" id="q-chapter"></span>
+        <span class="question-id" id="q-id"></span>
+        <button class="tag-btn" id="tag-pertinent" title="Marquer comme pertinent">
+          <img src="pertinent.png" alt="Pertinent" class="tag-icon">
+        </button>
+        <button class="tag-btn" id="tag-revoir" title="Marquer à revoir">
+          <img src="revoir.png" alt="Revoir" class="tag-icon">
+        </button>
+      </div>
+      <div class="question-text" id="q-text"></div>
+      <button class="reveal-btn" id="reveal-btn">Voir la réponse</button>
+      <div class="answer-section" id="answer-section">
+        <div class="answer-label">Réponse</div>
+        <div class="answer-text" id="a-text"></div>
+      </div>
+      <div class="rating-buttons" id="rating-buttons">
+        <button class="rating-btn rating-again" data-rating="again">À revoir<small>Pas su</small></button>
+        <button class="rating-btn rating-hard" data-rating="hard">Difficile<small>Hésitant</small></button>
+        <button class="rating-btn rating-good" data-rating="good">Bien<small>Su</small></button>
+        <button class="rating-btn rating-easy" data-rating="easy">Facile<small>Parfait</small></button>
+      </div>
+    </div>`;
+
+  function goBack() {
+    document.getElementById('config-screen').style.display = 'block';
+    document.getElementById('quiz-screen').style.display = 'none';
+    document.getElementById('quiz-screen').innerHTML = quizScreenTemplate;
+    attachQuizListeners();
+    updateRevisionButton();
+  }
+
+  function attachQuizListeners() {
+    document.getElementById('back-btn').addEventListener('click', goBack);
+    document.getElementById('reveal-btn').addEventListener('click', revealAnswer);
+
+    // Rating buttons
+    document.querySelectorAll('#rating-buttons .rating-btn').forEach(btn => {
+      btn.addEventListener('click', function() {
+        rateQuestion(this.dataset.rating);
+      });
+    });
+
+    document.getElementById('tag-pertinent').addEventListener('click', function(e) {
+      e.stopPropagation();
+      if (currentIndex < quizQuestions.length) {
+        toggleTag(getQuestionKey(quizQuestions[currentIndex]), 'pertinent');
+        updateTagButtons();
+      }
+    });
+    document.getElementById('tag-revoir').addEventListener('click', function(e) {
+      e.stopPropagation();
+      if (currentIndex < quizQuestions.length) {
+        toggleTag(getQuestionKey(quizQuestions[currentIndex]), 'revoir');
+        updateTagButtons();
+      }
+    });
+  }
+
+  // ========== FAQ ==========
+  function showFAQ() {
+    document.getElementById('config-screen').style.display = 'none';
+    document.getElementById('faq-screen').style.display = 'block';
+    buildFAQChapters();
+    filterFAQQuestions();
+  }
+
+  function hideFAQ() {
+    document.getElementById('faq-screen').style.display = 'none';
+    document.getElementById('config-screen').style.display = 'block';
+  }
+
+  function buildFAQChapters() {
+    const list = document.getElementById('faq-chapter-list');
+    list.innerHTML = '';
+    faqSelectState = true;
+    allChapters.forEach(ch => {
+      const div = document.createElement('div');
+      div.className = 'chapter-chip active';
+      div.dataset.chapter = ch;
+      div.dataset.checked = 'true';
+      div.textContent = ch;
+      div.addEventListener('click', () => {
+        const isChecked = div.dataset.checked === 'true';
+        div.dataset.checked = !isChecked;
+        div.classList.toggle('active', !isChecked);
+        filterFAQQuestions();
+      });
+      list.appendChild(div);
+    });
+  }
+
+  function getFAQSelectedChapters() {
+    return [...document.querySelectorAll('#faq-chapter-list .chapter-chip')]
+      .filter(div => div.dataset.checked === 'true')
+      .map(div => div.dataset.chapter);
+  }
+
+  function filterFAQQuestions() {
+    const chapters = getFAQSelectedChapters();
+    const includeTheo = document.getElementById('faq-toggle-theorique').dataset.checked === 'true';
+    const includeProb = document.getElementById('faq-toggle-probleme').dataset.checked === 'true';
+    const onlyPertinent = document.getElementById('faq-toggle-pertinent').dataset.checked === 'true';
+    const onlyRevoir = document.getElementById('faq-toggle-revoir').dataset.checked === 'true';
+
+    let pool = [];
+    if (includeTheo) {
+      pool = pool.concat(theoriques.filter(q => chapters.includes(q.chapitre)).map(q => ({...q, type: 'theorique'})));
+    }
+    if (includeProb) {
+      pool = pool.concat(problemes.filter(q => chapters.includes(q.chapitre)).map(q => ({...q, type: 'probleme'})));
+    }
+
+    // Filter by tags if active
+    if (onlyPertinent || onlyRevoir) {
+      const tags = loadTags();
+      pool = pool.filter(q => {
+        const key = getQuestionKey(q);
+        const qTags = tags[key] || [];
+        if (onlyPertinent && onlyRevoir) {
+          return qTags.includes('pertinent') || qTags.includes('revoir');
+        }
+        if (onlyPertinent) return qTags.includes('pertinent');
+        if (onlyRevoir) return qTags.includes('revoir');
+        return true;
+      });
+    }
+
+    document.getElementById('faq-count').textContent = `${pool.length} question(s)`;
+    renderFAQList(pool);
+  }
+
+  function renderFAQList(questions) {
+    const container = document.getElementById('faq-questions-list');
+    container.innerHTML = '';
+    const tags = loadTags();
+
+    questions.forEach(q => {
+      const key = getQuestionKey(q);
+      const qTags = tags[key] || [];
+      const isPertinent = qTags.includes('pertinent');
+      const isRevoir = qTags.includes('revoir');
+
+      const item = document.createElement('div');
+      item.className = 'faq-item';
+
+      const badgeClass = q.type === 'theorique' ? 'badge-theorique' : 'badge-probleme';
+      const badgeText = q.type === 'theorique' ? 'Théorique' : 'Problème';
+
+      item.innerHTML = `
+        <div class="faq-item-header">
+          <span class="badge ${badgeClass}">${badgeText}</span>
+          <span class="chapter-name">${q.chapitre}</span>
+          <span class="question-id">${q.id}</span>
+          <div class="faq-tags">
+            <button class="faq-tag-btn ${isPertinent ? 'active' : ''}" data-key="${key}" data-tag="pertinent" title="Pertinent">
+              <img src="pertinent.png" alt="Pertinent" class="faq-tag-icon">
+            </button>
+            <button class="faq-tag-btn ${isRevoir ? 'active' : ''}" data-key="${key}" data-tag="revoir" title="Revoir">
+              <img src="revoir.png" alt="Revoir" class="faq-tag-icon">
+            </button>
+          </div>
+          <span class="faq-chevron">&#9654;</span>
+        </div>
+        <div class="faq-answer">
+          <div class="question-text" style="margin-bottom:16px">${q.question.replace(/\n/g, '<br>')}</div>
+          <div style="border-top:2px solid #edf2f7;padding-top:12px">
+            <div class="answer-label">Réponse</div>
+            <div class="faq-answer-text">${q.reponse.replace(/\n/g, '<br>')}</div>
+          </div>
+        </div>
+      `;
+
+      // Toggle accordion
+      const header = item.querySelector('.faq-item-header');
+      header.addEventListener('click', function(e) {
+        if (e.target.closest('.faq-tag-btn')) return;
+        item.classList.toggle('open');
+        if (item.classList.contains('open') && window.MathJax && MathJax.typesetPromise) {
+          MathJax.typesetPromise([item]);
+        }
+      });
+
+      // Tag buttons in FAQ
+      item.querySelectorAll('.faq-tag-btn').forEach(btn => {
+        btn.addEventListener('click', function(e) {
+          e.stopPropagation();
+          const k = this.dataset.key;
+          const t = this.dataset.tag;
+          toggleTag(k, t);
+          this.classList.toggle('active');
+        });
+      });
+
+      container.appendChild(item);
+    });
+  }
+
+  // FAQ filter toggles
+  function setupFAQToggle(id, activeClass) {
+    document.getElementById(id).addEventListener('click', function() {
+      const isChecked = this.dataset.checked === 'true';
+      this.dataset.checked = !isChecked;
+      if (activeClass) {
+        this.classList.toggle(activeClass, !isChecked);
+      } else {
+        this.style.borderColor = !isChecked ? '#48bb78' : '';
+        this.style.background = !isChecked ? '#f0fff4' : '';
+      }
+      filterFAQQuestions();
+    });
+  }
+  setupFAQToggle('faq-toggle-theorique', 'active-theorique');
+  setupFAQToggle('faq-toggle-probleme', 'active-probleme');
+  setupFAQToggle('faq-toggle-pertinent', 'active-pertinent');
+  setupFAQToggle('faq-toggle-revoir', 'active-revoir');
+
+  document.getElementById('faq-select-all-btn').addEventListener('click', function() {
+    faqSelectState = !faqSelectState;
+    document.querySelectorAll('#faq-chapter-list .chapter-chip').forEach(div => {
+      div.dataset.checked = faqSelectState;
+      div.classList.toggle('active', faqSelectState);
+    });
+    this.textContent = faqSelectState ? 'Tout désélectionner' : 'Tout sélectionner';
+    filterFAQQuestions();
+  });
+
+  document.getElementById('faq-back-btn').addEventListener('click', hideFAQ);
+  document.getElementById('faq-btn').addEventListener('click', showFAQ);
+
+  // ========== TYPE TOGGLES (config) ==========
+  document.getElementById('toggle-theorique').addEventListener('click', function() {
+    const isChecked = this.dataset.checked === 'true';
+    this.dataset.checked = !isChecked;
+    this.classList.toggle('active-theorique', !isChecked);
+    updateAvailable();
+  });
+  document.getElementById('toggle-probleme').addEventListener('click', function() {
+    const isChecked = this.dataset.checked === 'true';
+    this.dataset.checked = !isChecked;
+    this.classList.toggle('active-probleme', !isChecked);
+    updateAvailable();
+  });
+
+  // Select all / deselect all (config)
+  document.getElementById('select-all-btn').addEventListener('click', function() {
+    allSelectState = !allSelectState;
+    document.querySelectorAll('#chapter-list .chapter-chip').forEach(div => {
+      div.dataset.checked = allSelectState;
+      div.classList.toggle('active', allSelectState);
+    });
+    this.textContent = allSelectState ? 'Tout désélectionner' : 'Tout sélectionner';
+    updateAvailable();
+  });
+
+  document.getElementById('start-btn').addEventListener('click', startQuiz);
+  document.getElementById('revision-btn').addEventListener('click', startRevision);
+  document.getElementById('dark-mode-toggle').addEventListener('click', toggleDarkMode);
+  attachQuizListeners();
+
+  loadData();
+</script>
+
+</body>
+</html>

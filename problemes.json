@@ -1,0 +1,518 @@
+[
+  {
+    "id": "1.11",
+    "chapitre": "Introduction",
+    "question": "Expliquez la différence entre une vente de call et un achat de put.",
+    "reponse": "Vendre un call, c'est le céder à un autre investisseur. Cela entraîne un flux terminal défini par :\n\\[-\\max(S_T - K \\;;\\; 0) = \\min(K - S_T \\;;\\; 0)\\]\nAcheter un put engendre un payoff égal à \\(\\max(K - S_T \\;;\\; 0)\\).\nDans les deux cas, le payoff potentiel est \\(K - S_T\\) ; cependant, quand le call est vendu, ce payoff terminal est négatif alors qu'il est positif dans le cas d'un achat de put."
+  },
+  {
+    "id": "1.12",
+    "chapitre": "Introduction",
+    "question": "Un investisseur américain prend une position courte pour vendre 100 000 livres sterling au taux de 1,3000 dollar US par livre sterling. Combien gagne-t-il ou perd-il si à l'échéance du contrat le taux de change est de (a) 1,2900 dollar par livre, (b) 1,3200 dollar par livre.",
+    "reponse": "<strong>(a)</strong> Le trader vend 100 000 livres sterling à 1,3000 dollar US par livre sterling quand le taux de change est de 1,2900 $/£. Le gain est alors de :\n\\[(1{,}3000 - 1{,}2900) \\times 100\\,000 = 1\\,000\\,\\$\\]\n<strong>(b)</strong> Le trader vend 100 000 livres sterling à 1,3000 dollar US par livre sterling quand le taux de change est de 1,3200 $/£. La perte est, dans ce cas, de :\n\\[(1{,}3200 - 1{,}3000) \\times 100\\,000 = 2\\,000\\,\\$\\]"
+  },
+  {
+    "id": "1.13",
+    "chapitre": "Introduction",
+    "question": "Un trader prend une position courte sur un contrat futures sur le coton avec un prix futures de 50 cts la livre. La quantité sous-jacente au contrat est de 50 000 livres. Combien gagne ou perd le trader si le prix du coton à la fin du contrat est (a) 48,20 cts ou (b) 51,30 cts par livre ?",
+    "reponse": "<strong>(a)</strong> Le trader vend 50 cts la livre ce qui vaut 48,20 cts. Le gain est alors de :\n\\[(0{,}5 - 0{,}482) \\times 50\\,000 = 900\\,\\$\\]\n<strong>(b)</strong> Le trader vend 50 cts la livre ce qui vaut 51,30 cts. La perte est alors de :\n\\[(0{,}513 - 0{,}5) \\times 50\\,000 = 650\\,\\$\\]"
+  },
+  {
+    "id": "1.14",
+    "chapitre": "Introduction",
+    "question": "Vous vendez un put sur Carrefour au prix d'exercice 25 € avec une durée de vie de trois mois. Carrefour cote aujourd'hui 22 € et le contrat porte sur 10 titres. À quoi vous êtes-vous engagé ? Combien pouvez-vous gagner ou perdre ?",
+    "reponse": "Vous avez vendu un put. Vous avez donc accepté d'acheter dix actions Carrefour au prix de 25 € l'unité, si l'acheteur souhaite vous vendre les titres en exerçant son droit. Il agira ainsi si le cours de Carrefour passe sous le seuil de 25 €. Si cet exercice a lieu alors que l'action cote 22 €, vous perdrez 3 € par titre, soit 30 € par contrat. La situation la plus défavorable serait que le cours de Carrefour tombe à 0, auquel cas vous perdriez 250 €. La contrepartie de ces flux futurs négatifs réside dans le premium de l'option que vous avez encaissé lors de la vente."
+  },
+  {
+    "id": "1.15",
+    "chapitre": "Introduction",
+    "question": "Vous souhaiteriez spéculer sur la hausse d'une certaine action. Son prix est aujourd'hui de 29 € et un call à trois mois de prix d'exercice 30 € cote aujourd'hui 2,90 €. Vous avez 5 800 € à investir. Définissez deux stratégies conformes à vos anticipations, la première sur l'action, la seconde sur l'option. Quels sont vos gains (pertes) potentiels sur chacune des deux stratégies ?",
+    "reponse": "Une stratégie consiste à acheter 200 actions, une autre à acheter 2 000 calls. Si le cours de l'action passe au-dessus de 30 €, le gain sera supérieur avec l'achat d'options. Par exemple, si le cours monte à 40 €, le profit est de \\((40 - 30) \\times 2\\,000 - 5\\,800 = 14\\,200\\) € avec les options, alors qu'il est de \\((40 - 29) \\times 200 = 2\\,200\\) € avec les actions. À l'inverse, si le cours chute à 25 €, la perte est de 5 800 € avec les options et de seulement \\((29 - 25) \\times 200 = 800\\) € avec les actions. Ces exemples illustrent l'effet de levier associé à l'achat de calls."
+  },
+  {
+    "id": "1.16",
+    "chapitre": "Introduction",
+    "question": "Vous avez en portefeuille 5 000 actions cotant 25 € chacune. Comment l'achat de puts peut-il vous procurer une assurance contre la baisse des cours dans les quatre mois qui viennent ?",
+    "reponse": "Vous pouvez acheter 5 000 puts de prix d'exercice 25 € et d'échéance 4 mois. Cette stratégie procure une assurance concernant le prix de vente des actions. Si, à l'échéance, le prix de l'action est inférieur à 25 €, vous exercez les options et vendez les actions à 25 € l'unité. Le coût de cette stratégie réside dans le premium des puts payé initialement."
+  },
+  {
+    "id": "1.17",
+    "chapitre": "Introduction",
+    "question": "Quand une entreprise émet des actions, elle obtient des fonds. En est-il de même lorsqu'un contrat d'option sur cette action est créé ? Justifiez votre réponse.",
+    "reponse": "Une option sur action n'apporte pas de fonds à l'entreprise dont l'action est le sous-jacent du contrat. L'option est un contrat vendu par un investisseur à un autre. L'entreprise n'intervient pas. À l'inverse, une action émise par une société est vendue à des investisseurs ; de ce fait, l'entreprise récolte des fonds lors d'une telle émission."
+  },
+  {
+    "id": "1.18",
+    "chapitre": "Introduction",
+    "question": "Expliquez pourquoi un contrat futures peut être utilisé pour se couvrir ou pour spéculer.",
+    "reponse": "Lorsqu'un investisseur est exposé au risque de variation de prix d'un actif, il peut se couvrir à l'aide d'un contrat futures. S'il est exposé à une hausse du prix de l'actif, il prend une position longue sur le futures. Si l'exposition au risque est dans la direction opposée (perte en cas de baisse du prix de l'actif), il adopte une position courte sur le contrat futures. Par conséquent, positions courtes et longues peuvent être utiles pour la couverture, selon le sens de l'exposition au risque.\n\nPrendre une position courte ou longue sur un futures relève de la spéculation si l'investisseur n'est pas exposé, au préalable, au risque de variation de prix du sous-jacent."
+  },
+  {
+    "id": "1.19",
+    "chapitre": "Introduction",
+    "question": "Un call, échéance mars et prix d'exercice 50 €, cote 2,50 €. Il est détenu jusqu'à l'échéance. Dans quelles circonstances le détenteur fera-t-il un profit et dans quels cas l'option sera-t-elle exercée ? Construisez le graphe des profits à l'échéance du contrat en fonction du prix du support.",
+    "reponse": "Si l'on ignore l'actualisation, le détenteur de l'option réalise un profit lorsque le prix de l'action, à la fin du mois de mars, est supérieur à 52,50 €. En effet, le payoff est alors supérieur à 2,50 €, coût initial d'achat de l'option. L'option est de toute façon exercée dès que le cours du sous-jacent dépasse 50 €. Cependant, si le cours se situe entre 50 € et 52,50 €, l'acheteur subit une perte. Le profit de cette stratégie est illustré au graphique S1.1.\n<svg viewBox=\"0 0 300 200\" xmlns=\"http://www.w3.org/2000/svg\" style=\"max-width:350px;font-family:sans-serif;font-size:11px\">\n  <line x1=\"40\" y1=\"10\" x2=\"40\" y2=\"170\" stroke=\"black\" stroke-width=\"1\"/>\n  <line x1=\"40\" y1=\"130\" x2=\"280\" y2=\"130\" stroke=\"black\" stroke-width=\"1\"/>\n  <text x=\"150\" y=\"195\" text-anchor=\"middle\">Cours de l'action</text>\n  <text x=\"12\" y=\"90\" text-anchor=\"middle\" transform=\"rotate(-90,12,90)\">Profit</text>\n  <polyline points=\"40,130 160,130 260,80\" fill=\"none\" stroke=\"black\" stroke-width=\"2\"/>\n  <text x=\"60\" y=\"145\">40</text><text x=\"100\" y=\"145\">45</text><text x=\"140\" y=\"145\">50</text><text x=\"180\" y=\"145\">55</text><text x=\"220\" y=\"145\">60</text>\n  <text x=\"25\" y=\"134\">0</text><text x=\"25\" y=\"114\">2</text><text x=\"25\" y=\"94\">4</text><text x=\"25\" y=\"74\">6</text><text x=\"25\" y=\"54\">8</text>\n  <text x=\"20\" y=\"150\">-2</text><text x=\"20\" y=\"168\">-4</text>\n  <line x1=\"40\" y1=\"130\" x2=\"160\" y2=\"130\" stroke=\"black\" stroke-width=\"0\" stroke-dasharray=\"4\"/>\n  <line x1=\"40\" y1=\"140\" x2=\"160\" y2=\"140\" stroke=\"gray\" stroke-width=\"1\" stroke-dasharray=\"3\"/>\n  <text x=\"130\" y=\"185\" text-anchor=\"middle\" font-weight=\"bold\" font-size=\"10\">Graphique S1.1 : Profit de l'achat de call</text>\n</svg>"
+  },
+  {
+    "id": "1.20",
+    "chapitre": "Introduction",
+    "question": "Un put, échéance juin et prix d'exercice 60 €, cote 4 €. Dans quelles circonstances le vendeur de cette option fera-t-il un profit à l'échéance et dans quels cas l'option sera-t-elle exercée ? Construisez le graphe des profits du vendeur du put à l'échéance du contrat en fonction du prix du support.",
+    "reponse": "Si l'on ignore l'actualisation, le vendeur de put réalise un profit si le cours de l'action termine au-delà de 56 €. Dans cette situation, le montant que doit payer le vendeur à l'échéance est inférieur au premium reçu lors de la vente du put. L'option est exercée par l'acheteur dès que le cours de l'action descend sous les 60 €. Entre 56 € et 60 €, le profit net du vendeur reste positif, bien que l'option soit exercée par l'acheteur (voir graphique S1.2).\n<svg viewBox=\"0 0 300 200\" xmlns=\"http://www.w3.org/2000/svg\" style=\"max-width:350px;font-family:sans-serif;font-size:11px\">\n  <line x1=\"40\" y1=\"10\" x2=\"40\" y2=\"170\" stroke=\"black\" stroke-width=\"1\"/>\n  <line x1=\"40\" y1=\"100\" x2=\"280\" y2=\"100\" stroke=\"black\" stroke-width=\"1\"/>\n  <text x=\"150\" y=\"195\" text-anchor=\"middle\">Cours de l'action</text>\n  <text x=\"12\" y=\"90\" text-anchor=\"middle\" transform=\"rotate(-90,12,90)\">Profit</text>\n  <polyline points=\"40,170 140,90 280,90\" fill=\"none\" stroke=\"black\" stroke-width=\"2\"/>\n  <text x=\"60\" y=\"115\">50</text><text x=\"100\" y=\"115\">55</text><text x=\"140\" y=\"115\">60</text><text x=\"180\" y=\"115\">65</text><text x=\"220\" y=\"115\">70</text>\n  <text x=\"25\" y=\"104\">0</text><text x=\"25\" y=\"84\">2</text><text x=\"25\" y=\"64\">4</text><text x=\"25\" y=\"44\">6</text>\n  <text x=\"20\" y=\"120\">-2</text><text x=\"20\" y=\"140\">-4</text><text x=\"20\" y=\"160\">-6</text>\n  <text x=\"130\" y=\"185\" text-anchor=\"middle\" font-weight=\"bold\" font-size=\"10\">Graphique S1.2 : Profit de la vente de put</text>\n</svg>"
+  },
+  {
+    "id": "1.21",
+    "chapitre": "Introduction",
+    "question": "Un call, échéance septembre, de prix d'exercice 20 € est vendu par un investisseur. Nous sommes en mai, le prix du support est de 18 € et le call cote 2 €. Décrivez les flux de fonds de l'investisseur s'il conserve le call jusqu'à l'échéance et si le cours de l'action est de 25 € à cette date.",
+    "reponse": "Le vendeur de call reçoit 2 € en mai ; comme l'option est exercée en septembre, il doit décaisser 5 €. Les 2 € correspondent au premium encaissé et les 5 € décaissés en septembre représentent la différence entre le cours de l'actif sous-jacent à cette date, soit 25 €, et le prix d'exercice, soit 20 €."
+  },
+  {
+    "id": "1.22",
+    "chapitre": "Introduction",
+    "question": "Un investisseur vend 4 € un put, échéance décembre, de prix d'exercice 30 €. Dans quelles circonstances réalise-t-il un gain ?",
+    "reponse": "L'investisseur réalise un gain si le prix de l'action dépasse 26 € en décembre (toujours en ignorant l'actualisation)."
+  },
+  {
+    "id": "1.23",
+    "chapitre": "Introduction",
+    "question": "Une entreprise sait qu'elle recevra un certain montant de devise étrangère dans quatre mois. Quel type d'option est approprié pour couvrir le risque de change ?",
+    "reponse": "Une position longue sur un put à 4 mois peut procurer une assurance contre une baisse du taux de change, en deçà du prix d'exercice. Cette option assure l'entreprise de pouvoir vendre la devise étrangère à un cours supérieur ou égal au prix d'exercice du put."
+  },
+  {
+    "id": "1.24",
+    "chapitre": "Introduction",
+    "question": "Une entreprise française s'attend à recevoir 1 million de dollars US dans six mois. Expliquez comment elle peut couvrir le risque de change avec (a) un contrat forward et (b) une option.",
+    "reponse": "L'entreprise peut prendre une position courte sur un contrat forward à 6 mois portant sur 1 million de dollars US. Une telle position assure de pouvoir revendre les dollars US dans six mois au prix forward coté aujourd'hui. Une alternative consiste à acheter un put sur 1 million de dollars US d'échéance six mois. Dans ce cas, l'entreprise s'assure de pouvoir revendre les dollars US à un cours supérieur ou égal au prix d'exercice de l'option."
+  },
+  {
+    "id": "1.25",
+    "chapitre": "Introduction",
+    "question": "Un trader prend une position courte sur un forward de 100 millions de yens. Le taux de change forward est de 0,0080 € par yen. Combien gagne ou perd le trader si le taux de change à la fin du contrat est (a) 0,0074 € ou (b) 0,0091 € par yen ?",
+    "reponse": "<strong>(a)</strong> Le trader vend 100 millions de yens à 0,0080 € par yen quand le taux de change est de 0,0074 €/yen. Le gain est alors de :\n\\[0{,}0006 \\times 100\\,000\\,000 = 60\\,000\\;€\\]\n<strong>(b)</strong> Le trader vend 100 millions de yens à 0,0080 € par yen quand le taux de change est de 0,0091 €/yen. La perte est, dans ce cas, de :\n\\[0{,}0011 \\times 100\\,000\\,000 = 110\\,000\\;€\\]"
+  },
+  {
+    "id": "1.26",
+    "chapitre": "Introduction",
+    "question": "Le CME Group propose un contrat futures sur obligations du Trésor. Quels sont les types d'opérateurs susceptibles d'utiliser ce contrat ?",
+    "reponse": "La plupart des investisseurs ayant recours à ce type de contrat le font pour l'une des raisons suivantes :\n(i) couvrir une exposition aux taux d'intérêt à long terme ;\n(ii) spéculer sur l'orientation future des taux d'intérêt à long terme ;\n(iii) arbitrer entre les marchés spot et les marchés à terme sur les obligations du Trésor.\n\nCe contrat est abordé au chapitre 6."
+  },
+  {
+    "id": "1.27",
+    "chapitre": "Introduction",
+    "question": "« Options et contrats futures sont des jeux à somme nulle. » Qu'entend-on par cette affirmation ?",
+    "reponse": "Cette phrase signifie que le gain (la perte) de la partie en position courte est égal(e) à la perte (au gain) de la partie en position longue."
+  },
+  {
+    "id": "1.28",
+    "chapitre": "Introduction",
+    "question": "Décrivez le profit engendré par le portefeuille suivant : une position longue sur un contrat forward et sur un put européen, les deux portant sur le même sous-jacent et ayant même maturité. Le prix d'exercice du put est égal au prix forward du contrat au moment où le portefeuille est constitué.",
+    "reponse": "Le flux terminal de la position longue sur le forward est égal à \\(S_T - F_0\\), où \\(S_T\\) est le prix du sous-jacent à l'échéance et \\(F_0\\) le prix forward au moment de la prise de position.\nLe payoff terminal du put s'écrit :\n\\[\\max(F_0 - S_T \\;;\\; 0)\\]\nLa valeur terminale du portefeuille s'écrit donc :\n\\[S_T - F_0 + \\max(F_0 - S_T \\;;\\; 0) = \\max(S_T - F_0 \\;;\\; 0)\\]\nCette quantité est exactement le payoff d'un call de mêmes caractéristiques que le put considéré. Ce résultat est illustré au graphique S1.3.\n<svg viewBox=\"0 0 300 220\" xmlns=\"http://www.w3.org/2000/svg\" style=\"max-width:350px;font-family:sans-serif;font-size:11px\">\n  <line x1=\"40\" y1=\"10\" x2=\"40\" y2=\"170\" stroke=\"black\" stroke-width=\"1\"/>\n  <line x1=\"40\" y1=\"110\" x2=\"280\" y2=\"110\" stroke=\"black\" stroke-width=\"1\"/>\n  <text x=\"260\" y=\"105\">Prix de l'actif</text>\n  <text x=\"12\" y=\"90\" text-anchor=\"middle\" transform=\"rotate(-90,12,90)\">Profit</text>\n  <line x1=\"40\" y1=\"160\" x2=\"160\" y2=\"40\" stroke=\"gray\" stroke-width=\"1\" stroke-dasharray=\"5\"/>\n  <line x1=\"40\" y1=\"40\" x2=\"160\" y2=\"110\" stroke=\"gray\" stroke-width=\"1\"/>\n  <polyline points=\"40,110 160,110 250,40\" fill=\"none\" stroke=\"black\" stroke-width=\"2.5\"/>\n  <text x=\"200\" y=\"170\" font-size=\"9\">- - - Put</text>\n  <text x=\"200\" y=\"182\" font-size=\"9\">── Forward</text>\n  <text x=\"200\" y=\"194\" font-size=\"9\">━ Total</text>\n  <text x=\"130\" y=\"210\" text-anchor=\"middle\" font-weight=\"bold\" font-size=\"10\">Graphique S1.3 : Profit du portefeuille (ex. 1.28)</text>\n</svg>"
+  },
+  {
+    "id": "1.29",
+    "chapitre": "Introduction",
+    "question": "Dans les années 1980, la Bankers Trust a développé un produit appelé ICON (<em>Index Currency Option Note</em>). Il s'agit d'obligations pour lesquelles le souscripteur reçoit à l'échéance un montant dépendant d'un taux de change. Considérons par exemple le cas d'un contrat passé avec la Long Term Credit Bank of Japan. Le contrat stipulait que si le taux de change yen/dollar US était supérieur à 169 ¥/$, le souscripteur recevait 1 000 $. Si le taux de change était inférieur à ce seuil, le paiement final était défini (en dollars US) par :\n\\[1\\,000 - \\max\\left[0 \\;;\\; 1\\,000\\left(\\frac{169}{S_T} - 1\\right)\\right]\\]\noù \\(S_T\\) désigne le taux de change à la date de maturité \\(T\\). Lorsque ce taux descend en deçà de 84,5 ¥/$, le souscripteur ne reçoit rien. Montrez que cette obligation est la combinaison d'une obligation classique et de deux options.",
+    "reponse": "Soit \\(S_T\\) le taux de change (en yens par dollar US) à la maturité de l'obligation. Le payoff engendré par ce titre s'écrit :\n\\[1\\,000 \\quad \\text{si } S_T > 169\\]\n\\[1\\,000 - 1\\,000\\left(\\frac{169}{S_T} - 1\\right) \\quad \\text{si } 84{,}5 \\leq S_T \\leq 169\\]\n\\[0 \\quad \\text{si } S_T < 84{,}5\\]\nDans l'intervalle [84,5 ; 169], le payoff s'écrit :\n\\[2\\,000 - \\frac{169\\,000}{S_T}\\]\nIl s'agit donc du payoff de la combinaison de :\n(i) une obligation classique ;\n(ii) une vente de call sur 169 000 yens au prix d'exercice de 1/169 ;\n(iii) un achat de call sur 169 000 yens au prix d'exercice de 1/84,5.\n\nCes remarques sont illustrées dans le tableau suivant :\n<table style=\"border-collapse:collapse;margin:10px 0;width:100%\"><tr style=\"background:#f0f0f0\"><th style=\"border:1px solid #ccc;padding:6px\">Cours du Yen \\(S_T\\)</th><th style=\"border:1px solid #ccc;padding:6px\">Payoff de l'obligation</th><th style=\"border:1px solid #ccc;padding:6px\">Valeur finale des calls vendus</th><th style=\"border:1px solid #ccc;padding:6px\">Valeur finale des calls achetés</th><th style=\"border:1px solid #ccc;padding:6px\">Valeur finale de la position</th></tr><tr><td style=\"border:1px solid #ccc;padding:6px;text-align:center\">&gt; 169</td><td style=\"border:1px solid #ccc;padding:6px;text-align:center\">1 000</td><td style=\"border:1px solid #ccc;padding:6px;text-align:center\">0</td><td style=\"border:1px solid #ccc;padding:6px;text-align:center\">0</td><td style=\"border:1px solid #ccc;padding:6px;text-align:center\">1 000</td></tr><tr><td style=\"border:1px solid #ccc;padding:6px;text-align:center\">∈ [84,5 ; 169]</td><td style=\"border:1px solid #ccc;padding:6px;text-align:center\">1 000</td><td style=\"border:1px solid #ccc;padding:6px;text-align:center\">\\(-169\\,000\\left(\\frac{1}{S_T} - \\frac{1}{169}\\right)\\)</td><td style=\"border:1px solid #ccc;padding:6px;text-align:center\">0</td><td style=\"border:1px solid #ccc;padding:6px;text-align:center\">\\(2\\,000 - \\frac{169\\,000}{S_T}\\)</td></tr><tr><td style=\"border:1px solid #ccc;padding:6px;text-align:center\">&lt; 84,5</td><td style=\"border:1px solid #ccc;padding:6px;text-align:center\">1 000</td><td style=\"border:1px solid #ccc;padding:6px;text-align:center\">\\(-169\\,000\\left(\\frac{1}{S_T} - \\frac{1}{169}\\right)\\)</td><td style=\"border:1px solid #ccc;padding:6px;text-align:center\">\\(169\\,000\\left(\\frac{1}{S_T} - \\frac{1}{84{,}5}\\right)\\)</td><td style=\"border:1px solid #ccc;padding:6px;text-align:center\">0</td></tr></table>"
+  },
+  {
+    "id": "1.30",
+    "chapitre": "Introduction",
+    "question": "Le 1er juillet 2021, une entreprise prend une position longue sur un forward pour acheter 10 millions de yens le 1er janvier 2022. Le 1er septembre 2021, elle prend une position courte sur le même type de contrat, c'est-à-dire pour vendre 10 millions de yens au 1er janvier 2022. Décrivez les payoffs de cette stratégie.",
+    "reponse": "Notons \\(F_1\\) le prix forward le 1er juillet 2021 et \\(F_2\\) ce même prix le 1er septembre 2021. Si \\(S_T\\) est le cours du yen le 1er janvier 2022, la valeur du premier contrat (par yen) s'écrit \\(S_T - F_1\\), alors que celle du second contrat est égale à \\(F_2 - S_T\\). Le payoff total s'écrit donc :\n\\[S_T - F_1 + F_2 - S_T = F_2 - F_1\\]"
+  },
+  {
+    "id": "1.31",
+    "chapitre": "Introduction",
+    "question": "Supposons que les taux de change spot et forward (en dollar US/euro) soient les suivants :\n\nSpot : 1,2580\nForward 90 jours : 1,2556\nForward 180 jours : 1,2518\n\nQuelles sont les opportunités d'arbitrage dans les cas suivants ?\na. Un call d'échéance 6 mois permettant d'acheter un euro pour 1,22 $ cote 2 cts.\nb. Un put à 90 jours permettant de vendre un euro pour 1,29 $ cote 2 cts.",
+    "reponse": "<strong>(a)</strong> Achat d'un call d'échéance 6 mois et position courte sur le forward à 180 jours. Si \\(S_T\\) est le taux de change spot dans six mois, le profit du call s'écrit :\n\\[\\max(S_T - 1{,}22 \\;;\\; 0) - 0{,}02\\]\nLe profit du contrat forward est \\(1{,}2518 - S_T\\). Cette stratégie engendre le profit suivant :\n\\[\\max(S_T - 1{,}22 \\;;\\; 0) - 0{,}02 + 1{,}2518 - S_T\\]\nou encore :\n\\[\\max(S_T - 1{,}22 \\;;\\; 0) + 1{,}2318 - S_T\\]\nOn obtient donc un profit défini par :\n\\[1{,}2318 - S_T \\quad \\text{si } S_T < 1{,}22\\]\n\\[0{,}0118 \\quad \\text{sinon}\\]\nCes quantités sont toujours positives. L'actualisation est ignorée dans ces calculs. Même si elle était prise en compte, il faudrait que le taux d'actualisation soit très élevé pour que l'intérêt soit supérieur à 0,0118 € dans le cas d'un emprunt de 0,02 € sur six mois.\n\n<strong>(b)</strong> Achat d'un put à 3 mois et position longue sur le forward à 90 jours.\nLe profit de l'option s'écrit :\n\\[\\max(1{,}29 - S_T \\;;\\; 0) - 0{,}02\\]\net celui du forward vaut \\(S_T - 1{,}2556\\).\nLe profit total vaut donc :\n\\[\\max(1{,}29 - S_T \\;;\\; 0) + S_T - 1{,}2756\\]\nSi \\(S_T > 1{,}29\\), on obtient \\(S_T - 1{,}2756\\). En revanche, si \\(S_T \\leq 1{,}29\\), on a 0,0144 €. Ici encore, le profit est positif dans tous les cas."
+  },
+  {
+    "id": "1.32",
+    "chapitre": "Introduction",
+    "question": "Un investisseur achète pour 3 € un call de prix d'exercice 30 €. Peut-il, à la fois, décider rationnellement d'exercer l'option, et perdre de l'argent ? Justifiez votre réponse.",
+    "reponse": "Si le prix du sous-jacent à l'échéance de l'option est compris entre 30 et 33 €, l'investisseur exercera l'option, mais perdra néanmoins de l'argent. Considérons la situation où le prix du sous-jacent est de 31 €. Si l'investisseur exerce l'option, il perd 2 € au final (le prix du call de 3 € moins le gain de 1 € sur l'exercice de l'option). S'il ne l'exerce pas, sa perte sera de 3 €. Il est donc bien plus avantageux d'exercer l'option que de ne pas l'exercer."
+  },
+  {
+    "id": "1.33",
+    "chapitre": "Introduction",
+    "question": "Un investisseur vend pour 5 € un put de prix d'exercice 40 €. Quels sont les gains et pertes maximaux possibles sur cette stratégie ? Votre réponse est-elle modifiée si l'option est un call ?",
+    "reponse": "Le gain maximal de l'investisseur est de 5 € et sa perte maximale de 35 €. Cette dernière correspond à la situation où l'option est exercée alors que le prix du sous-jacent est égal à zéro. Si l'option est un call, le gain maximal de l'opérateur serait encore de 5 €, mais il n'y aurait pas de limite pour ses pertes dans la mesure où il n'y a en théorie aucune limite à la hausse du prix d'un actif."
+  },
+  {
+    "id": "1.34",
+    "chapitre": "Introduction",
+    "question": "« L'achat d'un put sur une action quand on possède l'action est une forme de police d'assurance. » Commentez cette affirmation.",
+    "reponse": "Si le prix de l'action baisse en dessous du prix d'exercice du put, l'action peut être vendue au prix d'exercice."
+  },
+  {
+    "id": "1.35",
+    "chapitre": "Introduction",
+    "question": "Le 21 mai 2020, un investisseur envisage soit d'acheter 100 titres Apple, soit de prendre une position longue sur un contrat de call (portant sur 100 actions) échéance septembre. Comme indiqué dans le tableau 1.2, le prix ask de l'action est de 316,50 $ et celui du call de prix d'exercice 320 $ est égal à 21,70 $. Pour chacune des deux stratégies déterminez (a) le coût initial, (b) le gain total si le prix final de l'action est de 400 $ et (c) la perte si le prix final est de 300 $. Supposez que l'option n'est pas exercée avant l'échéance et que, si c'est l'action qui est achetée, elle est revendue à l'échéance du contrat d'option.",
+    "reponse": "<strong>(a)</strong> Le coût immédiat pour l'achat d'actions est de 31 650 $. Pour l'achat d'options, le coût immédiat est de 2 170 $.\n\n<strong>(b)</strong> Le profit pour l'achat d'actions est égal à :\n\\[40\\,000 - 31\\,650 = 8\\,350\\,\\$\\]\nLe gain de la stratégie en options est de :\n\\[(400 - 320) \\times 100 - 2\\,170 = 5\\,830\\,\\$\\]\n\n<strong>(c)</strong> La perte pour les actions est des \\(31\\,650 - 30\\,000 = 1\\,650\\) $. Dans le cas de l'option, cette perte est de 2 170 $."
+  },
+  {
+    "id": "1.36",
+    "chapitre": "Introduction",
+    "question": "Qu'est-ce que l'arbitrage ? Expliquez l'opportunité d'arbitrage à la situation suivante. Une entreprise sous-jacente est cotée 50 € à Paris et 55 $ à New York. Le taux de change est de 1,3 $ pour 1 €. Expliquez comment vont évoluer ces prix quand les arbitragistes vont intervenir.",
+    "reponse": "L'arbitrage suppose d'opérer au moins deux transactions de sens opposés de sorte à assurer un profit. Dans la situation décrite, un trader peut acheter à New York et vendre simultanément à Paris. Le profit est alors égal à \\(50 - 55/1{,}3\\). Mais, en opérant ainsi, les prix vont monter à New York et baisser à Paris de sorte à faire disparaître l'opportunité d'arbitrage."
+  },
+  {
+    "id": "1.37",
+    "chapitre": "Introduction",
+    "question": "Un trader A prend une position longue sur un contrat forward l'engageant à acheter une action pour 1 000 $ dans un an. Un trader B achète un call sur cette même action, de prix d'exercice 1 000 $ et d'échéance un an. Quelle est la différence de position entre A et B ? Montrez graphiquement l'évolution du profit de chacun des deux traders dans un an en fonction du prix de l'action à cette date.",
+    "reponse": "Le graphique S1.4 montre les profits des deux traders A et B en fonction du prix du sous-jacent. On voit que A réalise un profit dès que le prix dépasse 1 000 alors que la position en options engendre un profit dès que le prix dépasse 1 000 plus le premium de l'option (supposé égal à 100 sur le graphique).\n<svg viewBox=\"0 0 320 250\" xmlns=\"http://www.w3.org/2000/svg\" style=\"max-width:380px;font-family:sans-serif;font-size:11px\">\n  <line x1=\"40\" y1=\"10\" x2=\"40\" y2=\"210\" stroke=\"black\" stroke-width=\"1\"/>\n  <line x1=\"40\" y1=\"120\" x2=\"300\" y2=\"120\" stroke=\"black\" stroke-width=\"1\"/>\n  <text x=\"170\" y=\"245\" text-anchor=\"middle\">Prix de l'actif</text>\n  <text x=\"12\" y=\"110\" text-anchor=\"middle\" transform=\"rotate(-90,12,110)\">Profit</text>\n  <line x1=\"40\" y1=\"210\" x2=\"280\" y2=\"30\" stroke=\"gray\" stroke-width=\"1.5\"/>\n  <polyline points=\"40,140 170,140 280,30\" fill=\"none\" stroke=\"black\" stroke-width=\"2.5\"/>\n  <text x=\"60\" y=\"135\">700</text><text x=\"110\" y=\"135\">900</text><text x=\"160\" y=\"135\">1100</text><text x=\"220\" y=\"135\">1300</text>\n  <text x=\"25\" y=\"124\">0</text><text x=\"20\" y=\"80\">100</text><text x=\"20\" y=\"40\">200</text><text x=\"15\" y=\"160\">-100</text><text x=\"15\" y=\"200\">-200</text>\n  <text x=\"265\" y=\"55\" font-size=\"9\">Trader A</text>\n  <text x=\"265\" y=\"45\" font-size=\"9\">━━ Trader B</text>\n  <text x=\"160\" y=\"235\" text-anchor=\"middle\" font-weight=\"bold\" font-size=\"10\">Graphique S1.4 : Profits des traders A et B (ex. 1.37)</text>\n</svg>"
+  },
+  {
+    "id": "1.38",
+    "chapitre": "Introduction",
+    "question": "En mars, un investisseur donne instruction à son intermédiaire financier de vendre un put sur action d'échéance juillet. L'action cote 42 € et le prix d'exercice est de 40 €. L'option coûte 3 €. Qu'a accepté l'investisseur en passant cet ordre ? Dans quel cas de figure cette stratégie sera-t-elle profitable ? Quels sont les risques encourus ?",
+    "reponse": "L'investisseur a accepté d'acheter 100 actions pour 40 € en juillet (ou plus tôt) si la contrepartie décide d'exercer l'option. La transaction s'avérera rentable si l'option n'est pas exercée ou si le cours de l'action est supérieur à 37 € au moment de l'exercice. Le risque pour l'investisseur est que le cours de l'action baisse considérablement. Par exemple, si le cours de l'action chute à 1 € en juillet, l'investisseur perd 3 600 €. En effet, les options sont exercées et 40 € sont payés pour 100 actions lorsque la valeur par action est de 1 €. Cela conduit à une perte de 3 900 €, qui n'est que très peu compensée par la prime de 300 € reçue pour les ventes des options."
+  },
+  {
+    "id": "1.39",
+    "chapitre": "Introduction",
+    "question": "Une entreprise française sait qu'elle devra payer 3 millions de dollars US dans trois mois. Le taux de change spot est de 1,1500 $/€. Expliquez comment futures et options peuvent être utilisés pour couvrir cette exposition au risque de change.",
+    "reponse": "L'entreprise pourrait conclure un contrat forward conduisant à acheter 3 millions de dollars dans trois mois. Le prix forward sera sans doute proche mais cependant différent du taux de change spot de 1,15. Une alternative consisterait à acheter un call d'échéance 3 mois donnant le droit (mais pas l'obligation) d'acheter 3 millions de dollars à un taux de change égal au prix d'exercice. L'utilisation d'un contrat forward assure, sans frais, le taux de change qui s'appliquera dans trois mois. L'utilisation d'une option d'achat fournit, à un coût, une assurance contre un taux de change supérieur au prix d'exercice."
+  },
+  {
+    "id": "1.40",
+    "chapitre": "Introduction",
+    "question": "Une action cote 29 €. Un investisseur achète un call sur cette action dont le prix d'exercice est 30 € et vend un autre call sur cette même action avec un prix d'exercice de 32,5 €. Les deux options coûtent respectivement 2,75 € et 1,50 €. Ces deux options ont même maturité. Décrivez la position détenue par l'investisseur.",
+    "reponse": "Cette stratégie est un écart (spread) vertical haussier (voir chapitre 12). Le bénéfice est illustré au graphique S1.5.\n<svg viewBox=\"0 0 300 220\" xmlns=\"http://www.w3.org/2000/svg\" style=\"max-width:350px;font-family:sans-serif;font-size:11px\">\n  <line x1=\"40\" y1=\"10\" x2=\"40\" y2=\"180\" stroke=\"black\" stroke-width=\"1\"/>\n  <line x1=\"40\" y1=\"110\" x2=\"280\" y2=\"110\" stroke=\"black\" stroke-width=\"1\"/>\n  <text x=\"240\" y=\"105\">Prix de l'action</text>\n  <text x=\"12\" y=\"90\" text-anchor=\"middle\" transform=\"rotate(-90,12,90)\">Profit</text>\n  <line x1=\"40\" y1=\"130\" x2=\"130\" y2=\"130\" stroke=\"gray\" stroke-width=\"1\" stroke-dasharray=\"5\"/>\n  <line x1=\"130\" y1=\"130\" x2=\"210\" y2=\"50\" stroke=\"gray\" stroke-width=\"1\" stroke-dasharray=\"5\"/>\n  <line x1=\"210\" y1=\"50\" x2=\"270\" y2=\"50\" stroke=\"gray\" stroke-width=\"1\" stroke-dasharray=\"5\"/>\n  <line x1=\"40\" y1=\"90\" x2=\"130\" y2=\"90\" stroke=\"silver\" stroke-width=\"1\"/>\n  <line x1=\"130\" y1=\"90\" x2=\"210\" y2=\"160\" stroke=\"silver\" stroke-width=\"1\"/>\n  <line x1=\"210\" y1=\"160\" x2=\"270\" y2=\"160\" stroke=\"silver\" stroke-width=\"1\"/>\n  <polyline points=\"40,120 130,120 210,90 270,90\" fill=\"none\" stroke=\"black\" stroke-width=\"2.5\"/>\n  <text x=\"60\" y=\"125\">20</text><text x=\"100\" y=\"125\">25</text><text x=\"140\" y=\"125\">30</text><text x=\"180\" y=\"125\">35</text><text x=\"220\" y=\"125\">40</text>\n  <text x=\"25\" y=\"114\">0</text><text x=\"25\" y=\"94\">2</text><text x=\"25\" y=\"74\">4</text><text x=\"25\" y=\"54\">6</text><text x=\"25\" y=\"34\">8</text>\n  <text x=\"20\" y=\"130\">-2</text><text x=\"20\" y=\"150\">-4</text><text x=\"20\" y=\"170\">-6</text><text x=\"20\" y=\"186\">-8</text>\n  <text x=\"200\" y=\"170\" font-size=\"9\">- - - Call acheté</text>\n  <text x=\"200\" y=\"182\" font-size=\"9\">── Call vendu</text>\n  <text x=\"200\" y=\"194\" font-size=\"9\">━ Total</text>\n  <text x=\"140\" y=\"215\" text-anchor=\"middle\" font-weight=\"bold\" font-size=\"10\">Graphique S1.5 : Profit dans le problème 1.40</text>\n</svg>"
+  },
+  {
+    "id": "1.41",
+    "chapitre": "Introduction",
+    "question": "L'or cote 1 200 $ l'once, et le prix forward pour livraison dans un an est de 1 300 $ l'once. Un arbitragiste peut emprunter à 3 % par an. Que doit-il faire ? Vous supposerez que le coût de stockage de l'or est nul et que l'or ne rapporte pas de revenus intermédiaires.",
+    "reponse": "L'arbitragiste devrait emprunter pour acheter aujourd'hui un certain nombre d'onces d'or et prendre une position courte sur des contrats forward portant sur la même quantité d'or à échéance un an. L'or est donc acheté à 1 200 $ l'once et vendu 1 300 $ l'once. L'intérêt sur les fonds empruntés se monte à \\(0{,}03 \\times 1\\,200\\) $, soit 36 $ l'once. Un profit de 64 $ par once d'or est alors réalisé dans cette stratégie."
+  },
+  {
+    "id": "1.42",
+    "chapitre": "Introduction",
+    "question": "Le 21 mai 2020, un investisseur possède 100 titres Apple. Comme indiqué dans le tableau 1.2, le prix de l'action est proche de 316 $, et un put d'échéance décembre et de prix d'exercice 290 $ cote 21,30 $. L'investisseur compare deux solutions pour limiter son risque de perte. La première consiste en l'achat du put décembre de prix d'exercice 290 $, la seconde consiste à passer un ordre de vente de ses actions dès que le prix passe sous les 290 $. Discutez les avantages et inconvénients de ces deux stratégies.",
+    "reponse": "La deuxième solution est en fait un ordre stop. Utiliser un tel ordre ne coûte rien et assure de recevoir un prix proche de 290 $ l'action si le prix chute sous ce seuil. Le put coûte 2 130 $ et assure un prix de vente de 290 $ l'unité jusqu'en décembre. Si le prix tombe temporairement sous les 290 $ et remonte ensuite, l'option ne sera pas exercée alors que l'ordre stop le sera. Dans certains cas, le résultat sera meilleur avec l'option mais, dans d'autres, la position en options serait préférable."
+  },
+  {
+    "id": "1.43",
+    "chapitre": "Introduction",
+    "question": "Une obligation émise par Standard Oil fonctionne de la manière suivante. Le souscripteur ne reçoit pas d'intérêt. Cependant, à la date d'échéance, l'émetteur lui promet de recevoir 1 000 $ auxquels s'ajoute un montant qui dépend du prix du pétrole à cette date. Ce montant est défini comme 170 fois la différence (si elle est positive) entre le prix du baril et 25 $. Le paiement maximal est limité à 2 250 $ (ce qui correspond à un prix du baril à 40 $). Montrez que cette obligation est la combinaison d'une obligation classique et de deux options ; une position longue sur un call (sur le baril de pétrole) de prix d'exercice 25 $ et une position courte sur un call de même support, de prix d'exercice 40 $.",
+    "reponse": "Notons \\(S_T\\) le prix d'un baril de pétrole à l'échéance de l'obligation. Cette obligation Standard Oil paie 0 si \\(S_T\\) est inférieur à 25 $ ; elle paie \\(170\\,(S_T - 25)\\) si \\(S_T\\) est compris entre 25 $ et 40 $ et 2 550 $ si le prix \\(S_T\\) est supérieur à 40 $. Cette structure de payoffs est celle d'une position longue sur 170 calls de prix d'exercice 25 $ et d'une position courte sur 170 calls de prix d'exercice 40 $. Cette stratégie est un écart vertical ou spread vertical. Elle sera discutée au chapitre 12."
+  },
+  {
+    "id": "1.44",
+    "chapitre": "Introduction",
+    "question": "Dans la situation du tableau 1.1 un trésorier dit : j'aurai 1 million de livres à vendre dans 6 mois. Si le taux de change tombe en dessous de 1,19, je veux que vous me donniez 1,19. S'il est supérieur à 1,25 j'accepterai de ne recevoir que 1,25. Si le taux de change est entre ces bornes je veux recevoir le taux de change spot. Comment pouvez-vous satisfaire ce trésorier en utilisant des options ?",
+    "reponse": "En fait, vous vendez au trésorier une option de vente sur GBP avec un prix d'exercice de 1,19 et achetez au trésorier une option d'achat sur GBP avec un prix d'exercice de 1,25. Les deux options portent sur un million de GBP et ont une échéance de six mois. C'est un contrat range forward (discuté au chapitre 17)."
+  },
+  {
+    "id": "2.10",
+    "chapitre": "Fonctionnement des Marchés Futures",
+    "question": "Supposez que vous preniez une position courte sur un contrat vous engageant à vendre de l'argent en juillet à 17,20 $ l'once sur le New York Commodity Exchange. La taille du contrat est de 5 000 onces. Le deposit est de 4 000 $ et la marge à maintenir est ensuite de 3 000 $. Quelle variation minimale de prix conduira à un appel de marge ? Que se passera-t-il si vous n'y répondez pas ?",
+    "reponse": "Il y aura un appel de marge dès que 1 000 $ auront été perdus et déduits du compte de deposit. Cela correspond à une hausse du cours de \\(1\\,000 / 5\\,000 = 0{,}20\\) $. Le cours de l'argent doit donc monter à 17,40 $ l'once pour qu'il y ait appel de marge. Si le vendeur ne répond pas à l'appel de marge, la position est soldée."
+  },
+  {
+    "id": "2.11",
+    "chapitre": "Fonctionnement des Marchés Futures",
+    "question": "Supposons qu'en septembre 2021, vous preniez une position longue sur un contrat sur le pétrole d'échéance mai 2022. En mars 2022, vous dénouez votre position. Le prix futures du baril était de 48,30 $ quand vous avez pris position, et de 50,50 $ quand vous avez liquidé celle-ci. Un contrat correspond à 1 000 barils. Quel est votre profit ?",
+    "reponse": "Le profit total s'écrit :\\[(50{,}5 - 48{,}3) \\times 1\\,000 = 2\\,200\\,\\$\\]"
+  },
+  {
+    "id": "2.12",
+    "chapitre": "Fonctionnement des Marchés Futures",
+    "question": "Que signifie « passer un ordre stop à 2 € » ? Dans quel but devrait-il être utilisé ? Répondez aux mêmes questions pour un ordre limite à 2 €.",
+    "reponse": "Un ordre (de vente, par exemple) stop à 2 € est un ordre permettant de vendre au meilleur prix inférieur à 2 €. Un ordre limite à 2 € a pour objectif une vente dès que le prix dépasse 2 €. On peut, par exemple, passer ce type d'ordre pour prendre une position de vente à découvert."
+  },
+  {
+    "id": "2.13",
+    "chapitre": "Fonctionnement des Marchés Futures",
+    "question": "Quelles sont les différences dans la cotation des devises, sur les marchés futures, forward et au comptant ?",
+    "reponse": "Sur les marchés de futures aux États-Unis, la devise sera cotée en unités de devise locale par unité de devise étrangère. Les taux de change spot et forward sont cotés ainsi pour la livre sterling, le dollar australien et le dollar néo-zélandais. Pour certaines autres devises importantes ou sur d'autres marchés, les taux spot et forward sont cotés en unités de devise étrangère par unité de devise locale. C'est le cas de l'euro, par exemple ; en France, un taux de change dollar US contre euro s'exprime en nombre de dollars par euro."
+  },
+  {
+    "id": "2.14",
+    "chapitre": "Fonctionnement des Marchés Futures",
+    "question": "Le vendeur d'un contrat futures dispose, dans certains cas, d'une certaine marge de manœuvre sur le produit livré, sur le lieu et la date de livraison. Cela a-t-il sur le prix futures un effet positif ou négatif ? Expliquez votre raisonnement.",
+    "reponse": "Ces options rendent ces contrats moins attractifs pour l'acheteur (en position longue). Elles tendent donc à réduire le prix futures."
+  },
+  {
+    "id": "2.15",
+    "chapitre": "Fonctionnement des Marchés Futures",
+    "question": "Expliquez comment le système des appels de marge protège les investisseurs contre le risque de défaut.",
+    "reponse": "Une marge ou un deposit est un montant déposé par un investisseur chez son intermédiaire. Cela constitue une garantie contre des variations défavorables du cours du sous-jacent. En ajustant chaque jour le niveau de marge en fonction de l'évolution du cours, l'intermédiaire s'assure de pouvoir liquider la position du client sans perte si celui-ci ne répond pas à un appel de marge. Le principe est donc d'avoir systématiquement un « coussin » correspondant aux variations journalières les plus défavorables. La probabilité de défaut sur ce type de contrat est donc très proche de 0, grâce au système d'appels de marge."
+  },
+  {
+    "id": "2.16",
+    "chapitre": "Fonctionnement des Marchés Futures",
+    "question": "Un investisseur prend une position longue sur deux contrats de jus d'orange congelé. Chaque contrat porte sur 15 000 livres. Le prix futures est de 160 cts par livre et le deposit initial de 6 000 $ par contrat, la marge à maintenir ensuite étant de 4 500 $ par contrat. Quelle variation minimale de prix entraînera un appel de marge ? Dans quelles conditions l'investisseur pourra-t-il retirer 2 000 $ de son compte de deposit ?",
+    "reponse": "L'appel de marge survient après une perte supérieure ou égale à 1 500 $, ce qui correspond à une chute du cours du jus d'orange congelé de 10 cts, soit à 150 cts la livre. L'investisseur pourra retirer 2 000 $ de son compte si chaque contrat a gagné 1 000 $, c'est-à-dire si le prix futures a augmenté de 6,67 cts à 166,67 cts la livre."
+  },
+  {
+    "id": "2.17",
+    "chapitre": "Fonctionnement des Marchés Futures",
+    "question": "Montrez que, si le prix futures d'une matière première est supérieur au prix spot pendant la période de livraison, il y a une opportunité d'arbitrage. En existe-t-il une si l'écart de prix est dans l'autre sens ? Justifiez votre réponse.",
+    "reponse": "Si le prix futures est supérieur au prix spot pendant la période de livraison, un arbitragiste achète le sous-jacent, prend une position courte sur le contrat futures et livre le sous-jacent, réalisant ainsi un profit immédiat.\n\nSi le prix futures est inférieur au prix spot, il n'y a pas un tel arbitrage « parfait ». L'arbitragiste prend une position longue sur le contrat, mais il ne peut pas forcer la livraison immédiate ; c'est la contrepartie en position courte sur le contrat qui décide. Néanmoins, les sociétés intéressées par l'acquisition du sous-jacent peuvent trouver attractive la position longue sur le futures et attendre ensuite la livraison."
+  },
+  {
+    "id": "2.18",
+    "chapitre": "Fonctionnement des Marchés Futures",
+    "question": "Expliquez la différence entre un ordre à prix touché et un ordre stop.",
+    "reponse": "Un ordre à prix touché est exécuté au meilleur prix disponible, après une transaction réalisée au prix spécifié ou à un prix plus favorable. Un ordre stop est exécuté au meilleur prix, après une demande ou une offre au prix spécifié ou à un prix moins favorable."
+  },
+  {
+    "id": "2.19",
+    "chapitre": "Fonctionnement des Marchés Futures",
+    "question": "Que signifie un ordre stop de vente à 20,30 € avec une limite à 20,10 € ?",
+    "reponse": "Un ordre « stop-limite » de vente à 20,30 € avec une limite à 20,10 € signifie que l'actif doit être vendu dès qu'il y a une demande à 20,30 € ou moins ; mais la transaction doit être réalisée à un prix supérieur à 20,10 €."
+  },
+  {
+    "id": "2.20",
+    "chapitre": "Fonctionnement des Marchés Futures",
+    "question": "En fin de journée, un membre de la CC a une position longue sur 100 contrats avec un cours de compensation de 50 000 € par contrat. Le deposit initial est de 2 000 € par contrat. Le jour suivant, la position longue a augmenté de 20 contrats négociés à 51 000 € par contrat. Le cours de compensation de ce jour est de 50 200 €. Que se passe-t-il au niveau du compte de marge ?",
+    "reponse": "La marge initiale se monte à \\(20 \\times 2\\,000 = 40\\,000\\) € sur les nouveaux contrats. Lorsque le prix atteint 50 200 €, le gain sur les 100 contrats déjà détenus est égal à :\n\\[(50\\,200 - 50\\,000) \\times 100 = 20\\,000\\;€\\]\nIl y a cependant une perte de \\((51\\,000 - 50\\,200) \\times 20 = 16\\,000\\) € sur les nouveaux contrats. Ce membre de la chambre de compensation doit ainsi avoir, sur son compte, en fin de journée :\n\\[(40\\,000 - 20\\,000) + 16\\,000 = 36\\,000\\;€\\]"
+  },
+  {
+    "id": "2.21",
+    "chapitre": "Fonctionnement des Marchés Futures",
+    "question": "Expliquez pourquoi les exigences de garanties ont augmenté sur les marchés OTC suite aux nouvelles réglementations introduites après la crise du crédit de 2008.",
+    "reponse": "Les réglementations exigent que les transactions standard entre courtiers en produits dérivés sur les marchés OTC passent par les CCP qui ont le rôle de chambres de compensation pour ces marchés. Ces CCP supportent les risques de défaut des contreparties et exigent des deposits et des appels de marge comme les marchés organisés."
+  },
+  {
+    "id": "2.22",
+    "chapitre": "Fonctionnement des Marchés Futures",
+    "question": "Le cours forward du franc suisse en dollar US pour livraison dans 45 jours est 1,1000. Le prix futures est 0,9000. Expliquez ces deux cotations. Qu'est-il préférable de faire pour un investisseur qui souhaite vendre du franc suisse ?",
+    "reponse": "Le cours forward de 1,1000 est exprimé en francs suisses par dollar US. 0,9000 représente le prix futures, qui est ici coté en dollars US par franc suisse. Si le forward était coté comme le futures, on aurait un prix de \\(1/1{,}1000 = 0{,}9091\\). Dans cet exemple, il est donc plus intéressant de vendre des francs suisses par un contrat forward que par un contrat futures."
+  },
+  {
+    "id": "2.23",
+    "chapitre": "Fonctionnement des Marchés Futures",
+    "question": "Supposons que vous transmettiez à votre broker l'ordre de vendre un contrat sur carcasses de porc, échéance juillet. Décrivez le déroulement des opérations.",
+    "reponse": "Les contrats sur carcasses de porc se négocient auprès du CME group. L'intermédiaire va exiger un deposit initial. L'ordre est alors transmis au marché à un intervenant habilité à exécuter cet ordre (membre de marché). Vous recevez ensuite confirmation de l'exécution. En cas de mouvements défavorables des prix, vous serez amené à déposer des marges en plus du deposit initial payé à l'initiation de l'ordre."
+  },
+  {
+    "id": "2.24",
+    "chapitre": "Fonctionnement des Marchés Futures",
+    "question": "« La spéculation sur les marchés de futures est du jeu pur. Ce n'est pas dans l'intérêt général d'autoriser les spéculateurs à intervenir sur ces marchés. » Discutez ce point de vue.",
+    "reponse": "Les spéculateurs sont des acteurs importants et nécessaires sur les marchés futures ; d'une part, ils fournissent de la liquidité au marché, d'autre part, ils acceptent de supporter des risques dont d'autres opérateurs souhaitent se débarrasser. Évidemment, les spéculateurs ne suffisent pas à assurer le développement d'un marché. Ce dernier doit répondre à un besoin économique, comme celui de la couverture de risques, pour être viable."
+  },
+  {
+    "id": "2.25",
+    "chapitre": "Fonctionnement des Marchés Futures",
+    "question": "Que se passerait-il sur un marché organisé si un contrat ne spécifiait pas de manière précise la qualité du sous-jacent livrable ?",
+    "reponse": "Le marché du contrat ne pourrait se développer convenablement. Les vendeurs choisiraient systématiquement la plus mauvaise qualité, ce qui ne conviendrait pas aux acheteurs potentiels. Ces derniers refuseraient de prendre position à l'achat. Il est donc indispensable que la qualité du produit livré soit clairement spécifiée. De nombreux marchés ont connu des échecs à cause de ce problème de définition de qualité."
+  },
+  {
+    "id": "2.26",
+    "chapitre": "Fonctionnement des Marchés Futures",
+    "question": "« Quand un contrat est échangé sur un marché futures, la position ouverte augmente d'une unité, reste identique ou baisse d'une unité. » Qu'en pensez-vous ?",
+    "reponse": "Si deux nouveaux intervenants contractent, la position ouverte augmente d'une unité. Si deux intervenants clôturent une position détenue au préalable, la position ouverte diminue d'une unité. Enfin, si un des intervenants clôt sa position alors que le second l'augmente, la position ouverte n'est pas modifiée."
+  },
+  {
+    "id": "2.27",
+    "chapitre": "Fonctionnement des Marchés Futures",
+    "question": "Le 24 octobre 2022, vous prenez une position sur un contrat futures de bétail vivant au prix de 121,2 cts par livre. Vous fermez votre position le 21 janvier 2023 alors que le prix futures est de 118,3 cts. Un contrat porte sur 40 000 livres. Quel est votre profit ?",
+    "reponse": "Votre profit total s'écrit, si vous êtes vendeur :\n\\[40\\,000 \\times (1{,}2120 - 1{,}1830) = 1\\,160\\;£\\]"
+  },
+  {
+    "id": "2.28",
+    "chapitre": "Fonctionnement des Marchés Futures",
+    "question": "Un éleveur s'attend à disposer de 120 000 livres de bétail à vendre dans trois mois. Le contrat futures du CME Group porte sur 40 000 livres. Comment l'éleveur peut-il utiliser ce contrat pour se couvrir ? De son point de vue, quels sont les avantages et inconvénients d'une telle couverture ?",
+    "reponse": "L'éleveur peut prendre une position courte sur trois contrats de maturité de trois mois. Si le prix du bétail baisse, le gain sur les contrats va compenser la perte sur la vente du bétail. En revanche, si le prix du bétail augmente, le gain sur la vente de celui-ci compensera la perte réalisée sur les contrats. L'utilisation de contrats futures présente l'avantage de réduire considérablement l'incertitude sur le prix qu'il obtiendra. La contrepartie de cet avantage est que l'éleveur ne bénéficie pas d'éventuels mouvements favorables des cours."
+  },
+  {
+    "id": "2.29",
+    "chapitre": "Fonctionnement des Marchés Futures",
+    "question": "Une compagnie minière découvre un filon d'or en juillet 2021. La construction de la mine prendra six mois et l'extraction un an. Des contrats futures sur l'or sont négociés sur le New York Commodity Exchange, avec des livraisons tous les deux mois entre août 2021 et décembre 2022. Chaque contrat porte sur 100 onces d'or. Comment la compagnie peut-elle utiliser ce contrat pour se couvrir ?",
+    "reponse": "La compagnie minière peut estimer sa production mensuelle et prendre des positions courtes sur des contrats futures, de façon à fixer un prix de vente pour l'or qu'elle va extraire. Si, par exemple, elle s'attend à produire 3 000 onces en mars et avril 2022, le prix de vente peut être fixé en prenant une position courte sur trente contrats d'échéance avril 2022."
+  },
+  {
+    "id": "2.30",
+    "chapitre": "Fonctionnement des Marchés Futures",
+    "question": "Expliquez le principe de fonctionnement des CCP. Pour le système financier dans son ensemble, quels sont les avantages d'un dénouement de toutes les transactions d'actifs dérivés standards dans le cadre de CCP ?",
+    "reponse": "Une CCP s'interpose entre les deux parties dans une transaction sur instruments dérivés sur un marché de gré à gré de la même manière qu'une chambre de compensation le fait pour les contrats négociés sur les marchés organisés. Elle absorbe le risque de crédit, mais exige un deposit et des appels de marge pour chacune des parties. En outre, les membres d'une CCP sont tenus de contribuer à un fonds de garantie.\n\nL'avantage pour le système financier est qu'il y a bien plus de garanties disponibles (la marge) et qu'il est donc beaucoup moins probable qu'une défaillance d'un acteur majeur sur ce marché n'entraîne des pertes pour les autres participants du marché. Il y a aussi davantage de transparence dans la mesure où les transactions des différentes institutions financières sont plus facilement connues. L'inconvénient est que les CCP prennent dans le système financier la place des banques en tant qu'entités <em>too big to fail</em> (trop importantes pour qu'on les laisse faire faillite). La gestion des CCP doit donc clairement faire l'objet d'une surveillance attentive."
+  },
+  {
+    "id": "2.31",
+    "chapitre": "Fonctionnement des Marchés Futures",
+    "question": "Un trader A prend une position longue sur un contrat futures l'engageant à acheter 1 million d'euros dans 3 mois en payant 1,1 million de dollars US. Un trader B prend une position longue sur un contrat forward présentant les mêmes caractéristiques. Le taux de change commence par diminuer nettement pendant les deux premiers mois, puis remonte pour finir à 1,13 dollar US/euro. Si on ignore la compensation journalière, quel est le résultat de chacun des traders ? Si on tient compte maintenant de la compensation journalière (<em>daily settlement</em>), lequel des deux traders réalise le meilleur résultat ?",
+    "reponse": "Le profit total de chaque trader en dollars est de \\(0{,}03 \\times 1\\,000\\,000 = 30\\,000\\). Le profit du trader B est réalisé à la fin des trois mois. Le profit du trader A est réalisé au jour le jour pendant les trois mois. Des pertes substantielles sont réalisées au cours des deux premiers mois et des bénéfices sont réalisés au cours du dernier mois. Il est probable que le trader B ait fait mieux, car le trader A a dû financer ses pertes durant les deux premiers mois."
+  },
+  {
+    "id": "2.32",
+    "chapitre": "Fonctionnement des Marchés Futures",
+    "question": "Qu'entend-on par position ouverte ? Pourquoi a-t-elle tendance à décroître pendant le dernier mois précédant le mois de livraison ? Supposons que le volume de transactions d'un jour donné soit de 2 000 contrats. Il y a donc 2 000 acheteurs (ou l'équivalent) et 2 000 vendeurs. Parmi les 2 000 acheteurs, 1 400 dénouaient des positions et 600 prenaient position sur les contrats. Parmi les 2 000 vendeurs, 1 200 dénouaient des positions et 800 prenaient position sur les contrats. Quel est l'impact de ces transactions sur la position ouverte ?",
+    "reponse": "La position ouverte est le nombre de contrats vivants à une date donnée. De nombreux traders clôturent leurs positions juste avant le mois de livraison. C'est pourquoi la position ouverte diminue au cours du mois précédant le mois de livraison.\n\nLa position ouverte a baissé de 600. Nous pouvons le voir de deux manières. Tout d'abord, 1 400 positions courtes ont été clôturées et il y a eu 800 nouvelles positions courtes. Deuxièmement, 1 200 positions longues ont été clôturées et il y a eu 600 nouvelles positions longues."
+  },
+  {
+    "id": "2.33",
+    "chapitre": "Fonctionnement des Marchés Futures",
+    "question": "Une entreprise prend une position courte sur un contrat futures portant sur 5 000 boisseaux de blé à 750 cts par boisseau. Le deposit initial est de 3 000 $ et la marge à maintenir ensuite est 2 000 $. Quelle variation minimale de prix entraînera un appel de marge ? Dans quelles conditions l'entreprise peut-elle retirer 1 500 $ de son compte ?",
+    "reponse": "Un appel de marge est fait si 1 000 $ sont perdus sur le contrat. Cela correspond à une augmentation du prix futures du blé de 750 cents à 770 cents le boisseau. 1 500 $ peuvent être retirés si le prix à terme baisse de 30 cents à 720 cents le boisseau."
+  },
+  {
+    "id": "2.34",
+    "chapitre": "Fonctionnement des Marchés Futures",
+    "question": "Supposons qu'il n'y ait pas de coûts de stockage sur le pétrole et que le taux d'emprunt ou de prêt soit de 4 % par an. Comment auriez-vous pu réaliser un profit en opérant sur des contrats d'échéances juin et décembre (d'une même année) s'ils s'échangent à des prix respectifs de 50 $ et 56 $ ?",
+    "reponse": "Vous pouvez prendre une position longue sur un contrat futures sur pétrole d'échéance juin et une position courte sur un contrat d'échéance décembre. En juin, vous prenez livraison du pétrole en empruntant 50 $ par baril à 4 % pour faire face aux sorties de trésorerie. L'intérêt accumulé en six mois est d'environ \\(50 \\times 0{,}04 \\times 1/2\\) ou 1 $ le baril. En décembre, le pétrole est vendu 56 $ le baril, ce qui est supérieur aux 51 $ qui doivent être remboursés sur le prêt. La stratégie conduit donc à un profit. À noter que ce profit est indépendant du prix réel du pétrole en juin et décembre. Il sera légèrement affecté par les compensations journalières liées aux contrats futures."
+  },
+  {
+    "id": "2.35",
+    "chapitre": "Fonctionnement des Marchés Futures",
+    "question": "Quelle position est équivalente à une position longue sur un contrat forward impliquant l'achat d'un actif au prix \\(K\\) combinée à la détention d'un put de prix d'exercice \\(K\\), les deux contrats ayant la même date d'échéance ?",
+    "reponse": "La position longue sur le contrat forward engendre un payoff égal à \\(S_T - K\\), où \\(S_T\\) est le prix de l'actif à la date \\(T\\) et \\(K\\) est le prix de livraison (prix forward au moment de la prise de position). L'option engendre un payoff égal à \\(\\max(K - S_T \\;;\\; 0)\\). Si \\(S_T > K\\), la somme des deux payoffs est égale à \\(S_T - K\\). Dans le cas contraire, la somme est nulle. On peut donc écrire le payoff global sous la forme \\(\\max(S_T - K \\;;\\; 0)\\), ce qui est le payoff du call de prix d'exercice \\(K\\)."
+  },
+  {
+    "id": "2.36",
+    "chapitre": "Fonctionnement des Marchés Futures",
+    "question": "La transaction d'une banque avec un client (transaction bilatérale) a une valeur de +10 millions d'euros pour la banque. Le client a déposé 10 millions de garantie en cash. Quelle est l'exposition de la banque au risque de crédit du client ?",
+    "reponse": "La contrepartie peut cesser de fournir des garanties et un certain temps s'écoulera alors avant que la banque ne soit en mesure de clôturer les positions. Pendant ce temps, ces positions peuvent évoluer en faveur de la banque, augmentant son exposition. Notez que la banque est susceptible d'avoir couvert les positions et subira une perte sur la couverture si les positions évoluent en sa faveur. Par exemple, si la valeur des positions passe de 10 millions de dollars à 13 millions de dollars après que la contrepartie a cessé de fournir une garantie, la banque perd 3 millions de dollars de couverture et ne réalisera pas nécessairement un gain compensatoire sur les positions."
+  },
+  {
+    "id": "3.11",
+    "chapitre": "Stratégies de Couverture par les Contrats Futures",
+    "question": "Expliquez l'expression « couverture parfaite ». Une couverture parfaite conduit-elle toujours à un résultat meilleur qu'une couverture imparfaite ? Justifiez votre réponse.",
+    "reponse": "Une couverture parfaite élimine le risque du hedger. Toutefois, une telle couverture n'assure pas un meilleur résultat financier que celui obtenu avec une couverture imparfaite ou même en l'absence de couverture. Considérons, par exemple, une entreprise qui couvre son risque contre les variations de prix d'un actif sous-jacent. Si les mouvements de prix sont favorables, une couverture parfaite neutralise ces mouvements. Une couverture imparfaite aurait engendré, dans ce cas, un résultat meilleur. En revanche, lorsque la couverture est parfaite, le revenu futur (s'il s'agit de vendre un actif) est certain."
+  },
+  {
+    "id": "3.12",
+    "chapitre": "Stratégies de Couverture par les Contrats Futures",
+    "question": "Dans quel cas la recherche d'une variance minimale pour la valeur d'une position conduit-elle à ne pas se couvrir ?",
+    "reponse": "Une couverture de variance minimale conduit à ne pas se couvrir quand la corrélation est nulle entre le prix futures et le prix de l'actif à couvrir."
+  },
+  {
+    "id": "3.13",
+    "chapitre": "Stratégies de Couverture par les Contrats Futures",
+    "question": "Supposons que l'écart-type des variations de prix trimestrielles d'une marchandise soit 0,65 € et que l'écart-type des variations du prix futures d'un contrat sur cette marchandise soit 0,81 €, alors que la corrélation de ces variations est 0,8. Quel est le ratio de couverture optimal pour un contrat à trois mois ? Quelle est la signification de ce ratio ?",
+    "reponse": "Le ratio de couverture optimal est défini par :\n\\[0{,}8 \\times \\frac{0{,}65}{0{,}81} = 0{,}642\\]\nCe ratio signifie que la taille de la position, sur le contrat futures, doit représenter 64,2 % de la taille de la position exposée au risque à trois mois."
+  },
+  {
+    "id": "3.14",
+    "chapitre": "Stratégies de Couverture par les Contrats Futures",
+    "question": "Une entreprise possède un portefeuille de 20 millions d'euros qui a un bêta de 1,2. Elle souhaite couvrir cette position avec des contrats futures sur le CAC 40. L'indice vaut aujourd'hui 6240 et chaque contrat correspond à 10 € fois la valeur de l'indice. Quel type de couverture minimise le risque ? Que devrait faire cette entreprise si elle souhaite diviser par deux le bêta du portefeuille ?",
+    "reponse": "La formule du nombre de contrats à vendre s'écrit, avec les données de l'exercice :\n\\[1{,}2 \\times \\frac{20\\,000\\,000}{6\\,240 \\times 10} = 384{,}62\\]\nLa position courte doit donc porter sur 385 contrats. Pour réduire de moitié le bêta de la position, il faudrait prendre position sur 192 contrats."
+  },
+  {
+    "id": "3.15",
+    "chapitre": "Stratégies de Couverture par les Contrats Futures",
+    "question": "Un agriculteur souhaite couvrir le risque de prix pour des ventes de maïs qui seront réalisées en (a) juin, (b) juillet, (c) janvier. Sachant que les contrats correspondants du CME Group ont pour mois d'échéance mars, mai, juillet, septembre, décembre, quel devrait être le choix de l'agriculteur pour chacun des cas (a), (b) et (c) ?",
+    "reponse": "Une règle de bon sens consiste à choisir le contrat qui propose un mois de livraison le plus proche possible de l'horizon de la couverture, mais se situe au-delà de cet horizon. Dans l'exemple considéré, les mois de livraison à retenir sont donc (a) juillet, (b) septembre et (c) mars."
+  },
+  {
+    "id": "3.16",
+    "chapitre": "Stratégies de Couverture par les Contrats Futures",
+    "question": "Une couverture parfaite assure-t-elle de pouvoir échanger à une date future au prix spot d'aujourd'hui ? Justifiez votre réponse.",
+    "reponse": "Non. Considérons par exemple un contrat forward utilisé pour couvrir une rentrée future en devise étrangère. Ce contrat assure l'échange des devises à un cours connu aujourd'hui, mais différent du cours spot."
+  },
+  {
+    "id": "3.17",
+    "chapitre": "Stratégies de Couverture par les Contrats Futures",
+    "question": "Expliquez pourquoi une position de couverture courte s'améliore quand la base se renforce de manière inattendue et se détériore quand la base s'affaiblit.",
+    "reponse": "La base est le montant duquel le prix spot dépasse le prix futures. Considérons un hedger en position courte sur le contrat (et longue sur le sous-jacent). La valeur de sa position augmente donc quand la base augmente. Symétriquement, sa position se détériore lorsque la base se réduit."
+  },
+  {
+    "id": "3.18",
+    "chapitre": "Stratégies de Couverture par les Contrats Futures",
+    "question": "Supposez que vous soyez le trésorier d'une entreprise française exportatrice de matériel électronique vers les États-Unis. Expliquez votre stratégie de couverture et les arguments que vous utiliseriez pour convaincre vos supérieurs hiérarchiques.",
+    "reponse": "Le trésorier devrait opérer de la manière suivante :\n(i) estimer les cash-flows futurs en euros et en dollars US ;\n(ii) prendre position sur des contrats forward et/ou futures pour fixer le taux de change euro/dollar US.\n\nToutefois, nous avons vu dans l'exercice 3.2 que, dans certains cas, la couverture n'était pas une solution optimale. Ici, le trésorier doit analyser la relation entre les volumes de cash-flows anticipés et les taux de change. Par exemple, l'entreprise peut être amenée à augmenter ses prix en euros si le taux de change devient plus favorable au dollar. Cette façon de procéder peut donc toujours de manière globale qu'il faut appréhender le risque, comme nous l'avons mentionné dans l'exemple de l'entreprise fabriquant des bijoux. De plus, les résultats de l'analyse doivent être présentés à la direction de la société pour que chacun soit conscient que les résultats ex post d'une position couverte ne sont pas toujours meilleurs que ceux d'une position non couverte. Ils sont simplement moins incertains. Quand des options sont utilisées pour la couverture, le paiement du premium est compensé par la possibilité de bénéficier de mouvements favorables des cours."
+  },
+  {
+    "id": "3.19",
+    "chapitre": "Stratégies de Couverture par les Contrats Futures",
+    "question": "Dans l'exemple 3.2 de la section 3.3, en quoi la couverture et les résultats de celle-ci sont-ils modifiés si le ratio de couverture utilisé est de 0,8 ?",
+    "reponse": "Si le ratio de couverture est de 0,8, l'entreprise prend, le 8 juin, une position longue sur 16 contrats d'échéance décembre, quand le prix futures est de 48 $ le baril. La position est dénouée le 10 novembre. À cette date, les prix spot et futures sont respectivement de 50 $ et 49,10 $. Le gain sur les contrats s'écrit :\n\\[(49{,}10 - 48{,}00) \\times 16\\,000 = 17\\,600\\,\\$\\]\nLe coût effectif du pétrole est donné par :\n\\[20\\,000 \\times 50 - 17\\,600 = 982\\,400\\,\\$\\]\nCe résultat correspond à un prix de 49,12 $ le baril (à comparer avec les 48,90 $ le baril en cas de couverture complète)."
+  },
+  {
+    "id": "3.20",
+    "chapitre": "Stratégies de Couverture par les Contrats Futures",
+    "question": "« Si le ratio de couverture de variance minimum est égal à 1, la couverture doit être parfaite. » Cette affirmation est-elle correcte ? Justifiez votre réponse.",
+    "reponse": "Cette affirmation est fausse. En effet, le ratio de variance minimale s'écrit :\n\\[\\rho \\frac{\\sigma_S}{\\sigma_F}\\]\nSi, par exemple, \\(\\sigma_S = 2\\sigma_F\\) et \\(\\rho = 0{,}5\\), le ratio est égal à 1, mais comme la corrélation est inférieure à 1, la couverture est imparfaite."
+  },
+  {
+    "id": "3.21",
+    "chapitre": "Stratégies de Couverture par les Contrats Futures",
+    "question": "« Si le risque de base est nul alors le ratio de couverture qui minimise la variance est égal à 1. » Cette affirmation est-elle correcte ? Justifiez votre réponse.",
+    "reponse": "Cette affirmation est correcte. En utilisant les notations du manuel, si le ratio de couverture est égal à 1, le hedger s'assure un prix égal à \\(F_1 + b_2\\). Comme ces deux nombres sont connus, cette quantité présente une variance nulle et la couverture doit être parfaite avec un ratio égal à 1."
+  },
+  {
+    "id": "3.22",
+    "chapitre": "Stratégies de Couverture par les Contrats Futures",
+    "question": "« Quand pour un actif les prix futures sont en général plus bas que les prix spot, les positions de couverture longues sont très attractives. » Expliquez cette affirmation et illustrez par un exemple.",
+    "reponse": "Quand le rendement d'opportunité est élevé, le prix futures est largement inférieur au prix spot. Une entreprise qui sait qu'elle doit acquérir un actif à une date future peut fixer, dès aujourd'hui, un prix d'acquisition proche du prix futures en prenant une position longue."
+  },
+  {
+    "id": "3.23",
+    "chapitre": "Stratégies de Couverture par les Contrats Futures",
+    "question": "L'écart-type des variations de prix mensuelles du bétail vivant (en cts par livre) est 1,2. L'écart-type des variations mensuelles du prix futures du contrat à échéance la plus courte (en cts par livre) est 1,4. La corrélation entre les variations de ces deux prix est de 0,7. Nous sommes le 15 octobre et un producteur de viande doit acheter 200 000 livres de bétail vivant le 15 novembre. Il souhaite couvrir sa position avec le contrat futures échéance décembre, chaque contrat portant sur 40 000 livres de bétail. Quelle stratégie doit-il suivre ?",
+    "reponse": "Le ratio de couverture optimal est défini par :\n\\[0{,}7 \\times \\frac{1{,}2}{1{,}4} = 0{,}6\\]\nLa couverture requiert une position longue équivalente à :\n\\[200\\,000 \\times 0{,}6 = 120\\,000 \\text{ livres}\\]\nce qui correspond à trois contrats échéance décembre. La position sera dénouée le 15 novembre."
+  },
+  {
+    "id": "3.24",
+    "chapitre": "Stratégies de Couverture par les Contrats Futures",
+    "question": "Un producteur de maïs affirme : « Je n'utilise pas les contrats futures pour me couvrir. Mon vrai risque n'est pas le prix de vente du maïs mais celui de perdre ma récolte du fait d'un aléa climatique. » Que pensez-vous de ce point de vue ? Le fermier devrait-il chercher à estimer son volume de production espéré et chercher une couverture pour fixer le prix de vente de cette production espérée ?",
+    "reponse": "Si les conditions météorologiques influent sur le volume de production du maïs, le producteur ne devrait pas prendre position sur des contrats futures pour couvrir le risque lié à l'incertitude du prix de vente de cette production. En effet, si le temps est défavorable et que la production est plus faible qu'attendue, il est probable que les autres producteurs seront dans la même situation. Comme la production globale est faible, le prix sera certainement élevé. Les problèmes du producteur liés à une mauvaise récolte seraient encore aggravés par une position courte sur un contrat futures. Cette question montre, une fois de plus, qu'avant de définir une stratégie de couverture, il est essentiel d'analyser le problème dans sa globalité."
+  },
+  {
+    "id": "3.25",
+    "chapitre": "Stratégies de Couverture par les Contrats Futures",
+    "question": "Le 1er juillet, un investisseur détient 50 000 actions d'une entreprise du CAC 40. L'action cote 30 €. Il décide de couvrir pour un mois les variations de prix dues au mouvement du marché par l'intermédiaire du contrat futures sur le CAC 40 d'échéance septembre. L'indice est à 4 500 et un contrat représente 10 € fois l'indice. Le bêta de l'action est de 1,3. Quelle est la stratégie à suivre ?",
+    "reponse": "La couverture nécessite une position courte sur les contrats futures portant sur un nombre de contrats défini par :\n\\[1{,}3 \\times \\frac{50\\,000 \\times 30}{4\\,500 \\times 10} = 43{,}33\\]\nL'investisseur prend donc une position courte sur 43 contrats."
+  },
+  {
+    "id": "3.26",
+    "chapitre": "Stratégies de Couverture par les Contrats Futures",
+    "question": "Que se passe-t-il dans le tableau 3.5 si le ratio de couverture retenu est 1,5 ? Comment cette décision affecte-t-elle la couverture et ses résultats ?",
+    "reponse": "Si l'entreprise utilise un ratio de 1,5, elle devrait, à chaque étape du processus, adopter une position courte sur 150 contrats. Le gain sur les contrats serait de \\(1{,}50 \\times 1{,}70 = 2{,}55\\) $ par baril et l'entreprise gagnerait 0,85 $ par baril, par rapport à la situation du tableau 3.5."
+  },
+  {
+    "id": "3.27",
+    "chapitre": "Stratégies de Couverture par les Contrats Futures",
+    "question": "Un manager de compagnie aérienne affirme : « Il n'y a aucun intérêt pour nous à utiliser les futures sur le pétrole. Il y a autant de chances que le prix spot du pétrole soit au-dessus du prix futures que de chances qu'il soit en dessous. » Que pensez-vous de ce point de vue ?",
+    "reponse": "Le manager de la compagnie aérienne pourrait revoir son point de vue. En effet, le travail d'une compagnie aérienne ne consiste pas à prévoir les cours du pétrole et à programmer son activité en fonction de ceux-ci, ni à faire supporter à ses actionnaires le risque de variation de prix du pétrole. La compagnie devrait plutôt se couvrir et se concentrer sur son domaine d'expertise, à savoir : faire voler des avions."
+  },
+  {
+    "id": "3.28",
+    "chapitre": "Stratégies de Couverture par les Contrats Futures",
+    "question": "Supposez qu'emprunter de l'or coûte 1,5 % par an et que le taux sans risque à un an soit de 5 %. Ces deux taux sont en composition annuelle. À partir de la discussion de l'encadré 3.1, calculez le prix forward maximum (à un an) que Goldman Sachs devrait coter pour que le prix spot soit de 1 200 $.",
+    "reponse": "Goldman Sachs peut emprunter une once d'or et la vendre pour 1 200 $. Cette institution investit les 1 200 $ à 5 % et reçoit 1 260 $ à la fin de l'année. Elle paie 1,5 % d'intérêt sur l'emprunt d'or, ce qui correspond à 18 $. Il reste donc 1 242 $. Il s'ensuit qu'un profit est réalisé dès que l'or peut être acheté pour moins de 1 242 $."
+  },
+  {
+    "id": "3.29",
+    "chapitre": "Stratégies de Couverture par les Contrats Futures",
+    "question": "La rentabilité espérée de l'indice S&P500 est de 12 % et le taux sans risque est de 5 %. Quelle est la rentabilité espérée d'un portefeuille dont le bêta est (a) 0,2, (b) 0,5, (c) 1,4 ?",
+    "reponse": "La rentabilité espérée du portefeuille est :\n<strong>(a)</strong> \\(0{,}05 + 0{,}2 \\times (0{,}12 - 0{,}05) = 0{,}064 = 6{,}4\\;\\%\\).\n<strong>(b)</strong> \\(0{,}05 + 0{,}5 \\times (0{,}12 - 0{,}05) = 0{,}085 = 8{,}5\\;\\%\\).\n<strong>(c)</strong> \\(0{,}05 + 1{,}4 \\times (0{,}12 - 0{,}05) = 0{,}148 = 14{,}8\\;\\%\\)."
+  },
+  {
+    "id": "3.30",
+    "chapitre": "Stratégies de Couverture par les Contrats Futures",
+    "question": "Nous sommes en juin et une entreprise sait qu'elle devra vendre 5 000 barils de Brent en septembre. Elle utilise le contrat du CME portant sur 1 000 barils de WTI (échéance octobre) pour se couvrir. Quelle position devrait-elle prendre ? À quels risques de prix résiduels fait-elle face après avoir pris cette position ?",
+    "reponse": "Elle devrait prendre une position courte sur cinq contrats, mais il y a un risque de base. Le risque est lié à la différence entre le prix à terme d'octobre et prix au comptant du Brent au moment de la clôture de la position en septembre. Il peut également y avoir le risque lié à la différence entre le prix spot du WTI et le prix au comptant du Brent qui sera vendu."
+  },
+  {
+    "id": "3.31",
+    "chapitre": "Stratégies de Couverture par les Contrats Futures",
+    "question": "Soixante contrats futures sont utilisés pour couvrir une exposition au risque de variation de prix de l'argent (métal). Chaque contrat porte sur 5 000 onces de métal. Au moment du dénouement de la position, la base est de 0,20 $ l'once. Quel est l'effet de cette base sur la position de l'opérateur si (a) la couverture est réalisée pour un achat ou (b) la couverture est réalisée pour une vente ?",
+    "reponse": "La différence entre spot et futures au moment de terminer l'opération de couverture est de 0,2 $ l'once. Si le trader couvre un achat d'argent, le prix payé est égal au prix futures plus la base. La perte est donc égale à \\(60 \\times 5\\,000 \\times 0{,}20\\,\\$ = 60\\,000\\) $. Si le trader couvre une vente d'argent, le prix reçu est égal au prix futures plus la base. Le gain est donc égal à 60 000 $."
+  },
+  {
+    "id": "3.32",
+    "chapitre": "Stratégies de Couverture par les Contrats Futures",
+    "question": "Un trader détient 55 000 unités d'un actif donné et décide de couvrir sa position avec des contrats futures dont le sous-jacent est un autre actif. Chaque contrat futures porte sur 5 000 unités. Le prix spot de l'actif détenu est de 28 $ et l'écart-type des variations de ce prix est de 0,43 $. Le prix futures du contrat est de 27 $ et l'écart-type des variations de ce prix futures jusqu'à l'horizon de la couverture est de 0,40 $. Le coefficient de corrélation entre ces deux variations de prix est de 0,95.\na. Quel est le ratio de couverture qui minimise la variance ?\nb. Le trader doit-il prendre une position courte ou longue ?\nc. Quel est le nombre optimal de contrats futures si on ne tient pas compte de la compensation quotidienne ?\nd. Quel est ce nombre si on tient compte de la compensation quotidienne ?",
+    "reponse": "<strong>(a)</strong> Le ratio de couverture de variance minimale, \\(h^*\\), est égal à :\n\\[0{,}95 \\times \\frac{0{,}43}{0{,}40} = 1{,}02125\\]\n<strong>(b)</strong> L'opérateur en couverture (hedger) devrait prendre une position courte.\n<strong>(c)</strong> En ignorant la compensation quotidienne, le nombre de contrats est égal à :\n\\[1{,}02125 \\times \\frac{55\\,000}{5\\,000} = 11{,}23\\]\nsoit 11 si on arrondit à l'entier le plus proche.\n<strong>(d)</strong> Le nombre optimal de contrats est égal à \\(\\hat{\\rho} \\hat{\\sigma}_S V_A / \\hat{\\sigma}_F V_F\\), où \\(\\hat{\\rho}\\) est la corrélation entre les variations journalières des prix spot et futures (en pourcentage), \\(\\hat{\\sigma}_S\\) et \\(\\hat{\\sigma}_F\\) sont les écarts-types des variations journalières des prix spot et futures (en pourcentage), \\(V_A\\) est la valeur de la position et \\(V_F\\) est le prix futures multiplié par la taille d'un contrat. Dans ce cas, \\(V_A = 55\\,000 \\times 28 = 1\\,540\\,000\\) et \\(V_F = 5\\,000 \\times 27 = 135\\,000\\). Si on suppose que :\n\\[\\hat{\\rho} = 0{,}95 \\text{ et } \\frac{\\hat{\\sigma}_S}{\\hat{\\sigma}_F} = \\frac{0{,}43}{0{,}40} = 1{,}075\\]\nle nombre de contrats optimal en tenant compte de la compensation quotidienne est égal à :\n\\[0{,}95 \\times 1{,}075 \\times \\frac{1\\,540\\,000}{135\\,000} = 11{,}65\\]\nsoit 12 quand on arrondit à l'entier le plus proche."
+  },
+  {
+    "id": "3.33",
+    "chapitre": "Stratégies de Couverture par les Contrats Futures",
+    "question": "Une entreprise veut couvrir son exposition au risque de variation de prix d'un nouveau carburant. La corrélation entre les variations de prix de ce carburant et celles des prix futures du fuel domestique est de 0,6. La compagnie perd un million de dollars US quand le prix du carburant augmente d'un cent par gallon sur les trois mois qui viennent. L'écart-type des variations de prix de ce nouveau carburant est de 50 % supérieur à celui des variations du prix du pétrole. Quel ratio de couverture faut-il retenir si les contrats sur pétrole sont utilisés pour couvrir la position ? Quelle est l'exposition au risque (mesurée en gallons de nouveau carburant) de l'entreprise ? Quelle position l'entreprise devrait-elle prendre (mesurée en gallons) sur les contrats futures sur fuel domestique ? Combien de contrats faut-il traiter (chaque contrat porte sur 42 000 gallons) ?",
+    "reponse": "L'équation (3.1) montre que le ratio de couverture devrait être égal à \\(0{,}6 \\times 1{,}5 = 0{,}9\\). Notons \\(Q\\) le nombre de gallons du nouveau carburant pour lequel l'entreprise est exposée à un risque de variation des prix. Puisque \\(0{,}01Q = 1\\,000\\,000\\) $, on a \\(Q = 100\\) millions. Par conséquent, l'entreprise devrait prendre une position sur l'équivalent de 90 millions de gallons de contrats futures sur fuel domestique. Chaque contrat porte sur 42 000 gallons ; le nombre de contrats est donc de \\(90\\,000\\,000 / 42\\,000\\), soit 2 143 contrats, en arrondissant."
+  },
+  {
+    "id": "3.34",
+    "chapitre": "Stratégies de Couverture par les Contrats Futures",
+    "question": "Un gérant de portefeuille a géré activement ses fonds de sorte à maintenir à 0,2 le bêta de son portefeuille tout au long de l'année dernière. Le taux sans risque était de 5 % et le marché a perdu 30 % pendant cette très mauvaise année. Le gérant est finalement très satisfait car il n'a perdu que 10 %. Est-ce justifié ?",
+    "reponse": "Quand la rentabilité espérée sur le marché est \\(-30\\) %, la rentabilité attendue sur un portefeuille dont le bêta est de 0,2 est égale à \\(0{,}05 + 0{,}2 \\times (-0{,}30 - 0{,}05) = -0{,}02\\), c'est-à-dire \\(-2\\) %. La rentabilité réalisée de \\(-10\\) % est donc largement en deçà de ce qui est attendu, puisque le gérant du portefeuille a fait 8 % moins bien qu'un portefeuille investi à 20 % dans l'indice et 80 % dans l'actif sans risque."
+  },
+  {
+    "id": "3.35",
+    "chapitre": "Stratégies de Couverture par les Contrats Futures",
+    "question": "Le 16 juillet, une institution financière détient un portefeuille de 100 millions d'euros dont le bêta est 1,2. L'institution veut couvrir ce portefeuille à l'aide du contrat futures CAC 40, échéance décembre, de façon à ramener le bêta du portefeuille à 0,5. L'indice vaut 6 000 et le contrat porte sur 10 € fois l'indice.\na. Quelle position devrait prendre cette institution ?\nb. Si la société change d'avis et souhaite porter le bêta de 1,2 à 1,5, quelle position devrait-elle prendre sur les contrats futures ?",
+    "reponse": "<strong>(a)</strong> L'entreprise devrait prendre une position courte sur :\n\\[\\frac{(1{,}2 - 0{,}5) \\times 100\\,000\\,000}{2\\,000 \\times 250} \\approx 140 \\text{ contrats}\\]\n<strong>(b)</strong> L'entreprise devrait prendre une position longue sur :\n\\[\\frac{(1{,}5 - 1{,}2) \\times 100\\,000\\,000}{2\\,000 \\times 250} \\approx 60 \\text{ contrats}\\]"
+  }
+]

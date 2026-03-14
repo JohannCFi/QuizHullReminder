@@ -1,0 +1,176 @@
+[
+  {
+    "id": "1.1",
+    "chapitre": "Introduction",
+    "question": "Qu'est-ce qu'un actif dérivé ?",
+    "reponse": "Un actif dérivé est un contrat conduisant potentiellement à une transaction future. Sa valeur dépend de la valeur d'autres variables plus fondamentales comme le prix d'une action ou la valeur d'un indice."
+  },
+  {
+    "id": "1.2",
+    "chapitre": "Introduction",
+    "question": "Quelles sont les deux façons de traiter des actifs dérivés ?",
+    "reponse": "Les actifs dérivés s'échangent soit de gré à gré soit sur des marchés organisés."
+  },
+  {
+    "id": "1.3",
+    "chapitre": "Introduction",
+    "question": "Quels changements a-t-on observé sur les marchés de gré à gré après la crise de 2008 ?",
+    "reponse": "Les actifs dérivés s'échangent entre institutions financières sur des SEF (<em>swap execution facilities</em>) et sont dénoués par l'intermédiaire de CCP (contreparties centralisées). Toutes les transactions sont répertoriées par un organisme central."
+  },
+  {
+    "id": "1.4",
+    "chapitre": "Introduction",
+    "question": "Quel est le marché le plus important en volume, le marché organisé ou le marché de gré à gré ?",
+    "reponse": "Le marché OTC est bien plus important."
+  },
+  {
+    "id": "1.5",
+    "chapitre": "Introduction",
+    "question": "Quelle est la différence entre une position longue et une position courte sur un contrat forward ?",
+    "reponse": "Le trader qui détient une position longue sur un forward accepte d'acheter un actif sous-jacent à un prix fixé à une date future donnée. Le trader qui détient une position courte sur un forward accepte de vendre un actif sous-jacent à un prix fixé à une date future donnée."
+  },
+  {
+    "id": "1.6",
+    "chapitre": "Introduction",
+    "question": "Comment prendre une position sur (a) un contrat forward et (b) un contrat futures ?",
+    "reponse": "Les contrats forward s'échangent sur le marché de gré à gré. Les contrats futures s'échangent sur des marchés organisés."
+  },
+  {
+    "id": "1.7",
+    "chapitre": "Introduction",
+    "question": "Quelle est la différence entre (a) prendre une position longue sur un forward avec un prix forward de 30 € et (b) acheter un call de prix d'exercice 30 € ?",
+    "reponse": "Dans le premier cas, l'investisseur est obligé d'acheter l'actif au prix de 30 €. Dans le second, il peut acheter cet actif à 30 €, mais n'est pas obligé d'exercer l'option."
+  },
+  {
+    "id": "1.8",
+    "chapitre": "Introduction",
+    "question": "Expliquez en détail les différences entre couverture, spéculation et arbitrage.",
+    "reponse": "Un hedger est un investisseur initialement exposé au risque de variation de prix du sous-jacent. Il prend position sur un contrat dérivé pour éliminer totalement ou partiellement ce risque. Le spéculateur n'est pas initialement exposé au risque du sous-jacent ; sa prise de position sur un contrat est un pari sur le sens de variation du sous-jacent (donc du contrat). L'arbitragiste prend position sur deux ou plusieurs actifs ou contrats pour assurer un profit sans risque."
+  },
+  {
+    "id": "1.9",
+    "chapitre": "Introduction",
+    "question": "Expliquez la signification des expressions prix bid et prix ask.",
+    "reponse": "Le prix Bid/Ask est le prix auquel le market maker est prêt à acheter/vendre."
+  },
+  {
+    "id": "1.10",
+    "chapitre": "Introduction",
+    "question": "Quelle est l'origine de la perte énorme réalisée par Jérôme Kerviel ?",
+    "reponse": "Il prenait des positions spéculatives sur les valeurs futures d'indices et créait des positions fictives de sorte à faire croire à la réalisation d'opérations d'arbitrage."
+  },
+  {
+    "id": "2.1",
+    "chapitre": "Fonctionnement des Marchés Futures",
+    "question": "Définissez les termes position ouverte et volume de transactions.",
+    "reponse": "La position ouverte mesure le nombre de contrats vivants à un instant donné. Le volume de transactions pendant un jour donné est le nombre de contrats échangés ce même jour."
+  },
+  {
+    "id": "2.2",
+    "chapitre": "Fonctionnement des Marchés Futures",
+    "question": "Quelle est la différence entre un broker et un négociateur individuel de parquet ?",
+    "reponse": "Un broker traite pour un client et se rémunère par une commission. Un négociateur individuel de parquet traite pour son propre compte."
+  },
+  {
+    "id": "2.3",
+    "chapitre": "Fonctionnement des Marchés Futures",
+    "question": "Quel est le rôle des appels de marge ?",
+    "reponse": "Le compte de marge est destiné à assurer la bonne fin des transactions et à protéger l'organisateur du marché des défauts éventuels de traders."
+  },
+  {
+    "id": "2.4",
+    "chapitre": "Fonctionnement des Marchés Futures",
+    "question": "Quelle est la différence entre un ordre au prix du marché et un ordre limite ?",
+    "reponse": "Un ordre au prix du marché est un ordre demandant de traiter au meilleur prix possible sans attendre. Un ordre limite spécifie un prix maximum d'achat ou un prix minimum de vente."
+  },
+  {
+    "id": "2.5",
+    "chapitre": "Fonctionnement des Marchés Futures",
+    "question": "Quelles sont les éléments essentiels dans la conception d'un nouveau contrat futures ?",
+    "reponse": "Quand un nouveau contrat futures est créé, les éléments essentiels sont la spécification du sous-jacent, la taille du contrat, les conditions de livraison et les périodes de livraison."
+  },
+  {
+    "id": "2.6",
+    "chapitre": "Fonctionnement des Marchés Futures",
+    "question": "Sur le plan des appels de marges, quelles sont les différences entre un investisseur individuel et un membre d'une chambre de compensation ?",
+    "reponse": "Pour un investisseur individuel, il existe une marge initiale et une marge de maintenance (ou à maintenir). Quand le montant sur le compte de marge passe sous la marge de maintenance, le trader concerné doit reconstituer cette marge jusqu'au niveau de la marge initiale. Pour un membre de la chambre de compensation, la marge est ajustée chaque jour de sorte à se maintenir à un niveau suffisant fixé par les organisateurs du marché. Elle est basée sur le nombre de contrats dans lequel ce membre est impliqué."
+  },
+  {
+    "id": "2.7",
+    "chapitre": "Fonctionnement des Marchés Futures",
+    "question": "Décrivez deux modes de transactions des contrats dérivés sur un marché de gré à gré.",
+    "reponse": "Les contrats d'actifs dérivés peuvent être dénoués de manière bilatérale ou par l'intermédiaire d'une CCP."
+  },
+  {
+    "id": "2.8",
+    "chapitre": "Fonctionnement des Marchés Futures",
+    "question": "Le dépôt correspondant à la marge initiale sur un contrat futures est-il rémunéré ? Même question pour les variations de marge pendant la durée de vie du contrat.",
+    "reponse": "Un intérêt est payé sur le solde du compte de marge mais pas sur les variations de marge (à cause de la compensation quotidienne)."
+  },
+  {
+    "id": "2.9",
+    "chapitre": "Fonctionnement des Marchés Futures",
+    "question": "Listez les différences entre contrats forward et contrats futures.",
+    "reponse": "Elles sont listées au tableau 2.3."
+  },
+  {
+    "id": "3.1",
+    "chapitre": "Stratégies de Couverture par les Contrats Futures",
+    "question": "Dans quelles circonstances une position de couverture (a) courte, (b) longue, est-elle appropriée ?",
+    "reponse": "Une position courte (<em>short hedge</em>) est appropriée quand une entreprise détient un actif qu'elle sera amenée à vendre à une date future. Une telle stratégie peut aussi être utilisée quand l'entreprise ne possède pas encore cet actif, mais prévoit de le détenir (par exemple, en cas de production) à une date ultérieure avant de le revendre.\n\nUne position longue (<em>long hedge</em>) est justifiée quand une entreprise sait qu'elle aura à acheter un actif dans le futur de façon à fixer le prix d'achat. Cette stratégie peut aussi être utilisée pour annuler une position courte préalable."
+  },
+  {
+    "id": "3.2",
+    "chapitre": "Stratégies de Couverture par les Contrats Futures",
+    "question": "Donnez trois raisons pour lesquelles un trésorier d'entreprise pourrait préférer ne pas couvrir un risque couru par son entreprise.",
+    "reponse": "<strong>(a)</strong> Si les concurrents de l'entreprise ne se couvrent pas, le trésorier peut considérer que l'entreprise supportera moins de risque dans le cas où elle ne se couvre pas (voir tableau 3.1).\n<strong>(b)</strong> Le trésorier peut considérer que les actionnaires de la société sont en mesure de couvrir eux-mêmes le risque par leur gestion de portefeuille.\n<strong>(c)</strong> En cas de perte sur la couverture et de gain sur l'actif sous-jacent, le trésorier pourrait éprouver des difficultés à justifier le choix de la couverture à ses supérieurs hiérarchiques."
+  },
+  {
+    "id": "3.3",
+    "chapitre": "Stratégies de Couverture par les Contrats Futures",
+    "question": "Expliquez comment se manifeste le risque de base dans les opérations de couverture par des contrats futures.",
+    "reponse": "Le risque de base a pour origine la différence entre le prix spot et le prix futures au terme d'une période de couverture. C'est l'incertitude quant à l'amplitude de cette différence qui engendre le risque de base."
+  },
+  {
+    "id": "3.4",
+    "chapitre": "Stratégies de Couverture par les Contrats Futures",
+    "question": "Quelle est la formule du ratio de couverture assurant la variance minimale quand on ignore la compensation journalière des contrats ?",
+    "reponse": "Voir équation (3.1) pour \\(h^*\\)."
+  },
+  {
+    "id": "3.5",
+    "chapitre": "Stratégies de Couverture par les Contrats Futures",
+    "question": "Comment la formule du ratio de couverture assurant la variance minimale est-elle modifiée quand on tient compte de la compensation journalière des contrats ?",
+    "reponse": "Voir l'équation qui précède l'équation (3.3) pour \\(\\hat{h}\\)."
+  },
+  {
+    "id": "3.6",
+    "chapitre": "Stratégies de Couverture par les Contrats Futures",
+    "question": "Comment utilise-t-on le nombre de contrats calculé dans le cadre de la couverture à variance minimale ?",
+    "reponse": "Voir équations (3.2) et (3.3)."
+  },
+  {
+    "id": "3.7",
+    "chapitre": "Stratégies de Couverture par les Contrats Futures",
+    "question": "Comment un contrat futures sur indice peut-il être utilisé pour changer le bêta d'un portefeuille bien diversifié ?",
+    "reponse": "Pour augmenter (diminuer) le bêta, il faut prendre une position longue (courte) sur le contrat futures sur indice. La taille de la position est la différence des bêtas multipliée par le ratio de la valeur de la position et de la valeur des actifs correspondant à une unité de contrat futures."
+  },
+  {
+    "id": "3.8",
+    "chapitre": "Stratégies de Couverture par les Contrats Futures",
+    "question": "Comment des investisseurs adeptes du stock picking peuvent-ils utiliser les contrats futures sur indice ?",
+    "reponse": "Ils peuvent gérer l'exposition au risque de marché en utilisant des futures sur indice. Ils réaliseront des profits si les titres qu'ils ont choisis surperforment le marché."
+  },
+  {
+    "id": "3.9",
+    "chapitre": "Stratégies de Couverture par les Contrats Futures",
+    "question": "Expliquez comment fonctionne la technique de couverture glissante.",
+    "reponse": "La couverture glissante consiste à créer des contrats futures à échéances lointaines à partir d'une succession de contrats futures à échéances courtes."
+  },
+  {
+    "id": "3.10",
+    "chapitre": "Stratégies de Couverture par les Contrats Futures",
+    "question": "Expliquez comment une stratégie de couverture par des contrats futures peut engendrer des problèmes de trésorerie tels que ceux rencontrés par Metallgesellschaft.",
+    "reponse": "Les contrats futures à échéances courtes dans une couverture glissante sont susceptibles d'engendrer des pertes qui doivent être financées jusqu'à ce que des gains soient réalisés sur le plus long terme. C'est ce qui peut entraîner des problèmes comme ceux connus par Metallgesellschaft."
+  }
+]
