@@ -2,7 +2,6 @@ import http.server
 import webbrowser
 import os
 import threading
-import subprocess
 import json
 from datetime import date
 
@@ -23,20 +22,6 @@ def save_review_data(data):
     with open(REVIEW_FILE, "w", encoding="utf-8") as f:
         json.dump(data, f, ensure_ascii=False, indent=2)
 
-
-def git_push_review():
-    """Commit and push review_data.json in background."""
-    def _push():
-        try:
-            subprocess.run(["git", "add", REVIEW_FILE], check=True)
-            result = subprocess.run(["git", "diff", "--cached", "--quiet"], capture_output=True)
-            if result.returncode != 0:  # There are staged changes
-                subprocess.run(["git", "commit", "-m", "Sync review data"], check=True)
-                subprocess.run(["git", "push"], check=True)
-                print("[Git] review_data.json pushed.")
-        except Exception as e:
-            print(f"[Git] Sync error: {e}")
-    threading.Thread(target=_push, daemon=True).start()
 
 
 def count_due_questions():
@@ -77,9 +62,6 @@ class QuizHandler(http.server.SimpleHTTPRequestHandler):
                 self._json_response({"status": "ok"})
             except json.JSONDecodeError:
                 self.send_error(400, "Invalid JSON")
-        elif self.path == "/api/sync":
-            git_push_review()
-            self._json_response({"status": "ok"})
         else:
             self.send_error(404, "Not Found")
 
