@@ -27,7 +27,10 @@ async function fetchFromGitHub() {
 function checkAuth(req) {
   const auth = req.headers['authorization'] || '';
   const token = auth.replace(/^Bearer\s+/i, '');
-  return token === SYNC_SECRET;
+  if (token === SYNC_SECRET) return true;
+  const url = new URL(req.url, `https://${req.headers.host}`);
+  if (url.searchParams.get('secret') === SYNC_SECRET) return true;
+  return false;
 }
 
 function mergeReviewData(clientData, serverData) {
