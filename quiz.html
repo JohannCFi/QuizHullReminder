@@ -4,6 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Quiz Hull — Options, Futures et Autres Actifs Dérivés</title>
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)']],
+        displayMath: [['\\[', '\\]']]
+      }
+    };
+  </script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -667,6 +675,12 @@
         <div class="type-toggle active-probleme" id="toggle-probleme" data-checked="true">
           <span class="badge badge-probleme">Problème</span>
         </div>
+        <div class="type-toggle" id="toggle-pertinent" data-checked="false">
+          <img src="pertinent.png" alt="Pertinent" class="faq-toggle-icon"> Pertinent
+        </div>
+        <div class="type-toggle" id="toggle-revoir" data-checked="false">
+          <img src="revoir.png" alt="Revoir" class="faq-toggle-icon"> Revoir
+        </div>
       </div>
     </div>
 
@@ -1001,9 +1015,10 @@
   // ========== DATA LOADING ==========
   async function loadData() {
     try {
+      const cb = '?v=' + Date.now();
       const [tRes, pRes] = await Promise.all([
-        fetch('questions_theoriques.json'),
-        fetch('problemes.json')
+        fetch('questions_theoriques.json' + cb),
+        fetch('problemes.json' + cb)
       ]);
       theoriques = await tRes.json();
       problemes = await pRes.json();
@@ -1058,12 +1073,27 @@
     const chapters = getSelectedChapters();
     const includeTheo = document.getElementById('toggle-theorique').dataset.checked === 'true';
     const includeProb = document.getElementById('toggle-probleme').dataset.checked === 'true';
+    const onlyPertinent = document.getElementById('toggle-pertinent').dataset.checked === 'true';
+    const onlyRevoir = document.getElementById('toggle-revoir').dataset.checked === 'true';
     let pool = [];
     if (includeTheo) {
       pool = pool.concat(theoriques.filter(q => chapters.includes(q.chapitre)).map(q => ({...q, type: 'theorique'})));
     }
     if (includeProb) {
       pool = pool.concat(problemes.filter(q => chapters.includes(q.chapitre)).map(q => ({...q, type: 'probleme'})));
+    }
+    if (onlyPertinent || onlyRevoir) {
+      const tags = loadTags();
+      pool = pool.filter(q => {
+        const key = getQuestionKey(q);
+        const qTags = tags[key] || [];
+        if (onlyPertinent && onlyRevoir) {
+          return qTags.includes('pertinent') || qTags.includes('revoir');
+        }
+        if (onlyPertinent) return qTags.includes('pertinent');
+        if (onlyRevoir) return qTags.includes('revoir');
+        return true;
+      });
     }
     return pool;
   }
@@ -1515,6 +1545,18 @@
     const isChecked = this.dataset.checked === 'true';
     this.dataset.checked = !isChecked;
     this.classList.toggle('active-probleme', !isChecked);
+    updateAvailable();
+  });
+  document.getElementById('toggle-pertinent').addEventListener('click', function() {
+    const isChecked = this.dataset.checked === 'true';
+    this.dataset.checked = !isChecked;
+    this.classList.toggle('active-pertinent', !isChecked);
+    updateAvailable();
+  });
+  document.getElementById('toggle-revoir').addEventListener('click', function() {
+    const isChecked = this.dataset.checked === 'true';
+    this.dataset.checked = !isChecked;
+    this.classList.toggle('active-revoir', !isChecked);
     updateAvailable();
   });
 

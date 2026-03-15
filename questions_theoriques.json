@@ -142,13 +142,13 @@
     "id": "3.5",
     "chapitre": "Stratégies de Couverture par les Contrats Futures",
     "question": "Comment la formule du ratio de couverture assurant la variance minimale est-elle modifiée quand on tient compte de la compensation journalière des contrats ?",
-    "reponse": "Voir l'équation qui précède l'équation (3.3) pour \\(\\hat{h}\\)."
+    "reponse": "L'équation (3.3) donne le nombre optimal de contrats futures :\n\\[N^* = \\frac{\\hat{h}^* \\, V_A}{V_F}\\]\noù \\(V_A = S \\, Q_A\\) est la valeur de la position à couvrir (en unités monétaires) et \\(V_F = F \\, Q_F\\) est l'équivalent monétaire d'un contrat futures. Le ratio de couverture s'écrit dans ce cas :\n\\[\\hat{h} = \\hat{\\rho} \\, \\frac{\\hat{\\sigma}_S}{\\hat{\\sigma}_F}\\]\noù \\(\\hat{\\rho}\\) est le coefficient de corrélation entre les variations en pourcentage du prix spot et du prix futures, et \\(\\hat{\\sigma}_S\\) et \\(\\hat{\\sigma}_F\\) sont les écarts-types de ces variations en pourcentage."
   },
   {
     "id": "3.6",
     "chapitre": "Stratégies de Couverture par les Contrats Futures",
     "question": "Comment utilise-t-on le nombre de contrats calculé dans le cadre de la couverture à variance minimale ?",
-    "reponse": "Voir équations (3.2) et (3.3)."
+    "reponse": "On définit :\\n\\(Q_A\\) : taille de la position à couvrir (en unités) ;\\n\\(Q_F\\) : taille d'un contrat futures (en unités) ;\\n\\(N^*\\) : nombre optimal de contrats futures.\\n\\nLes contrats futures doivent avoir une valeur nominale \\(h^* Q_A\\). Le nombre optimal de contrats est donc :\\n\\[N^* = \\frac{h^* \\, Q_A}{Q_F} \\tag{3.2}\\]\\nCe résultat peut être reformulé sous la forme :\\n\\[N^* = \\frac{\\hat{h}^* \\, V_A}{V_F} \\tag{3.3}\\]\\noù \\(V_A = S \\, Q_A\\) est la valeur de la position à couvrir (en unités monétaires) et \\(V_F = F \\, Q_F\\) est l'équivalent monétaire d'un contrat futures."
   },
   {
     "id": "3.7",
