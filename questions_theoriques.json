@@ -154,7 +154,7 @@
     "id": "3.7",
     "chapitre": "Stratégies de Couverture par les Contrats Futures",
     "question": "Comment un contrat futures sur indice peut-il être utilisé pour changer le bêta d'un portefeuille bien diversifié ?",
-    "reponse": "Pour augmenter (diminuer) le bêta, il faut prendre une position longue (courte) sur le contrat futures sur indice. La taille de la position est la différence des bêtas multipliée par le ratio de la valeur de la position et de la valeur des actifs correspondant à une unité de contrat futures."
+    "reponse": "De manière générale, pour faire passer le bêta d'une valeur \\(\\beta\\) à une valeur \\(\\beta^*\\) :\n\nSi \\(\\beta > \\beta^*\\), il faut une position <strong>courte</strong> sur un nombre de contrats égal à (de sorte que les gains sur le futures compensent les pertes) :\n\\[(\\beta - \\beta^*) \\frac{V_A}{V_F}\\]\n\nInversement, si \\(\\beta < \\beta^*\\), il faut une position <strong>longue</strong> sur un nombre de contrats égal à (de sorte que les gains sur le futures amplifient les gains) :\n\\[(\\beta^* - \\beta) \\frac{V_A}{V_F}\\]"
   },
   {
     "id": "3.8",
