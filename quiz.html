@@ -779,6 +779,13 @@
   let faqSelectState = true;
   let reviewData = {};
   let quizRatings = []; // ratings for current quiz session
+  let syncPending = false;
+  let saveTimeout = null;
+
+  const SYNC_SECRET = 'PLACEHOLDER_SECRET';
+  const API_URL = window.location.hostname === 'localhost'
+    ? ''
+    : 'https://PLACEHOLDER.vercel.app';
 
   // ========== DARK MODE ==========
   function initDarkMode() {
@@ -856,6 +863,8 @@
         const serverLen = (serverData[key].history || []).length;
         if (serverLen > localLen) {
           reviewData[key] = serverData[key];
+        } else if (serverLen === localLen && (serverData[key].nextReview || '') > (reviewData[key].nextReview || '')) {
+          reviewData[key] = serverData[key];
         }
       }
     }
@@ -863,17 +872,19 @@
   }
 
   async function loadReviewData() {
-    // Always load from localStorage first
     reviewData = loadReviewDataLocal();
-    // Try local server API first
     try {
-      const res = await fetch('/api/review');
+      const res = await fetch(`${API_URL}/api/review`, {
+        headers: { 'Authorization': `Bearer ${SYNC_SECRET}` }
+      });
       if (res.ok) {
-        mergeReviewData(await res.json());
+        const result = await res.json();
+        mergeReviewData(result.data);
+        syncPending = false;
         return;
       }
     } catch (e) {}
-    // Fallback: load review_data.json as static file (GitHub Pages)
+    // Fallback: load review_data.json as static file
     try {
       const res = await fetch('review_data.json');
       if (res.ok) {
@@ -884,15 +895,27 @@
 
   async function saveReviewData() {
     saveReviewDataLocal();
-    // Try to sync to server (silent fail if not available)
+    if (saveTimeout) clearTimeout(saveTimeout);
+    saveTimeout = setTimeout(() => syncToServer(), 5000);
+  }
+
+  async function syncToServer() {
     try {
-      await fetch('/api/review', {
+      const res = await fetch(`${API_URL}/api/review`, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${SYNC_SECRET}`
+        },
         body: JSON.stringify(reviewData)
       });
+      if (res.ok) {
+        syncPending = false;
+      } else {
+        syncPending = true;
+      }
     } catch (e) {
-      // Server not available, data is safe in localStorage
+      syncPending = true;
     }
   }
 
@@ -1576,9 +1599,18 @@
   document.getElementById('dark-mode-toggle').addEventListener('click', toggleDarkMode);
   attachQuizListeners();
 
-  // Sync review data to GitHub when leaving the page
+  // Sync review data when leaving the page (safety net for debounced saves)
   window.addEventListener('beforeunload', () => {
-    navigator.sendBeacon('/api/sync');
+    if (saveTimeout) clearTimeout(saveTimeout);
+    const blob = new Blob([JSON.stringify(reviewData)], { type: 'application/json' });
+    navigator.sendBeacon(`${API_URL}/api/review?secret=${SYNC_SECRET}`, blob);
+  });
+
+  // Retry sync when tab becomes visible again (offline resilience)
+  document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState === 'visible' && syncPending) {
+      syncToServer();
+    }
   });
 
   loadData();
