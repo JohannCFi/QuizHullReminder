@@ -779,11 +779,11 @@
     ]
   },
   "probleme-1.29": {
-    "easeFactor": 2.3,
-    "interval": 1,
-    "repetitions": 1,
-    "nextReview": "2026-03-16",
-    "lastRating": "good",
+    "easeFactor": 2.4499999999999997,
+    "interval": 3,
+    "repetitions": 2,
+    "nextReview": "2026-03-19",
+    "lastRating": "easy",
     "history": [
       {
         "date": "2026-03-14",
@@ -792,6 +792,10 @@
       {
         "date": "2026-03-15",
         "rating": "good"
+      },
+      {
+        "date": "2026-03-16",
+        "rating": "easy"
       }
     ]
   },
