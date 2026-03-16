@@ -926,11 +926,11 @@
     ]
   },
   "probleme-1.40": {
-    "easeFactor": 2.15,
-    "interval": 0,
-    "repetitions": 0,
-    "nextReview": "2026-03-15",
-    "lastRating": "hard",
+    "easeFactor": 2.3,
+    "interval": 4,
+    "repetitions": 1,
+    "nextReview": "2026-03-20",
+    "lastRating": "easy",
     "history": [
       {
         "date": "2026-03-14",
@@ -939,6 +939,10 @@
       {
         "date": "2026-03-15",
         "rating": "hard"
+      },
+      {
+        "date": "2026-03-16",
+        "rating": "easy"
       }
     ]
   }
