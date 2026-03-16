@@ -202,6 +202,12 @@
       margin-left: 8px;
       font-size: 0.9rem;
     }
+    .revision-btn .revision-detail {
+      display: block;
+      font-size: 0.75rem;
+      opacity: 0.85;
+      margin-top: 2px;
+    }
 
     /* FAQ button */
     .faq-btn {
@@ -699,7 +705,7 @@
     </div>
 
     <button class="start-btn" id="start-btn">Lancer le quiz</button>
-    <button class="revision-btn" id="revision-btn" disabled>Révision du jour <span class="revision-count" id="revision-count">0</span></button>
+    <button class="revision-btn" id="revision-btn" disabled>Révision du jour <span class="revision-count" id="revision-count">0</span> <span class="revision-detail" id="revision-detail"></span></button>
     <button class="faq-btn" id="faq-btn">Foire aux Questions</button>
   </div>
 
@@ -1031,8 +1037,26 @@
     const due = getDueQuestions();
     const btn = document.getElementById('revision-btn');
     const countEl = document.getElementById('revision-count');
+    const detailEl = document.getElementById('revision-detail');
     countEl.textContent = due.length;
     btn.disabled = due.length === 0;
+
+    // Count reviewed-and-due vs never-seen
+    let reviewedDue = 0;
+    let neverSeen = 0;
+    due.forEach(q => {
+      const card = reviewData[getQuestionKey(q)];
+      if (card) reviewedDue++;
+      else neverSeen++;
+    });
+
+    if (neverSeen > 0 && reviewedDue > 0) {
+      detailEl.textContent = `(${reviewedDue} à réviser + ${neverSeen} nouvelles)`;
+    } else if (neverSeen > 0) {
+      detailEl.textContent = `(${neverSeen} nouvelles)`;
+    } else {
+      detailEl.textContent = '';
+    }
   }
 
   // ========== DATA LOADING ==========
@@ -1055,10 +1079,9 @@
     updateAvailable();
     updateRevisionButton();
 
-    // Auto-start revision if ?mode=revision
+    // Clean up ?mode=revision from URL without auto-starting
     if (new URLSearchParams(window.location.search).get('mode') === 'revision') {
-      const due = getDueQuestions();
-      if (due.length > 0) startRevision();
+      history.replaceState(null, '', window.location.pathname);
     }
   }
 
