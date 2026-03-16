@@ -1051,11 +1051,11 @@
     });
 
     if (neverSeen > 0 && reviewedDue > 0) {
-      detailEl.textContent = `(${reviewedDue} à réviser + ${neverSeen} nouvelles)`;
+      detailEl.textContent = `(${reviewedDue} à réviser et ${neverSeen} nouvelles)`;
     } else if (neverSeen > 0) {
       detailEl.textContent = `(${neverSeen} nouvelles)`;
     } else {
-      detailEl.textContent = '';
+      detailEl.textContent = `(${reviewedDue} à réviser)`;
     }
   }
 

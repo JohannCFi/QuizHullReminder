@@ -41,31 +41,36 @@ def load_json(path):
 
 def get_due_questions():
     review_data = load_json(REVIEW_FILE)
-    if not review_data:
-        return 0, {}
-
     today = date.today().isoformat()
-    due_by_chapter = {}
 
     # Load questions to get chapter info
     theoriques = load_json(QUESTIONS_THEO) if os.path.exists(QUESTIONS_THEO) else []
     problemes = load_json(QUESTIONS_PROB) if os.path.exists(QUESTIONS_PROB) else []
 
     # Build key -> chapter map
-    chapter_map = {}
+    all_keys = {}
     for q in theoriques:
-        chapter_map[f"theorique-{q['id']}"] = q["chapitre"]
+        all_keys[f"theorique-{q['id']}"] = q["chapitre"]
     for q in problemes:
-        chapter_map[f"probleme-{q['id']}"] = q["chapitre"]
+        all_keys[f"probleme-{q['id']}"] = q["chapitre"]
 
-    total_due = 0
-    for key, card in review_data.items():
-        if card.get("nextReview", "2000-01-01") <= today:
-            total_due += 1
-            ch = chapter_map.get(key, "Autre")
-            due_by_chapter[ch] = due_by_chapter.get(ch, 0) + 1
+    reviewed_due = 0
+    never_seen = 0
+    due_by_chapter = {}
 
-    return total_due, due_by_chapter
+    for key, chapter in all_keys.items():
+        card = review_data.get(key)
+        if not card:
+            # Question jamais vue
+            never_seen += 1
+            due_by_chapter[chapter] = due_by_chapter.get(chapter, 0) + 1
+        elif card.get("nextReview", "2000-01-01") <= today:
+            # Question à réviser
+            reviewed_due += 1
+            due_by_chapter[chapter] = due_by_chapter.get(chapter, 0) + 1
+
+    total_due = reviewed_due + never_seen
+    return total_due, reviewed_due, never_seen, due_by_chapter
 
 
 def send_telegram(bot_token, chat_id, message):
@@ -96,15 +101,22 @@ def send_notification_if_due():
     if not bot_token or not chat_id:
         return
 
-    total_due, due_by_chapter = get_due_questions()
+    total_due, reviewed_due, never_seen, due_by_chapter = get_due_questions()
     if total_due == 0:
         return
 
     # Build message
+    if reviewed_due > 0 and never_seen > 0:
+        detail = f"({reviewed_due} \u00e0 r\u00e9viser et {never_seen} nouvelles)"
+    elif never_seen > 0:
+        detail = f"({never_seen} nouvelles)"
+    else:
+        detail = f"({reviewed_due} \u00e0 r\u00e9viser)"
+
     lines = [
         "*Quiz Hull \u2014 R\u00e9vision du jour*",
         "",
-        f"Tu as *{total_due} question(s)* \u00e0 r\u00e9viser aujourd'hui !",
+        f"Tu as *{total_due} question(s)* aujourd'hui ! {detail}",
         "",
     ]
 
@@ -131,6 +143,6 @@ if __name__ == "__main__":
         print("Consultez les instructions en haut de ce fichier pour configurer le bot.")
     else:
         send_notification_if_due()
-        total, _ = get_due_questions()
+        total, _, _, _ = get_due_questions()
         if total == 0:
             print("Aucune question a reviser aujourd'hui. Pas de notification envoyee.")
