@@ -982,5 +982,18 @@
         "rating": "easy"
       }
     ]
+  },
+  "probleme-1.42": {
+    "easeFactor": 2.65,
+    "interval": 4,
+    "repetitions": 1,
+    "nextReview": "2026-03-21",
+    "lastRating": "easy",
+    "history": [
+      {
+        "date": "2026-03-17",
+        "rating": "easy"
+      }
+    ]
   }
 }
