@@ -749,14 +749,18 @@
     ]
   },
   "probleme-1.19": {
-    "easeFactor": 2.65,
-    "interval": 4,
-    "repetitions": 1,
-    "nextReview": "2026-03-18",
+    "easeFactor": 2.8,
+    "interval": 14,
+    "repetitions": 2,
+    "nextReview": "2026-03-31",
     "lastRating": "easy",
     "history": [
       {
         "date": "2026-03-14",
+        "rating": "easy"
+      },
+      {
+        "date": "2026-03-18",
         "rating": "easy"
       }
     ]
