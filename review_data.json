@@ -266,11 +266,11 @@
     ]
   },
   "theorique-2.5": {
-    "easeFactor": 2.5,
-    "interval": 3,
-    "repetitions": 2,
-    "nextReview": "2026-03-18",
-    "lastRating": "good",
+    "easeFactor": 2.65,
+    "interval": 10,
+    "repetitions": 3,
+    "nextReview": "2026-03-28",
+    "lastRating": "easy",
     "history": [
       {
         "date": "2026-03-14",
@@ -279,6 +279,10 @@
       {
         "date": "2026-03-15",
         "rating": "good"
+      },
+      {
+        "date": "2026-03-18",
+        "rating": "easy"
       }
     ]
   },
