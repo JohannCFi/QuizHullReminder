@@ -316,11 +316,11 @@
     ]
   },
   "theorique-2.7": {
-    "easeFactor": 2.3,
-    "interval": 4,
-    "repetitions": 1,
-    "nextReview": "2026-03-19",
-    "lastRating": "easy",
+    "easeFactor": 2.15,
+    "interval": 5,
+    "repetitions": 2,
+    "nextReview": "2026-03-24",
+    "lastRating": "hard",
     "history": [
       {
         "date": "2026-03-14",
@@ -333,6 +333,10 @@
       {
         "date": "2026-03-15",
         "rating": "easy"
+      },
+      {
+        "date": "2026-03-19",
+        "rating": "hard"
       }
     ]
   },
