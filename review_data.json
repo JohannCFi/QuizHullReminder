@@ -578,10 +578,10 @@
     ]
   },
   "theorique-3.8": {
-    "easeFactor": 2.3,
-    "interval": 4,
-    "repetitions": 1,
-    "nextReview": "2026-03-19",
+    "easeFactor": 2.4499999999999997,
+    "interval": 12,
+    "repetitions": 2,
+    "nextReview": "2026-03-30",
     "lastRating": "easy",
     "history": [
       {
@@ -594,6 +594,10 @@
       },
       {
         "date": "2026-03-15",
+        "rating": "easy"
+      },
+      {
+        "date": "2026-03-19",
         "rating": "easy"
       }
     ]
