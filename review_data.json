@@ -641,10 +641,10 @@
     ]
   },
   "probleme-1.11": {
-    "easeFactor": 2.5,
-    "interval": 3,
-    "repetitions": 2,
-    "nextReview": "2026-03-19",
+    "easeFactor": 2.65,
+    "interval": 10,
+    "repetitions": 3,
+    "nextReview": "2026-03-29",
     "lastRating": "easy",
     "history": [
       {
@@ -657,6 +657,10 @@
       },
       {
         "date": "2026-03-16",
+        "rating": "easy"
+      },
+      {
+        "date": "2026-03-19",
         "rating": "easy"
       }
     ]
@@ -696,10 +700,10 @@
     ]
   },
   "probleme-1.14": {
-    "easeFactor": 2.5,
-    "interval": 4,
-    "repetitions": 1,
-    "nextReview": "2026-03-19",
+    "easeFactor": 2.65,
+    "interval": 13,
+    "repetitions": 2,
+    "nextReview": "2026-04-03",
     "lastRating": "easy",
     "history": [
       {
@@ -708,6 +712,10 @@
       },
       {
         "date": "2026-03-15",
+        "rating": "easy"
+      },
+      {
+        "date": "2026-03-22",
         "rating": "easy"
       }
     ]
@@ -798,10 +806,10 @@
     ]
   },
   "probleme-1.20": {
-    "easeFactor": 2.65,
-    "interval": 3,
-    "repetitions": 2,
-    "nextReview": "2026-03-19",
+    "easeFactor": 2.8,
+    "interval": 10,
+    "repetitions": 3,
+    "nextReview": "2026-03-31",
     "lastRating": "easy",
     "history": [
       {
@@ -810,6 +818,10 @@
       },
       {
         "date": "2026-03-16",
+        "rating": "easy"
+      },
+      {
+        "date": "2026-03-22",
         "rating": "easy"
       }
     ]
