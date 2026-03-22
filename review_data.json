@@ -827,10 +827,10 @@
     ]
   },
   "probleme-1.21": {
-    "easeFactor": 2.65,
-    "interval": 3,
-    "repetitions": 2,
-    "nextReview": "2026-03-19",
+    "easeFactor": 2.8,
+    "interval": 10,
+    "repetitions": 3,
+    "nextReview": "2026-03-31",
     "lastRating": "easy",
     "history": [
       {
@@ -839,6 +839,10 @@
       },
       {
         "date": "2026-03-16",
+        "rating": "easy"
+      },
+      {
+        "date": "2026-03-22",
         "rating": "easy"
       }
     ]
