@@ -40,6 +40,19 @@ function mergeReviewData(clientData, serverData) {
   ]);
   const merged = {};
   for (const key of allKeys) {
+    // Special handling for revision config: keep most recent
+    if (key === '_revision_config') {
+      const clientEntry = clientData?.[key];
+      const serverEntry = serverData?.[key];
+      if (!clientEntry) { merged[key] = serverEntry; }
+      else if (!serverEntry) { merged[key] = clientEntry; }
+      else {
+        const clientTime = new Date(clientEntry.lastModified || 0).getTime();
+        const serverTime = new Date(serverEntry.lastModified || 0).getTime();
+        merged[key] = clientTime >= serverTime ? clientEntry : serverEntry;
+      }
+      continue;
+    }
     const clientEntry = clientData?.[key];
     const serverEntry = serverData?.[key];
     if (!clientEntry) {

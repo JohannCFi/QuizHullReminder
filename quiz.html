@@ -209,6 +209,89 @@
       margin-top: 2px;
     }
 
+    /* Revision chapter toggles */
+    .revision-chapter-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .revision-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 14px;
+      border-radius: 10px;
+      border: 1.5px solid #e2e8f0;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .revision-row.active {
+      border-color: #d69e2e;
+      background: #fffff0;
+    }
+    .revision-row-info {
+      flex: 1;
+      min-width: 0;
+    }
+    .revision-row-name {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #2d3748;
+    }
+    .revision-row-stats {
+      font-size: 0.75rem;
+      color: #718096;
+      margin-top: 2px;
+    }
+    .revision-row-stats .mastered-label {
+      color: #48bb78;
+      font-weight: 600;
+    }
+    .revision-progress-bar {
+      height: 4px;
+      background: #e2e8f0;
+      border-radius: 2px;
+      margin-top: 4px;
+      overflow: hidden;
+    }
+    .revision-progress-fill {
+      height: 100%;
+      background: #48bb78;
+      border-radius: 2px;
+      transition: width 0.3s;
+    }
+    .revision-switch {
+      position: relative;
+      width: 44px;
+      height: 24px;
+      flex-shrink: 0;
+    }
+    .revision-switch input { display: none; }
+    .revision-switch .slider {
+      position: absolute;
+      inset: 0;
+      background: #cbd5e0;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .revision-switch .slider::before {
+      content: '';
+      position: absolute;
+      width: 18px;
+      height: 18px;
+      left: 3px;
+      top: 3px;
+      background: white;
+      border-radius: 50%;
+      transition: transform 0.2s;
+    }
+    .revision-switch input:checked + .slider {
+      background: #d69e2e;
+    }
+    .revision-switch input:checked + .slider::before {
+      transform: translateX(20px);
+    }
+
     /* FAQ button */
     .faq-btn {
       display: block;
@@ -658,7 +741,18 @@
     body.dark .faq-chevron { color: #718096; }
     body.dark .demo-toggle-btn { border-color: #4a5568; color: #a0aec0; }
     body.dark .demo-toggle-btn:hover { border-color: #718096; color: #cbd5e0; }
+    body.dark .revision-row { border-color: #4a5568; }
+    body.dark .revision-row.active { border-color: #b7791f; background: #3d2e0a; }
+    body.dark .revision-row-name { color: #e2e8f0; }
+    body.dark .revision-row-stats { color: #a0aec0; }
+    body.dark .revision-progress-bar { background: #4a5568; }
+    body.dark .revision-switch .slider { background: #4a5568; }
+    body.dark .revision-switch input:checked + .slider { background: #b7791f; }
     body.dark .demo-section { background: #1a202c; border-left-color: #63b3ed; }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateX(-50%) translateY(-10px); }
+      to { opacity: 1; transform: translateX(-50%) translateY(0); }
+    }
   </style>
 </head>
 <body>
@@ -694,6 +788,11 @@
       <h2>Chapitres</h2>
       <button class="select-all-btn" id="select-all-btn">Tout sélectionner</button>
       <div class="chapter-list" id="chapter-list"></div>
+    </div>
+
+    <div class="config-section" id="revision-section">
+      <h2>Révision par chapitre</h2>
+      <div class="revision-chapter-list" id="revision-chapter-list"></div>
     </div>
 
     <div class="config-section">
@@ -784,6 +883,7 @@
   let allSelectState = true;
   let faqSelectState = true;
   let reviewData = {};
+  let revisionConfig = { chapters: {} };
   let quizRatings = []; // ratings for current quiz session
   let syncPending = false;
   let saveTimeout = null;
@@ -862,6 +962,18 @@
 
   function mergeReviewData(serverData) {
     for (const key in serverData) {
+      // Special handling for revision config: keep most recent
+      if (key === '_revision_config') {
+        const local = reviewData[key];
+        const server = serverData[key];
+        if (!local) { reviewData[key] = server; }
+        else if (server) {
+          const localTime = new Date(local.lastModified || 0).getTime();
+          const serverTime = new Date(server.lastModified || 0).getTime();
+          if (serverTime > localTime) reviewData[key] = server;
+        }
+        continue;
+      }
       if (!reviewData[key]) {
         reviewData[key] = serverData[key];
       } else {
@@ -877,6 +989,18 @@
     saveReviewDataLocal();
   }
 
+  function extractRevisionConfig() {
+    if (reviewData._revision_config) {
+      revisionConfig = reviewData._revision_config;
+      if (!revisionConfig.chapters) revisionConfig.chapters = {};
+    }
+  }
+
+  function injectRevisionConfig() {
+    revisionConfig.lastModified = new Date().toISOString();
+    reviewData._revision_config = revisionConfig;
+  }
+
   async function loadReviewData() {
     reviewData = loadReviewDataLocal();
     try {
@@ -887,6 +1011,7 @@
         const result = await res.json();
         mergeReviewData(result.data);
         syncPending = false;
+        extractRevisionConfig();
         return;
       }
     } catch (e) {}
@@ -897,9 +1022,11 @@
         mergeReviewData(await res.json());
       }
     } catch (e) {}
+    extractRevisionConfig();
   }
 
   async function saveReviewData() {
+    injectRevisionConfig();
     saveReviewDataLocal();
     if (saveTimeout) clearTimeout(saveTimeout);
     saveTimeout = setTimeout(() => syncToServer(), 5000);
@@ -1026,6 +1153,122 @@
     return due;
   }
 
+  function countDueRevisionQuestions() {
+    // Read-only version: counts due questions without introducing new ones
+    const today = todayStr();
+    const chapters = revisionConfig.chapters || {};
+    const activeChapters = Object.entries(chapters).filter(([_, c]) => c.active).map(([name]) => name);
+    if (activeChapters.length === 0) return { reviewedDue: 0, neverSeen: 0, total: 0 };
+
+    const allQ = getAllQuestions();
+    let reviewedDue = 0;
+    let neverSeen = 0;
+
+    for (const chapter of activeChapters) {
+      const chConf = chapters[chapter];
+      const chapterQuestions = allQ.filter(q => q.chapitre === chapter);
+      const introduced = new Set(chConf.introducedQuestions || []);
+
+      // Already-introduced and due
+      for (const q of chapterQuestions) {
+        const key = getQuestionKey(q);
+        if (introduced.has(key)) {
+          const card = reviewData[key];
+          if (!card || card.nextReview <= today) {
+            if (card) reviewedDue++; else neverSeen++;
+          }
+        }
+      }
+
+      // Count how many new would be introduced (without mutating)
+      const todayCount = (chConf.introducedToday && chConf.introducedToday.date === today)
+        ? chConf.introducedToday.count : 0;
+      const canIntroduce = Math.max(0, (chConf.newPerDay || 7) - todayCount);
+      const notYetIntroduced = chapterQuestions.filter(q => !introduced.has(getQuestionKey(q)));
+      neverSeen += Math.min(canIntroduce, notYetIntroduced.length);
+    }
+
+    return { reviewedDue, neverSeen, total: reviewedDue + neverSeen };
+  }
+
+  function getDueRevisionQuestions() {
+    // Mutating version: actually introduces new questions. Call only when starting revision.
+    const today = todayStr();
+    const chapters = revisionConfig.chapters || {};
+    const activeChapters = Object.entries(chapters).filter(([_, c]) => c.active).map(([name]) => name);
+
+    if (activeChapters.length === 0) return [];
+
+    const allQ = getAllQuestions();
+    const due = [];
+    let configChanged = false;
+
+    for (const chapter of activeChapters) {
+      const chConf = chapters[chapter];
+      const chapterQuestions = allQ.filter(q => q.chapitre === chapter);
+      const introduced = new Set(chConf.introducedQuestions || []);
+
+      // 1. Already-introduced and due today
+      for (const q of chapterQuestions) {
+        const key = getQuestionKey(q);
+        if (introduced.has(key)) {
+          const card = reviewData[key];
+          if (!card || card.nextReview <= today) {
+            due.push(q);
+          }
+        }
+      }
+
+      // 2. Introduce new questions (up to newPerDay, not yet introduced)
+      const todayCount = (chConf.introducedToday && chConf.introducedToday.date === today)
+        ? chConf.introducedToday.count : 0;
+      const canIntroduce = Math.max(0, (chConf.newPerDay || 7) - todayCount);
+      const notYetIntroduced = chapterQuestions.filter(q => !introduced.has(getQuestionKey(q)));
+      const newOnes = notYetIntroduced.slice(0, canIntroduce);
+
+      for (const q of newOnes) {
+        due.push(q);
+        introduced.add(getQuestionKey(q));
+      }
+
+      if (newOnes.length > 0) {
+        chConf.introducedQuestions = [...introduced];
+        chConf.introducedToday = { date: today, count: todayCount + newOnes.length };
+        configChanged = true;
+      }
+    }
+
+    if (configChanged) {
+      saveReviewData();
+    }
+
+    // Sort: overdue first (oldest nextReview), then new (never-seen)
+    due.sort((a, b) => {
+      const cardA = reviewData[getQuestionKey(a)];
+      const cardB = reviewData[getQuestionKey(b)];
+      const dateA = cardA ? cardA.nextReview : '9999-99-99';
+      const dateB = cardB ? cardB.nextReview : '9999-99-99';
+      return dateA.localeCompare(dateB);
+    });
+
+    return due;
+  }
+
+  function getChapterMasteryStatus(chapter) {
+    const allQ = getAllQuestions().filter(q => q.chapitre === chapter);
+    let mastered = 0;
+    let introduced = 0;
+    const chConf = (revisionConfig.chapters || {})[chapter];
+    const introducedSet = new Set(chConf ? (chConf.introducedQuestions || []) : []);
+    for (const q of allQ) {
+      const key = getQuestionKey(q);
+      if (introducedSet.has(key)) introduced++;
+      const card = reviewData[key];
+      if (card && card.interval >= 21) mastered++;
+    }
+    return { mastered, introduced, total: allQ.length, complete: mastered === allQ.length };
+  }
+
   function getAllQuestions() {
     const pool = [];
     theoriques.forEach(q => pool.push({...q, type: 'theorique'}));
@@ -1034,23 +1277,29 @@
   }
 
   function updateRevisionButton() {
-    const due = getDueQuestions();
     const btn = document.getElementById('revision-btn');
     const countEl = document.getElementById('revision-count');
     const detailEl = document.getElementById('revision-detail');
-    countEl.textContent = due.length;
-    btn.disabled = due.length === 0;
 
-    // Count reviewed-and-due vs never-seen
-    let reviewedDue = 0;
-    let neverSeen = 0;
-    due.forEach(q => {
-      const card = reviewData[getQuestionKey(q)];
-      if (card) reviewedDue++;
-      else neverSeen++;
-    });
+    const activeChapters = Object.entries(revisionConfig.chapters || {}).filter(([_, c]) => c.active);
+    if (activeChapters.length === 0) {
+      countEl.textContent = '';
+      detailEl.textContent = 'Active un chapitre pour réviser';
+      btn.disabled = true;
+      return;
+    }
 
-    if (neverSeen > 0 && reviewedDue > 0) {
+    const info = countDueRevisionQuestions();
+    countEl.textContent = info.total;
+    btn.disabled = info.total === 0;
+
+    const reviewedDue = info.reviewedDue;
+    const neverSeen = info.neverSeen;
+    const totalDue = info.total;
+
+    if (totalDue === 0) {
+      detailEl.textContent = '(rien à réviser aujourd\'hui)';
+    } else if (neverSeen > 0 && reviewedDue > 0) {
       detailEl.textContent = `(${reviewedDue} à réviser et ${neverSeen} nouvelles)`;
     } else if (neverSeen > 0) {
       detailEl.textContent = `(${neverSeen} nouvelles)`;
@@ -1076,12 +1325,19 @@
     }
     await loadReviewData();
     buildChapters();
+    buildRevisionToggles();
     updateAvailable();
     updateRevisionButton();
 
     // Clean up ?mode=revision from URL without auto-starting
     if (new URLSearchParams(window.location.search).get('mode') === 'revision') {
       history.replaceState(null, '', window.location.pathname);
+    }
+
+    // Auto-start revision if requested from end screen
+    if (sessionStorage.getItem('autoStartRevision')) {
+      sessionStorage.removeItem('autoStartRevision');
+      startRevision();
     }
   }
 
@@ -1107,6 +1363,87 @@
       });
       list.appendChild(div);
     });
+  }
+
+  function buildRevisionToggles() {
+    const list = document.getElementById('revision-chapter-list');
+    list.innerHTML = '';
+    allChapters.forEach(ch => {
+      const chConf = (revisionConfig.chapters || {})[ch];
+      const isActive = chConf && chConf.active;
+      const status = getChapterMasteryStatus(ch);
+
+      const row = document.createElement('div');
+      row.className = 'revision-row' + (isActive ? ' active' : '');
+      row.dataset.chapter = ch;
+
+      const switchLabel = document.createElement('label');
+      switchLabel.className = 'revision-switch';
+      const checkbox = document.createElement('input');
+      checkbox.type = 'checkbox';
+      checkbox.checked = isActive;
+      checkbox.addEventListener('change', () => {
+        toggleChapterRevision(ch);
+      });
+      const slider = document.createElement('span');
+      slider.className = 'slider';
+      switchLabel.appendChild(checkbox);
+      switchLabel.appendChild(slider);
+
+      const info = document.createElement('div');
+      info.className = 'revision-row-info';
+      const name = document.createElement('div');
+      name.className = 'revision-row-name';
+      name.textContent = ch;
+      const stats = document.createElement('div');
+      stats.className = 'revision-row-stats';
+      if (status.complete) {
+        stats.innerHTML = '<span class="mastered-label">Chapitre maîtrisé !</span>';
+      } else if (isActive) {
+        stats.textContent = `${status.mastered}/${status.total} maîtrisées · ${status.introduced}/${status.total} introduites`;
+      } else {
+        stats.textContent = `${status.total} questions`;
+      }
+      const progressBar = document.createElement('div');
+      progressBar.className = 'revision-progress-bar';
+      const progressFill = document.createElement('div');
+      progressFill.className = 'revision-progress-fill';
+      progressFill.style.width = status.total > 0 ? (status.mastered / status.total * 100) + '%' : '0%';
+      progressBar.appendChild(progressFill);
+
+      info.appendChild(name);
+      info.appendChild(stats);
+      if (isActive) info.appendChild(progressBar);
+
+      row.appendChild(switchLabel);
+      row.appendChild(info);
+      list.appendChild(row);
+    });
+  }
+
+  function toggleChapterRevision(chapter) {
+    if (!revisionConfig.chapters) revisionConfig.chapters = {};
+    const chConf = revisionConfig.chapters[chapter];
+    if (chConf && chConf.active) {
+      chConf.active = false;
+    } else {
+      if (!chConf) {
+        revisionConfig.chapters[chapter] = {
+          active: true,
+          activatedAt: todayStr(),
+          newPerDay: 7,
+          introducedQuestions: [],
+          masteredAt: null
+        };
+      } else {
+        chConf.active = true;
+        chConf.masteredAt = null;
+        if (!chConf.activatedAt) chConf.activatedAt = todayStr();
+      }
+    }
+    saveReviewData();
+    buildRevisionToggles();
+    updateRevisionButton();
   }
 
   function getSelectedChapters() {
@@ -1174,7 +1511,7 @@
   }
 
   function startRevision() {
-    const due = getDueQuestions();
+    const due = getDueRevisionQuestions();
     if (due.length === 0) return;
     quizQuestions = due;
     quizRatings = [];
@@ -1246,8 +1583,29 @@
     const key = getQuestionKey(q);
     quizRatings.push(rating);
     processRating(key, rating);
+    checkChapterMastery(q.chapitre);
     currentIndex++;
     showQuestion();
+  }
+
+  function checkChapterMastery(chapter) {
+    const chConf = (revisionConfig.chapters || {})[chapter];
+    if (!chConf || !chConf.active || chConf.masteredAt) return;
+    const status = getChapterMasteryStatus(chapter);
+    if (status.complete) {
+      chConf.masteredAt = todayStr();
+      saveReviewData();
+      showMasteryToast(chapter);
+    }
+  }
+
+  function showMasteryToast(chapter) {
+    const toast = document.createElement('div');
+    toast.style.cssText = 'position:fixed;top:20px;left:50%;transform:translateX(-50%);background:#48bb78;color:white;padding:16px 24px;border-radius:12px;font-weight:600;font-size:1rem;z-index:9999;box-shadow:0 4px 12px rgba(0,0,0,0.15);text-align:center;animation:fadeIn 0.3s';
+    toast.textContent = `Le chapitre "${chapter}" est maîtrisé !`;
+    document.body.appendChild(toast);
+    setTimeout(() => { toast.style.opacity = '0'; toast.style.transition = 'opacity 0.5s'; }, 3000);
+    setTimeout(() => toast.remove(), 3500);
   }
 
   function showEnd() {
@@ -1299,11 +1657,12 @@
         </div>
         <div class="end-buttons">
           <button class="start-btn" onclick="location.reload()">Nouveau quiz</button>
-          <button class="revision-btn" onclick="location.reload(); setTimeout(startRevision, 500)">Révision du jour</button>
+          <button class="revision-btn" onclick="sessionStorage.setItem('autoStartRevision','1'); location.reload()">Révision du jour</button>
         </div>
       </div>
     `;
 
+    buildRevisionToggles();
     updateRevisionButton();
   }
 
@@ -1347,6 +1706,7 @@
     document.getElementById('quiz-screen').style.display = 'none';
     document.getElementById('quiz-screen').innerHTML = quizScreenTemplate;
     attachQuizListeners();
+    buildRevisionToggles();
     updateRevisionButton();
   }
 
