@@ -515,5 +515,155 @@
     "chapitre": "Stratégies de Couverture par les Contrats Futures",
     "question": "Le 16 juillet, une institution financière détient un portefeuille de 100 millions d'euros dont le bêta est 1,2. L'institution veut couvrir ce portefeuille à l'aide du contrat futures CAC 40, échéance décembre, de façon à ramener le bêta du portefeuille à 0,5. L'indice vaut 6 000 et le contrat porte sur 10 € fois l'indice.\na. Quelle position devrait prendre cette institution ?\nb. Si la société change d'avis et souhaite porter le bêta de 1,2 à 1,5, quelle position devrait-elle prendre sur les contrats futures ?",
     "reponse": "<strong>(a)</strong> L'entreprise devrait prendre une position courte sur :\n\\[\\frac{(1{,}2 - 0{,}5) \\times 100\\,000\\,000}{2\\,000 \\times 250} \\approx 140 \\text{ contrats}\\]\n<strong>(b)</strong> L'entreprise devrait prendre une position longue sur :\n\\[\\frac{(1{,}5 - 1{,}2) \\times 100\\,000\\,000}{2\\,000 \\times 250} \\approx 60 \\text{ contrats}\\]"
+  },
+  {
+    "id": "4.11",
+    "chapitre": "Les Marchés de Taux d'Intérêt",
+    "question": "Une banque vous prête de l'argent à 7 % par an en composition trimestrielle. Quels sont les taux équivalents en (a) composition continue et (b) composition annuelle ?",
+    "reponse": "<strong>(a)</strong> Le taux composé en continu s'écrit :\n\\[4 \\ln\\left(1 + \\frac{0{,}07}{4}\\right) = 0{,}0694\\]\nsoit 6,94 % par an.\n<strong>(b)</strong> Le taux en composition annuelle s'obtient ainsi :\n\\[\\left(1 + \\frac{0{,}07}{4}\\right)^4 - 1 = 0{,}0719\\]\nsoit 7,19 %."
+  },
+  {
+    "id": "4.12",
+    "chapitre": "Les Marchés de Taux d'Intérêt",
+    "question": "Les taux zéro-coupon à 6 mois et à 1 an sont tous deux de 5 %. Le taux actuariel d'une obligation de maturité 18 mois (dont un coupon vient d'être payé), payant un coupon semestriel de 4 % par an, est de 5,2 %. Quel est le prix de cette obligation ? Quel est le taux zéro-coupon à 18 mois ? Vous supposerez que tous ces taux sont exprimés en composition semestrielle.",
+    "reponse": "Considérons une obligation de nominal de 100 €. Son prix est obtenu en actualisant, au taux actuariel, les flux auxquels elle donne droit ; ce qui s'écrit ici :\n\\[\\frac{2}{1{,}026} + \\frac{2}{1{,}026^2} + \\frac{102}{1{,}026^3} = 98{,}29\\]\nSi l'on note \\(R\\) le taux zéro-coupon à 18 mois, il est solution de l'équation :\n\\[\\frac{2}{1{,}025} + \\frac{2}{1{,}025^2} + \\frac{102}{\\left(1 + \\frac{R}{2}\\right)^3} = 98{,}29\\]\nce qui donne \\(R = 5{,}204\\) %."
+  },
+  {
+    "id": "4.13",
+    "chapitre": "Les Marchés de Taux d'Intérêt",
+    "question": "Un investisseur reçoit 1 100 € pour un placement de 1 000 € réalisé un an plus tôt. Calculez le taux de ce placement en composition (a) annuelle, (b) semestrielle, (c) mensuelle, (d) continue.",
+    "reponse": "<strong>(a)</strong> En composition annuelle, la rentabilité s'écrit :\n\\[\\frac{1\\,100}{1\\,000} - 1 = 0{,}1\\]\nsoit 10 % par an.\n<strong>(b)</strong> En composition semestrielle, la rentabilité \\(R\\) vérifie :\n\\[1\\,000\\left(1 + \\frac{R}{2}\\right)^2 = 1\\,100\\]\nc'est-à-dire :\n\\[\\left(1 + \\frac{R}{2}\\right) = \\sqrt{1{,}1} = 1{,}0488\\]\nsoit \\(R = 9{,}76\\) %.\n<strong>(c)</strong> En composition mensuelle, la rentabilité \\(R\\) vérifie :\n\\[1\\,000\\left(1 + \\frac{R}{12}\\right)^{12} = 1\\,100\\]\nc'est-à-dire :\n\\[\\left(1 + \\frac{R}{12}\\right) = (1{,}1)^{1/12} = 1{,}00797\\]\nsoit \\(R = 9{,}57\\) %.\n<strong>(d)</strong> En composition continue, la rentabilité \\(R\\) vérifie :\n\\[1\\,000 \\times e^R = 1\\,100\\]\nc'est-à-dire :\n\\[R = \\ln\\left(\\frac{1\\,100}{1\\,000}\\right) = 0{,}0953\\]\nsoit \\(R = 9{,}53\\) %."
+  },
+  {
+    "id": "4.14",
+    "chapitre": "Les Marchés de Taux d'Intérêt",
+    "question": "Considérons la courbe zéro-coupon (en composition continue) donnée dans le tableau suivant :<br><table><thead><tr><th>Maturité (mois)</th><th>Taux (% par an)</th></tr></thead><tbody><tr><td>3</td><td>3,0</td></tr><tr><td>6</td><td>3,2</td></tr><tr><td>9</td><td>3,4</td></tr><tr><td>12</td><td>3,5</td></tr><tr><td>15</td><td>3,6</td></tr><tr><td>18</td><td>3,7</td></tr></tbody></table>Calculez les taux forward, vus de la date 0, pour les trimestres 2 à 6.",
+    "reponse": "Les taux forward pour les trimestres successifs sont donnés par :\n<ul><li>trimestre 2 : 3,4 %</li><li>trimestre 3 : 3,8 %</li><li>trimestre 4 : 3,8 %</li><li>trimestre 5 : 4,0 %</li><li>trimestre 6 : 4,2 %</li></ul>"
+  },
+  {
+    "id": "4.15",
+    "chapitre": "Les Marchés de Taux d'Intérêt",
+    "question": "En utilisant les taux de l'exercice 4.14, évaluez un FRA qui conduit son détenteur à obtenir un taux de 4,5 % pour trois mois dans un an sur un principal de 1 million d'euros. Le taux forward SOFR est de 5 % en composition trimestrielle.",
+    "reponse": "La valeur du FRA (voir section 4.9) est :\n\\[1\\,000\\,000 \\times 0{,}25 \\times (0{,}045 - 0{,}040) \\, e^{-0{,}036 \\times 1{,}25} = -1\\,195\\]\nsoit \\(-1\\,195\\) €."
+  },
+  {
+    "id": "4.16",
+    "chapitre": "Les Marchés de Taux d'Intérêt",
+    "question": "La structure des taux a une pente positive. Rangez les taux suivants en ordre croissant :\na. le taux zéro-coupon à cinq ans.\nb. le taux actuariel d'une obligation à coupons de maturité cinq ans.\nc. le taux forward pour le trimestre débutant dans quatre ans et neuf mois.\nQuelles sont les réponses si la courbe des taux est décroissante en fonction de la maturité ?",
+    "reponse": "Lorsque la pente de la courbe des taux est positive, on a \\(c > a > b\\). Lorsqu'elle est négative, on a \\(b > a > c\\)."
+  },
+  {
+    "id": "4.17",
+    "chapitre": "Les Marchés de Taux d'Intérêt",
+    "question": "Quelle information vous apporte la duration sur la sensibilité d'un portefeuille d'obligations par rapport aux taux d'intérêt ? Quelles sont les limites de cette notion ?",
+    "reponse": "La duration apporte de l'information à propos de l'effet d'un déplacement parallèle de la courbe des taux sur la valeur d'un portefeuille obligataire. Le pourcentage de baisse de la valeur du portefeuille est égal au produit de la duration par l'augmentation du niveau de la courbe des taux. Cette utilisation de la duration suppose cependant que la variation de la courbe des taux est de faible amplitude."
+  },
+  {
+    "id": "4.18",
+    "chapitre": "Les Marchés de Taux d'Intérêt",
+    "question": "Quel taux continu est équivalent à un taux de 8 % par an en composition mensuelle ?",
+    "reponse": "Le taux \\(R\\) est solution de :\n\\[e^R = \\left(1 + \\frac{0{,}08}{12}\\right)^{12}\\]\nce qui donne :\n\\[R = 12 \\ln\\left(1 + \\frac{0{,}08}{12}\\right) = 0{,}0797\\]\nLe taux \\(R\\) est donc égal à 7,97 % par an."
+  },
+  {
+    "id": "4.19",
+    "chapitre": "Les Marchés de Taux d'Intérêt",
+    "question": "Un compte d'épargne paie un taux continu de 4 % par an, mais l'intérêt est payé chaque trimestre. Combien la banque paie-t-elle d'intérêts (tous les 3 mois) sur un montant de 10 000 € ?",
+    "reponse": "Le taux équivalent en composition trimestrielle, encore noté \\(R\\), est défini par :\n\\[e^{0{,}04} = \\left(1 + \\frac{R}{4}\\right)^4\\]\nOn en déduit :\n\\[R = 4\\left(e^{0{,}01} - 1\\right) = 0{,}0402\\]\nLe montant d'intérêts payé pour un trimestre s'écrit donc :\n\\[10\\,000 \\times \\frac{0{,}0402}{4} = 100{,}50 \\text{ €}\\]"
+  },
+  {
+    "id": "4.20",
+    "chapitre": "Les Marchés de Taux d'Intérêt",
+    "question": "Les taux zéro-coupon pour des horizons de 6 à 30 mois avec un pas de 6 mois en composition continue sont respectivement de 4 %, 4,2 %, 4,4 %, 4,6 % et 4,8 %. Quel est le prix coupon couru d'une obligation de nominal 100 de maturité 30 mois ayant un taux de coupon de 4 % par an avec des coupons semestriels ?",
+    "reponse": "Avec des coupons semestriels, les flux sont de 2 $ tous les 6 mois. Le prix de l'obligation s'écrit donc :\n\\[2e^{-0{,}04 \\times 0{,}5} + 2e^{-0{,}042 \\times 1} + 2e^{-0{,}044 \\times 1{,}5} + 2e^{-0{,}046 \\times 2} + 102e^{-0{,}048 \\times 2{,}5} = 98{,}04\\]"
+  },
+  {
+    "id": "4.21",
+    "chapitre": "Les Marchés de Taux d'Intérêt",
+    "question": "Quel est le taux actuariel d'une obligation à 3 ans dont le prix coupon couru est de 104, sachant que le coupon est semestriel et que le taux de coupon est de 8 % ?",
+    "reponse": "L'obligation a une durée de vie de 3 ans. Si l'on note \\(y\\) le taux actuariel, on obtient :\n\\[4e^{-y \\times 0{,}5} + 4e^{-y \\times 1} + 4e^{-y \\times 1{,}5} + 4e^{-y \\times 2} + 4e^{-y \\times 2{,}5} + 104e^{-y \\times 3} = 104\\]\nEn utilisant le solveur d'Excel, on trouve \\(y = 6{,}407\\) %."
+  },
+  {
+    "id": "4.22",
+    "chapitre": "Les Marchés de Taux d'Intérêt",
+    "question": "Les taux zéro-coupon à 6, 12, 18 et 24 mois sont respectivement de 5 %, 6 %, 6,5 % et 7 %. Quel est le taux actuariel au pair à deux ans ?",
+    "reponse": "En utilisant les notations du manuel, on a \\(m = 2\\) et \\(d = e^{-0{,}07 \\times 2} = 0{,}8694\\). De même, on a :\n\\[A = e^{-0{,}05 \\times 0{,}5} + e^{-0{,}06 \\times 1} + e^{-0{,}065 \\times 1{,}5} + e^{-0{,}07 \\times 2} = 3{,}6935\\]\nLe taux actuariel au pair est alors donné par :\n\\[\\frac{m}{A} \\times 100(1-d) = \\frac{2}{3{,}6935} \\times 100(1-0{,}8694) = 7{,}0741\\]\nCe résultat peut être vérifié en montrant que le prix d'une obligation payant un coupon de \\(7{,}0741 / 2 = 3{,}537\\) tous les 6 mois est égal à 100 :\n\\[3{,}537e^{-0{,}05 \\times 0{,}5} + 3{,}537e^{-0{,}06 \\times 1} + 3{,}537e^{-0{,}065 \\times 1{,}5} + 103{,}537e^{-0{,}07 \\times 2} = 100\\]"
+  },
+  {
+    "id": "4.23",
+    "chapitre": "Les Marchés de Taux d'Intérêt",
+    "question": "Considérons la courbe zéro-coupon (en composition continue) donnée dans le tableau suivant :<br><table><thead><tr><th>Maturité (années)</th><th>Taux (% par an)</th></tr></thead><tbody><tr><td>1</td><td>2,0</td></tr><tr><td>2</td><td>3,0</td></tr><tr><td>3</td><td>3,7</td></tr><tr><td>4</td><td>4,2</td></tr><tr><td>5</td><td>4,5</td></tr></tbody></table>Calculez, vus de la date 0, les taux forward de maturité 1 an pour les années 2 à 5.",
+    "reponse": "Les taux forward sont donnés par :\n<ul><li>année 2 : 4 %</li><li>année 3 : 5,1 %</li><li>année 4 : 5,7 %</li><li>année 5 : 5,7 %</li></ul>"
+  },
+  {
+    "id": "4.24",
+    "chapitre": "Les Marchés de Taux d'Intérêt",
+    "question": "Le prix d'une obligation notée A, de maturité 10 ans et de taux de coupon 8 % par an, est de 90. Le prix d'une obligation notée B, de maturité 10 ans et de taux de coupon 4 %, est de 80. Quel est le taux zéro-coupon à 10 ans ? (Indication : considérez une position consistant en l'achat de deux titres B et la vente d'un titre A.)",
+    "reponse": "Considérons une position longue dans deux unités de B et une position courte dans une unité de A. Les flux de ce portefeuille s'écrivent :\n<ul><li>année 0 : \\(90 - 2 \\times 80 = -70\\)</li><li>année 10 : \\(200 - 100 = 100\\)</li></ul>\nCette structure de flux est obtenue grâce à la compensation des coupons sur les positions courte et longue. En conséquence, le taux zéro-coupon à 10 ans s'écrit :\n\\[\\frac{1}{10} \\ln\\left(\\frac{100}{70}\\right) = 0{,}0357\\]\nc'est-à-dire 3,57 % par an."
+  },
+  {
+    "id": "4.25",
+    "chapitre": "Les Marchés de Taux d'Intérêt",
+    "question": "Expliquez clairement pourquoi la théorie de la préférence pour la liquidité est cohérente avec une courbe des taux plus souvent croissante que décroissante.",
+    "reponse": "Si les taux longs étaient le simple reflet des anticipations de taux courts futurs, la courbe des taux serait aussi souvent croissante que décroissante, car les investisseurs anticipent une hausse aussi souvent qu'ils anticipent une baisse. La théorie de la préférence pour la liquidité stipule que les taux longs sont plus élevés que les taux courts futurs anticipés. C'est pourquoi la courbe est plus souvent croissante que décroissante, selon cette théorie."
+  },
+  {
+    "id": "4.26",
+    "chapitre": "Les Marchés de Taux d'Intérêt",
+    "question": "« Quand la courbe des taux ZC est croissante, le taux ZC pour une maturité quelconque est plus élevé que le taux au pair. Quand la courbe est inversée, c'est le contraire. » Expliquez pourquoi il en est ainsi.",
+    "reponse": "Le taux au pair est le taux actuariel d'une obligation qui cote le nominal. Le taux zéro-coupon est le taux actuariel d'une obligation qui ne paie pas de coupon. Quand la courbe des taux est croissante, le taux actuariel d'une obligation à coupons durant \\(N\\) années est inférieur au taux zéro-coupon correspondant, car les coupons sont actualisés à un taux inférieur au taux à \\(N\\) années. Cela ramène le taux actuariel à un niveau plus faible que le taux zéro-coupon pour l'horizon correspondant. Un raisonnement symétrique peut être entrepris quand la courbe est décroissante."
+  },
+  {
+    "id": "4.27",
+    "chapitre": "Les Marchés de Taux d'Intérêt",
+    "question": "Pourquoi un prêt sur le marché du repo présente-t-il un risque de crédit très faible ?",
+    "reponse": "Un repo est un contrat par lequel un intermédiaire A qui détient des titres accepte de les vendre maintenant avec promesse de rachat à une date future, à un prix légèrement supérieur. Pour la contrepartie, cela revient en quelque sorte à faire un prêt à A. Ce type de prêt est très peu sujet au risque de crédit. Si B ne peut rendre les titres, A ne rembourse pas. Si l'emprunteur A ne rembourse pas, B garde les titres."
+  },
+  {
+    "id": "4.28",
+    "chapitre": "Les Marchés de Taux d'Intérêt",
+    "question": "Une obligation de maturité 5 ans a un taux actuariel (continu) de 7 % et paie un taux de coupon de 8 % par an. Le coupon est payé en fin d'année.\na. Quel est le prix de cette obligation ?\nb. Quelle est la duration de cette obligation ?\nc. En utilisant la duration, calculez l'impact d'une baisse du taux actuariel de 0,2 % sur le prix.\nd. En recalculant le prix avec un taux actuariel de 6,8 %, vérifiez le résultat de la question précédente.",
+    "reponse": "<strong>(a)</strong> Le prix de l'obligation est donné par :\n\\[8 \\times \\left(e^{-0{,}07} + e^{-0{,}07 \\times 2} + e^{-0{,}07 \\times 3} + e^{-0{,}07 \\times 4}\\right) + 108e^{-0{,}07 \\times 5} = 103{,}05 \\text{ €}\\]\n<strong>(b)</strong> La duration vaut :\n\\[\\frac{1}{103{,}05}\\left[8 \\times \\left(e^{-0{,}07} + 2e^{-0{,}07 \\times 2} + 3e^{-0{,}07 \\times 3} + 4e^{-0{,}07 \\times 4}\\right) + 5 \\times 108e^{-0{,}07 \\times 5}\\right] = 4{,}3235 \\text{ ans}\\]\n<strong>(c)</strong> Avec les notations de ce chapitre, on peut écrire :\n\\[\\Delta B = -BD\\Delta y\\]\nPar conséquent, une baisse de 0,2 % du taux actuariel entraîne une variation de prix égale à :\n\\[103{,}05 \\times 4{,}3235 \\times 0{,}002 = 0{,}89\\]\nLe prix passerait donc de 103,05 € à 103,94 €.\n<strong>(d)</strong> En recalculant le prix avec un taux actuariel de 6,8 %, on obtient bien :\n\\[8 \\times \\left(e^{-0{,}068} + e^{-0{,}068 \\times 2} + e^{-0{,}068 \\times 3} + e^{-0{,}068 \\times 4}\\right) + 108e^{-0{,}068 \\times 5} = 103{,}94 \\text{ €}\\]"
+  },
+  {
+    "id": "4.29",
+    "chapitre": "Les Marchés de Taux d'Intérêt",
+    "question": "Les bons du Trésor à 6 mois et 1 an cotent respectivement 94,0 et 89,0. Une obligation à 18 mois payant un coupon de 4 € chaque semestre cote actuellement 94,84 € (un coupon vient d'être payé). Une obligation à 2 ans payant un coupon de 5 € chaque semestre cote 97,12 € (un coupon vient d'être payé). Calculez les taux ZC à 6 mois, 1 an, 18 mois et 2 ans.",
+    "reponse": "Le taux à 6 mois en composition continue est égal à \\(\\ln(1 + 6/94) = 12{,}38\\) %. Le taux à 12 mois est \\(\\ln(1 + 11/89) = 11{,}65\\) %.\nConsidérons l'obligation à 1,5 an. On doit avoir :\n\\[4e^{-0{,}1238 \\times 0{,}5} + 4e^{-0{,}1165 \\times 1} + 104e^{-R \\times 1{,}5} = 94{,}84\\]\nOn en déduit que \\(R = 11{,}5\\) %.\nPour l'obligation à 2 ans, on doit avoir :\n\\[5e^{-0{,}1238 \\times 0{,}5} + 5e^{-0{,}1165 \\times 1} + 5e^{-0{,}115 \\times 1{,}5} + 105e^{-R \\times 2} = 97{,}12\\]\nLe même type de calcul conduit à \\(R = 11{,}3\\) %."
+  },
+  {
+    "id": "4.30",
+    "chapitre": "Les Marchés de Taux d'Intérêt",
+    "question": "Composé annuellement un taux est égal à 11 %. Combien vaut ce taux s'il est en composition (a) semi-annuelle, (b) trimestrielle, (c) mensuelle, (d) hebdomadaire et (e) journalière ?",
+    "reponse": "Il faut résoudre l'équation :\n\\[1{,}11 = \\left(1 + \\frac{R}{n}\\right)^n\\]\noù \\(R\\) est le taux recherché et \\(n\\) est le nombre de compositions d'intérêts. Les réponses sont donc : (a) 10,71 %, (b) 10,57 %, (c) 10,48 %, (d) 10,45 %, (e) 10,44 %."
+  },
+  {
+    "id": "4.31",
+    "chapitre": "Les Marchés de Taux d'Intérêt",
+    "question": "Le tableau ci-dessous donne les taux zéro-coupon d'État (en composition continue) et les cash-flows d'une obligation d'État.<br><table><thead><tr><th>Maturité (en années)</th><th>Taux zéro</th><th>Coupon</th><th>Nominal</th></tr></thead><tbody><tr><td>0,5</td><td>2,0 %</td><td>20 $</td><td></td></tr><tr><td>1,0</td><td>2,3 %</td><td>20 $</td><td></td></tr><tr><td>1,5</td><td>2,7 %</td><td>20 $</td><td></td></tr><tr><td>2,0</td><td>3,2 %</td><td>20 $</td><td>1 000 $</td></tr></tbody></table>\na. Quel est le prix théorique de l'obligation ?\nb. Quel est le taux actuariel de l'obligation ?",
+    "reponse": "<strong>(a)</strong> Le prix théorique de l'obligation s'écrit :\n\\[20e^{-0{,}02 \\times 0{,}5} + 20e^{-0{,}023 \\times 1} + 20e^{-0{,}027 \\times 1{,}5} + 1\\,020e^{-0{,}032 \\times 2} = 1\\,015{,}32\\]\n<strong>(b)</strong> Le taux actuariel \\(y\\) qui permet de retrouver ce prix théorique est solution de l'équation :\n\\[20e^{-y \\times 0{,}5} + 20e^{-y \\times 1} + 20e^{-y \\times 1{,}5} + 1\\,020e^{-y \\times 2} = 1\\,015{,}32\\]\nOn obtient \\(y = 3{,}18\\) %."
+  },
+  {
+    "id": "4.32",
+    "chapitre": "Les Marchés de Taux d'Intérêt",
+    "question": "Une obligation à 5 ans a un taux de coupon annuel de 5 % payable semestriellement. Son prix est de 104. Quel est le taux actuariel de cette obligation ? Vous pouvez utiliser le solveur d'Excel pour répondre.",
+    "reponse": "Voir fichier Excel. La réponse (en composition continue) est 4,07 %."
+  },
+  {
+    "id": "4.33",
+    "chapitre": "Les Marchés de Taux d'Intérêt",
+    "question": "Un taux d'intérêt vaut 5 % par an en composition semestrielle. Quel est le taux équivalent (a) en composition annuelle, (b) en composition mensuelle et (c) en composition continue ?",
+    "reponse": "2,5 % sont payés tous les six mois.\n<strong>(a)</strong> En composition annuelle, le taux est \\(1{,}025^2 - 1 = 0{,}050625\\), soit 5,0625 %.\n<strong>(b)</strong> En composition mensuelle, le taux est \\(12 \\times (1{,}025^{1/6} - 1) = 0{,}04949\\), soit 4,949 %.\n<strong>(c)</strong> En composition continue, le taux est \\(2 \\times \\ln(1{,}025) = 0{,}04939\\), soit 4,939 %."
+  },
+  {
+    "id": "4.34",
+    "chapitre": "Les Marchés de Taux d'Intérêt",
+    "question": "Un portefeuille A comprend une obligation ZC à 1 an de nominal 2 000 € et un ZC à 10 ans de nominal 6 000 €. Un portefeuille B comprend un ZC à 5,95 ans de nominal 5 000 €. Toutes ces obligations ont un taux actuariel de 10 %.\na. Montrez que les deux portefeuilles ont la même duration.\nb. Montrez que les variations en pourcentage des deux portefeuilles sont identiques si le taux actuariel varie de 0,1 %.\nc. Si les taux actuariels augmentaient de 5 %, quelles seraient les variations en pourcentage des deux portefeuilles ?",
+    "reponse": "<strong>(a)</strong> La duration du portefeuille A est égale à :\n\\[\\frac{1 \\times 2\\,000e^{-0{,}1 \\times 1} + 10 \\times 6\\,000e^{-0{,}1 \\times 10}}{2\\,000e^{-0{,}1 \\times 1} + 6\\,000e^{-0{,}1 \\times 10}} = 5{,}95\\]\nPuisque c'est aussi la duration du portefeuille B, les deux ont la même duration.\nLa valeur du portefeuille A est :\n\\[2\\,000e^{-0{,}1 \\times 1} + 6\\,000e^{-0{,}1 \\times 10} = 4\\,016{,}95\\]\n<strong>(b)</strong> Quand le taux actuariel augmente de 10 bp, la valeur devient :\n\\[2\\,000e^{-0{,}101 \\times 1} + 6\\,000e^{-0{,}101 \\times 10} = 3\\,993{,}18\\]\nLa valeur a diminué de :\n\\[23{,}77 \\times \\frac{100\\%}{4\\,016{,}95} = 0{,}59\\%\\]\nLa valeur du portefeuille B est \\(5\\,000e^{-0{,}1 \\times 5{,}95} = 2\\,757{,}81\\). Quand le taux augmente de 10 bp, la valeur devient :\n\\[5\\,000e^{-0{,}101 \\times 5{,}95} = 2\\,741{,}45\\]\nLa valeur a diminué de :\n\\[16{,}36 \\times \\frac{100\\%}{2\\,757{,}81} = 0{,}59\\%\\]\nLes variations en pourcentage des deux portefeuilles sont donc identiques pour une faible variation de 10 bp du taux.\n<strong>(c)</strong> Quand le taux actuariel augmente de 5 %, la valeur de A devient :\n\\[2\\,000e^{-0{,}15 \\times 1} + 6\\,000e^{-0{,}15 \\times 10} = 3\\,060{,}20\\]\net celle du portefeuille B devient \\(5\\,000e^{-0{,}15 \\times 5{,}95} = 2\\,048{,}15\\).\nLa valeur de A a diminué de :\n\\[956{,}75 \\times \\frac{100\\%}{4\\,016{,}95} = 23{,}82\\%\\]\nLa valeur de B a diminué de :\n\\[709{,}66 \\times \\frac{100\\%}{2\\,757{,}81} = 25{,}73\\%\\]\nLes variations en pourcentage des deux portefeuilles sont ici différentes, car le portefeuille A a une plus grande convexité."
+  },
+  {
+    "id": "4.35",
+    "chapitre": "Les Marchés de Taux d'Intérêt",
+    "question": "Vérifiez que DerivaGem fournit des prix en accord avec ceux de la section 4.6. Testez si DV01 est une bonne mesure de la variation de prix en cas de déplacement de la courbe des taux d'1 bp. Utilisez DV01 et Gamma pour prévoir l'effet d'un déplacement de 200 bp, à la hausse, de la courbe des taux. Estimez la convexité avec Gamma (indication : dans DerivaGem, DV01 est égal à \\(dB/dy\\), où \\(B\\) est le prix de l'obligation et \\(y\\) son taux actuariel en points de base, et Gamma est \\(d^2B/dy^2\\), où \\(y\\) est en pourcents).",
+    "reponse": "Dans la feuille <em>Bond Price</em>, on fixe un principal de 100, une durée de vie de deux ans, un taux de coupon de 6 % avec paiement semestriel. La courbe de taux du tableau 4.2 est aussi un input. Le prix de l'obligation est 98,38506. Le DV01 est \\(-0{,}018819\\).\nQuand la structure par termes des taux passe à 5,01 ; 5,81 ; 6,41 ; 6,81, le prix de l'obligation devient 98,36625. C'est une diminution de 0,01881 qui correspond au DV01. La duration de l'obligation satisfait l'équation :\n\\[\\frac{\\Delta B}{B} = -D \\Delta y\\]\nIci nous avons \\(\\Delta B = -0{,}01882\\), \\(B = 98{,}38506\\) et \\(\\Delta y = 0{,}0001\\), on en déduit que la duration est :\n\\[10\\,000 \\times \\frac{0{,}01882}{98{,}38506} = 1{,}91\\]\nc'est-à-dire 1,91 année.\nUn accroissement des taux de 2 % réduit le prix de l'obligation de 3,691 à 94,694. Le gamma est donc égal à 0,036931. L'effet prédit par le DV01 est \\(200 \\times (-0{,}01881) = -3{,}7638\\). De l'équation (4.18), la correction de convexité est donc :\n\\[0{,}5 \\times 0{,}036931 \\times 2^2 = 0{,}0739\\]\nLe changement de prix estimé en utilisant DV01 et gamma est alors :\n\\[-3{,}7638 + 0{,}0739 = 3{,}690\\]\nrésultat très proche du changement observé.\nLe gamma est 0,036931 par dix millième, ce qui donne 369,31 par unité. La convexité est le gamma divisé par le prix de l'obligation, ce qui donne \\(369{,}31 / 98{,}38506 = 3{,}75\\)."
   }
 ]

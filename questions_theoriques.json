@@ -173,5 +173,65 @@
     "chapitre": "Stratégies de Couverture par les Contrats Futures",
     "question": "Expliquez comment une stratégie de couverture par des contrats futures peut engendrer des problèmes de trésorerie tels que ceux rencontrés par Metallgesellschaft.",
     "reponse": "Les contrats futures à échéances courtes dans une couverture glissante sont susceptibles d'engendrer des pertes qui doivent être financées jusqu'à ce que des gains soient réalisés sur le plus long terme. C'est ce qui peut entraîner des problèmes comme ceux connus par Metallgesellschaft."
+  },
+  {
+    "id": "4.1",
+    "chapitre": "Les Marchés de Taux d'Intérêt",
+    "question": "Qu'entend-on par taux LIBOR, comment sont-ils déterminés et pourquoi sont-ils abandonnés ?",
+    "reponse": "LIBOR signifie <em>London Interbank Offer Rate</em>. C'est le taux auquel les banques sont prêtes à placer/emprunter. Il est calculé quotidiennement à partir des taux d'emprunt estimés par un panel de banques, pas sur des taux de transactions effectives. De ce fait, ils sont sujets à manipulation."
+  },
+  {
+    "id": "4.2",
+    "chapitre": "Les Marchés de Taux d'Intérêt",
+    "question": "Quels taux overnight vont remplacer le LIBOR ?",
+    "reponse": "Aux États-Unis, le SOFR est le taux sans risque au jour le jour qui se substitue au LIBOR. Les taux équivalents dans d'autres devises comme €STR (ESTER) et SONIA ne sont pas des taux sans risque."
+  },
+  {
+    "id": "4.3",
+    "chapitre": "Les Marchés de Taux d'Intérêt",
+    "question": "Qu'est-ce qu'un taux de repo ?",
+    "reponse": "Un taux de repo est le taux implicite qui ressort d'une transaction dans laquelle une des contreparties vend des actifs avec promesse de rachat à un prix différent à une date future."
+  },
+  {
+    "id": "4.4",
+    "chapitre": "Les Marchés de Taux d'Intérêt",
+    "question": "Donnez deux raisons pour lesquelles, aux États-Unis, les taux d'État sont inférieurs à ceux d'autres instruments très peu risqués.",
+    "reponse": "Les taux d'État peuvent être artificiellement bas pour différentes raisons :\n<ol><li>Les banques ne sont pas tenues de couvrir des investissements en titres du Trésor par des capitaux propres alors qu'elles sont tenues de le faire pour d'autres instruments financiers à très faible risque.</li><li>Aux États-Unis, les titres émis par le Trésor bénéficient d'avantages fiscaux, par comparaison avec d'autres titres très peu risqués.</li></ol>\nPour ces différentes raisons, on utilise plutôt les taux OIS dans l'évaluation des actifs dérivés."
+  },
+  {
+    "id": "4.5",
+    "chapitre": "Les Marchés de Taux d'Intérêt",
+    "question": "Pour un prêteur, un taux de 5 % en composition annuelle est-il préférable au même taux en composition trimestrielle ?",
+    "reponse": "5 % en composition trimestrielle est préférable."
+  },
+  {
+    "id": "4.6",
+    "chapitre": "Les Marchés de Taux d'Intérêt",
+    "question": "Quelle formule utilise-t-on pour calculer la valeur future d'un placement d'un montant \\(A\\) quand le taux d'intérêt est \\(R\\) et la fréquence de composition des intérêts est \\(m\\) ?",
+    "reponse": "Si la composition des intérêts a lieu \\(m\\) fois par an, la valeur future d'un montant \\(A\\) investi pendant \\(n\\) années au taux \\(R\\) est :\n\\[A\\left(1 + \\frac{R}{m}\\right)^{mn}\\]"
+  },
+  {
+    "id": "4.7",
+    "chapitre": "Les Marchés de Taux d'Intérêt",
+    "question": "Quelle formule utilise-t-on pour calculer la valeur présente d'un montant \\(A\\) quand le taux d'intérêt est \\(R\\) et la fréquence de composition des intérêts est continue ?",
+    "reponse": "La valeur actuelle est \\(Ae^{-RT}\\), où \\(T\\) est la durée jusqu'au paiement."
+  },
+  {
+    "id": "4.8",
+    "chapitre": "Les Marchés de Taux d'Intérêt",
+    "question": "Comment définit-on le taux au pair ?",
+    "reponse": "Le taux actuariel au pair d'une obligation est le taux de coupon qui rend le prix de cette obligation égal à son nominal."
+  },
+  {
+    "id": "4.9",
+    "chapitre": "Les Marchés de Taux d'Intérêt",
+    "question": "Qu'est-ce qu'un FRA ? Comment peut-on évaluer un contrat de ce type ?",
+    "reponse": "Un FRA est un accord de taux futur. Un taux fixe prédéterminé est échangé contre un taux de référence, les deux étant appliqués au même principal et pour une période de temps donnée. Les paiements ont lieu à terme échu."
+  },
+  {
+    "id": "4.10",
+    "chapitre": "Les Marchés de Taux d'Intérêt",
+    "question": "Expliquez les implications des théories de la préférence pour la liquidité et des anticipations sur les taux forward et les taux spot futurs espérés.",
+    "reponse": "Selon la théorie des anticipations, les taux longs reflètent les anticipations de taux courts futurs. Selon la théorie de la préférence pour la liquidité, les taux longs sont supérieurs aux taux courts futurs espérés."
   }
 ]
