@@ -665,5 +665,170 @@
     "chapitre": "Les Marchés de Taux d'Intérêt",
     "question": "Vérifiez que DerivaGem fournit des prix en accord avec ceux de la section 4.6. Testez si DV01 est une bonne mesure de la variation de prix en cas de déplacement de la courbe des taux d'1 bp. Utilisez DV01 et Gamma pour prévoir l'effet d'un déplacement de 200 bp, à la hausse, de la courbe des taux. Estimez la convexité avec Gamma (indication : dans DerivaGem, DV01 est égal à \\(dB/dy\\), où \\(B\\) est le prix de l'obligation et \\(y\\) son taux actuariel en points de base, et Gamma est \\(d^2B/dy^2\\), où \\(y\\) est en pourcents).",
     "reponse": "Dans la feuille <em>Bond Price</em>, on fixe un principal de 100, une durée de vie de deux ans, un taux de coupon de 6 % avec paiement semestriel. La courbe de taux du tableau 4.2 est aussi un input. Le prix de l'obligation est 98,38506. Le DV01 est \\(-0{,}018819\\).\nQuand la structure par termes des taux passe à 5,01 ; 5,81 ; 6,41 ; 6,81, le prix de l'obligation devient 98,36625. C'est une diminution de 0,01881 qui correspond au DV01. La duration de l'obligation satisfait l'équation :\n\\[\\frac{\\Delta B}{B} = -D \\Delta y\\]\nIci nous avons \\(\\Delta B = -0{,}01882\\), \\(B = 98{,}38506\\) et \\(\\Delta y = 0{,}0001\\), on en déduit que la duration est :\n\\[10\\,000 \\times \\frac{0{,}01882}{98{,}38506} = 1{,}91\\]\nc'est-à-dire 1,91 année.\nUn accroissement des taux de 2 % réduit le prix de l'obligation de 3,691 à 94,694. Le gamma est donc égal à 0,036931. L'effet prédit par le DV01 est \\(200 \\times (-0{,}01881) = -3{,}7638\\). De l'équation (4.18), la correction de convexité est donc :\n\\[0{,}5 \\times 0{,}036931 \\times 2^2 = 0{,}0739\\]\nLe changement de prix estimé en utilisant DV01 et gamma est alors :\n\\[-3{,}7638 + 0{,}0739 = 3{,}690\\]\nrésultat très proche du changement observé.\nLe gamma est 0,036931 par dix millième, ce qui donne 369,31 par unité. La convexité est le gamma divisé par le prix de l'obligation, ce qui donne \\(369{,}31 / 98{,}38506 = 3{,}75\\)."
+  },
+  {
+    "id": "5.11",
+    "chapitre": "Prix Forward/Futures",
+    "question": "Quelle est la différence entre un prix forward et la valeur d'un contrat forward ?",
+    "reponse": "Le <strong>prix forward</strong> est le prix de livraison qui rendrait la valeur du contrat forward nulle aujourd'hui. Il vaut \\(F_0 = S_0 e^{rT}\\) (sans revenu intermédiaire).\n\nLa <strong>valeur du contrat forward</strong> est la valeur actuelle de la position. Pour une position longue initiée au prix de livraison \\(K\\) :\n\\[f = (F_0 - K)e^{-rT}\\]\nÀ l'initiation, \\(K = F_0\\) donc \\(f = 0\\). Par la suite, \\(f\\) fluctue avec le prix forward."
+  },
+  {
+    "id": "5.12",
+    "chapitre": "Prix Forward/Futures",
+    "question": "Vous prenez une position longue sur un forward 6 mois portant sur une action ND quand l'action cote 30 €, et le taux sans risque continu est 5 % par an. Quel est le prix forward ?",
+    "reponse": "L'action ne verse pas de dividende (ND), donc :\n\\[F_0 = S_0 \\, e^{rT} = 30 \\times e^{0{,}05 \\times 0{,}5} = 30 \\times e^{0{,}025} = 30{,}76\\,€\\]"
+  },
+  {
+    "id": "5.13",
+    "chapitre": "Prix Forward/Futures",
+    "question": "Un indice vaut aujourd'hui 350. Le taux sans risque est 4 % et le rendement en dividende 3 %. Quel est le prix futures théorique pour \\(T = 4\\) mois ?",
+    "reponse": "\\[F_0 = S_0 \\, e^{(r-q)T} = 350 \\times e^{(0{,}04 - 0{,}03) \\times 4/12} = 350 \\times e^{0{,}00333} = 351{,}17\\]"
+  },
+  {
+    "id": "5.14",
+    "chapitre": "Prix Forward/Futures",
+    "question": "Expliquez clairement pourquoi le prix futures d'un contrat sur l'or peut être déduit du prix spot (et d'autres variables) alors qu'une telle relation ne peut être établie pour le cuivre.",
+    "reponse": "L'or est un <strong>actif d'investissement</strong> : il est détenu par un nombre significatif d'investisseurs à des fins d'investissement. Si \\(F_0 > S_0 e^{(r+u)T}\\), les investisseurs vendent l'or spot et achètent le futures (arbitrage). Si \\(F_0 < S_0 e^{(r+u)T}\\), ils font l'inverse. Ces deux arguments d'arbitrage fixent exactement \\(F_0 = S_0 e^{(r+u)T}\\).\n\nLe cuivre est un <strong>actif de consommation</strong>. L'argument d'arbitrage fonctionne dans un sens (si \\(F_0 > S_0 e^{(r+u)T}\\), on peut acheter le cuivre spot et vendre le futures). Mais si \\(F_0 < S_0 e^{(r+u)T}\\), les détenteurs de cuivre ne vendront pas leur stock pour acheter le futures car ils ont besoin du cuivre physique pour leur production. On ne peut donc qu'établir une borne supérieure : \\(F_0 \\leq S_0 e^{(r+u)T}\\)."
+  },
+  {
+    "id": "5.15",
+    "chapitre": "Prix Forward/Futures",
+    "question": "Expliquez pourquoi une devise étrangère peut être traitée comme un actif procurant un taux de revenu connu.",
+    "reponse": "Détenir une devise étrangère permet de la placer au taux sans risque étranger \\(r_f\\). Ce placement génère un rendement continu en devise étrangère, exactement comme un indice d'actions qui verse un rendement en dividende continu \\(q\\).\n\nOn peut donc appliquer la formule \\(F_0 = S_0 e^{(r - r_f)T}\\), qui est la parité couverte des taux d'intérêt. Le taux \\(r_f\\) joue le rôle du taux de rendement continu \\(q\\) dans la formule générale \\(F_0 = S_0 e^{(r-q)T}\\)."
+  },
+  {
+    "id": "5.16",
+    "chapitre": "Prix Forward/Futures",
+    "question": "Le prix futures d'un contrat sur indice est-il plus élevé ou plus faible que la valeur espérée de l'indice à l'échéance ? Justifiez votre réponse.",
+    "reponse": "Le prix futures est en général <strong>inférieur</strong> à la valeur espérée de l'indice à l'échéance.\n\nEn effet, un indice boursier a un risque systématique positif (bêta > 0), donc le taux de rendement espéré \\(k\\) de l'indice est supérieur au taux sans risque \\(r\\). Or :\n\\[F_0 = E(S_T) \\, e^{(r-k)T}\\]\nComme \\(k > r\\), on a \\(r - k < 0\\), donc \\(F_0 < E(S_T)\\).\n\nCela signifie que le prix futures est inférieur au prix spot futur espéré, ce qui est cohérent avec la théorie de Keynes et Hicks (<em>normal backwardation</em>) lorsque les hedgers sont majoritairement en position courte."
+  },
+  {
+    "id": "5.17",
+    "chapitre": "Prix Forward/Futures",
+    "question": "Une position longue sur un forward à un an sur une action ND est prise quand l'action cote 40 € et le taux sans risque est de 5 % (en continu).\na. Quel est le prix forward et quelle est la valeur initiale du contrat ?\nb. Six mois plus tard, l'action cote 45 € et le taux sans risque est toujours 5 %. Quel est le prix forward et quelle est la valeur du contrat ?",
+    "reponse": "<strong>(a)</strong> Le prix forward à 1 an est :\n\\[F_0 = 40 \\times e^{0{,}05 \\times 1} = 42{,}05\\,€\\]\nLa valeur initiale du contrat est \\(f = 0\\) (par définition, le prix de livraison est fixé à \\(K = F_0 = 42{,}05\\)).\n\n<strong>(b)</strong> Six mois plus tard, le nouveau prix forward pour la maturité résiduelle de 6 mois est :\n\\[F_0 = 45 \\times e^{0{,}05 \\times 0{,}5} = 46{,}14\\,€\\]\nLa valeur du contrat (initié avec \\(K = 42{,}05\\)) est :\n\\[f = (46{,}14 - 42{,}05) \\times e^{-0{,}05 \\times 0{,}5} = 4{,}09 \\times 0{,}9753 = 3{,}99\\,€\\]"
+  },
+  {
+    "id": "5.18",
+    "chapitre": "Prix Forward/Futures",
+    "question": "Le taux sans risque est 7 % et le rendement en dividende d'un indice est 3,2 %. L'indice est à 150. Quel est le prix futures à 6 mois ?",
+    "reponse": "\\[F_0 = S_0 \\, e^{(r-q)T} = 150 \\times e^{(0{,}07 - 0{,}032) \\times 0{,}5} = 150 \\times e^{0{,}019} = 152{,}88\\]"
+  },
+  {
+    "id": "5.19",
+    "chapitre": "Prix Forward/Futures",
+    "question": "Le taux sans risque continu est 4 % et le rendement en dividende d'un indice varie pendant l'année. En février, mai, août et novembre, des dividendes sont payés en taux annuel de 5 %. Dans les autres mois, le dividende est payé au taux de 2 %. Le 31 juillet, l'indice vaut 1 300. Quel est, à cette date, le prix futures d'un contrat ayant comme échéance le 31 décembre de la même année ?",
+    "reponse": "Du 31 juillet au 31 décembre = 5 mois. Les mois concernés sont août, septembre, octobre, novembre, décembre.\n\nLe rendement en dividende moyen sur cette période est :\n- Août et novembre : taux de 5 % → 2 mois\n- Septembre, octobre, décembre : taux de 2 % → 3 mois\n\n\\[q_{moy} = \\frac{2 \\times 0{,}05 + 3 \\times 0{,}02}{5} = \\frac{0{,}10 + 0{,}06}{5} = 0{,}032 = 3{,}2\\%\\]\n\n\\[F_0 = 1\\,300 \\times e^{(0{,}04 - 0{,}032) \\times 5/12} = 1\\,300 \\times e^{0{,}00333} = 1\\,304{,}34\\]"
+  },
+  {
+    "id": "5.20",
+    "chapitre": "Prix Forward/Futures",
+    "question": "Le taux sans risque continu est 6 % et le rendement en dividende est 4 %. L'indice vaut 400 et le prix futures à 4 mois est 405. Quelles sont les opportunités d'arbitrage ?",
+    "reponse": "Le prix futures théorique est :\n\\[F_0^{\\text{théo}} = 400 \\times e^{(0{,}06 - 0{,}04) \\times 4/12} = 400 \\times e^{0{,}00667} = 402{,}67\\]\n\nLe prix futures observé (405) est <strong>supérieur</strong> au prix théorique (402,67). Le futures est surévalué.\n\n<strong>Stratégie d'arbitrage :</strong>\n1. Acheter les actions composant l'indice pour 400\n2. Vendre le contrat futures à 405\n\nÀ l'échéance, on livre les actions à 405. Le coût de portage net est \\((r - q)T = 0{,}667\\%\\), soit 2,67 sur 400. Le profit d'arbitrage est \\(405 - 402{,}67 = 2{,}33\\)."
+  },
+  {
+    "id": "5.21",
+    "chapitre": "Prix Forward/Futures",
+    "question": "Estimez la différence entre les taux d'intérêt à court terme au Japon et aux États-Unis le 21 mai 2020 en utilisant le tableau 5.4.",
+    "reponse": "D'après la parité couverte des taux d'intérêt \\(F_0 = S_0 e^{(r - r_f)T}\\), on peut estimer la différence de taux à partir des taux de change spot et forward.\n\nEn utilisant les données du tableau 5.4, le taux de change forward yen/dollar implique que la différence \\(r_{US} - r_{Japon}\\) est très faible (de l'ordre de quelques dizaines de points de base), les deux pays ayant des taux proches de zéro en mai 2020."
+  },
+  {
+    "id": "5.22",
+    "chapitre": "Prix Forward/Futures",
+    "question": "Les taux d'intérêt à deux mois en Suisse et en France sont respectivement 1 % et 2 %. Le taux de change franc suisse contre euro est 1,05 €/franc suisse. Le prix futures d'un contrat à deux mois est 1,05 €/franc suisse. Quelles sont les opportunités d'arbitrage ?",
+    "reponse": "Le taux de change forward théorique est :\n\\[F_0 = S_0 \\, e^{(r_{EUR} - r_{CHF})T} = 1{,}05 \\times e^{(0{,}02 - 0{,}01) \\times 2/12} = 1{,}05 \\times e^{0{,}001667} = 1{,}05175\\]Le prix futures observé (1,05) est <strong>inférieur</strong> au prix théorique (1,05175). Le franc suisse est sous-évalué sur le futures.\n\n<strong>Stratégie d'arbitrage :</strong>\n1. Emprunter des euros au taux de 2 %\n2. Convertir en francs suisses au taux spot de 1,05 €/CHF\n3. Placer les francs suisses au taux de 1 %\n4. Prendre une position longue sur le futures (acheter des euros / vendre des CHF à 1,05 €/CHF)\n\nÀ l'échéance, on convertit les CHF en euros via le futures et on rembourse l'emprunt. Le profit provient de l'écart entre le forward théorique et le forward observé."
+  },
+  {
+    "id": "5.23",
+    "chapitre": "Prix Forward/Futures",
+    "question": "L'argent vaut 25 $ l'once. Les coûts de stockage sont de 0,24 $ par an, payables trimestriellement en début de période. Si le taux sans risque continu est de 5 %, quel est le prix futures d'un contrat à 9 mois ?",
+    "reponse": "Les coûts de stockage trimestriels sont \\(0{,}24 / 4 = 0{,}06\\) $ payés en début de trimestre.\n\nLa valeur actuelle des coûts de stockage sur 9 mois (3 paiements à \\(t = 0\\), \\(t = 3\\) mois et \\(t = 6\\) mois) :\n\\[I = 0{,}06 + 0{,}06 \\times e^{-0{,}05 \\times 0{,}25} + 0{,}06 \\times e^{-0{,}05 \\times 0{,}5}\\]\n\\[I = 0{,}06 + 0{,}06 \\times 0{,}9876 + 0{,}06 \\times 0{,}9753 = 0{,}06 + 0{,}05925 + 0{,}05852 = 0{,}17777\\]\n\nLe prix futures est :\n\\[F_0 = (S_0 + I) \\, e^{rT} = (25 + 0{,}17777) \\times e^{0{,}05 \\times 0{,}75} = 25{,}178 \\times 1{,}0382 = 26{,}14\\,\\$\\]"
+  },
+  {
+    "id": "5.24",
+    "chapitre": "Prix Forward/Futures",
+    "question": "Soient \\(F_1\\) et \\(F_2\\) les prix futures de deux contrats sur la même matière première et d'échéances \\(T_1\\) et \\(T_2\\) où \\(T_2 > T_1\\). Montrez que :\n\\[F_2 \\leqslant F_1 \\, e^{r(T_2 - T_1)}\\]\noù \\(r\\) est le taux sans risque. On suppose que les coûts de stockage sont nuls et qu'un prix futures est assimilable à un prix forward.",
+    "reponse": "Supposons par l'absurde que \\(F_2 > F_1 e^{r(T_2 - T_1)}\\).\n\n<strong>Stratégie d'arbitrage :</strong>\n1. Prendre une position longue sur le contrat d'échéance \\(T_1\\) (prix \\(F_1\\))\n2. Prendre une position courte sur le contrat d'échéance \\(T_2\\) (prix \\(F_2\\))\n\nÀ la date \\(T_1\\) : on prend livraison de la matière première en payant \\(F_1\\), puis on la stocke (coût nul par hypothèse) jusqu'à \\(T_2\\). Le coût de financement est \\(F_1 e^{r(T_2 - T_1)}\\).\n\nÀ la date \\(T_2\\) : on livre la matière première et on reçoit \\(F_2\\).\n\nLe profit est \\(F_2 - F_1 e^{r(T_2 - T_1)} > 0\\), ce qui constitue un arbitrage.\n\nDonc nécessairement \\(F_2 \\leqslant F_1 e^{r(T_2 - T_1)}\\).\n\n<strong>Note :</strong> l'inégalité stricte peut tenir pour un actif de consommation en raison du rendement d'opportunité. Pour un actif d'investissement sans coûts de stockage, on aurait l'égalité.",
+    "demonstration": "<strong>Raisonnement par l'absurde :</strong>\n\nSupposons \\(F_2 > F_1 e^{r(T_2 - T_1)}\\).\n\n<strong>Étape 1 — Construction de la stratégie :</strong>\n- En \\(t = 0\\) : position longue futures échéance \\(T_1\\) au prix \\(F_1\\), position courte futures échéance \\(T_2\\) au prix \\(F_2\\). Coût initial = 0.\n\n<strong>Étape 2 — En \\(T_1\\) :</strong>\n- On prend livraison : on paie \\(F_1\\)\n- On emprunte \\(F_1\\) au taux \\(r\\) jusqu'à \\(T_2\\)\n- On stocke la matière première (coût nul)\n\n<strong>Étape 3 — En \\(T_2\\) :</strong>\n- On livre sur le contrat court : on reçoit \\(F_2\\)\n- On rembourse l'emprunt : \\(F_1 e^{r(T_2 - T_1)}\\)\n- Profit = \\(F_2 - F_1 e^{r(T_2 - T_1)} > 0\\)\n\nC'est un profit sans risque et sans investissement initial → <strong>arbitrage</strong>.\n\nConclusion : \\(F_2 \\leqslant F_1 e^{r(T_2 - T_1)}\\).\n\n<strong>Remarque :</strong> L'argument inverse (si \\(F_2 < F_1 e^{r(T_2 - T_1)}\\)) nécessiterait de vendre à découvert la matière première en \\(T_1\\), ce qui n'est pas toujours possible pour un actif de consommation. D'où l'inégalité (et non l'égalité)."
+  },
+  {
+    "id": "5.25",
+    "chapitre": "Prix Forward/Futures",
+    "question": "Quand un décaissement futur, en devise étrangère, est couvert par un contrat forward, il n'y a plus de risque de change. Quand la couverture est faite avec un contrat futures, il reste un risque résiduel du fait du marking to market. Quelle est la nature de ce risque ?\nEn particulier, est-il préférable pour une entreprise de choisir un contrat futures quand :\na. la valeur de la devise étrangère chute rapidement pendant la vie du contrat ?\nb. la valeur de la devise étrangère monte rapidement pendant la vie du contrat ?\nc. la valeur de la devise étrangère monte d'abord, puis revient à sa valeur initiale ?\nd. la valeur de la devise étrangère chute d'abord, puis revient à sa valeur initiale ?",
+    "reponse": "Le risque résiduel provient de la <strong>compensation journalière</strong> (<em>marking to market</em>) des contrats futures. Les gains et pertes quotidiens sont réglés en cash, ce qui affecte la trésorerie et les intérêts perçus/payés.\n\n<strong>(a) Devise chute rapidement :</strong> Le futures est <strong>préférable</strong>. La position longue sur le futures génère des pertes journalières, mais ces pertes sont compensées par le fait que la devise est moins chère. Les gains intermédiaires (intérêts sur les marges reçues en cas de position courte) rendent le futures avantageux.\n\n<strong>(b) Devise monte rapidement :</strong> Le futures est <strong>moins favorable</strong>. Les appels de marge nécessitent un financement qui coûte des intérêts.\n\n<strong>(c) Monte puis revient :</strong> Le futures est <strong>moins favorable</strong>. L'entreprise reçoit d'abord des gains (intérêts faibles car réinvestis à court terme) puis subit des pertes qu'il faut financer.\n\n<strong>(d) Chute puis revient :</strong> Le futures est <strong>préférable</strong>. L'entreprise paie d'abord les marges (coût de financement limité) puis reçoit des gains qu'elle peut placer."
+  },
+  {
+    "id": "5.26",
+    "chapitre": "Prix Forward/Futures",
+    "question": "On dit parfois qu'un taux de change forward est un estimateur sans biais du taux de change au comptant à l'échéance du contrat. Dans quelles circonstances cette affirmation est-elle justifiée ?",
+    "reponse": "Le taux de change forward est un estimateur sans biais du taux spot futur si et seulement si \\(F_0 = E(S_T)\\).\n\nOr \\(F_0 = E(S_T) e^{(r-k)T}\\) où \\(k\\) est le rendement espéré de la devise. L'affirmation est justifiée quand \\(k = r\\), c'est-à-dire quand le <strong>risque systématique</strong> associé à la devise est nul (bêta nul par rapport au portefeuille de marché).\n\nSi la devise a un risque systématique positif, \\(k > r\\) et \\(F_0 < E(S_T)\\) : le forward sous-estime le futur spot. Inversement pour un risque systématique négatif."
+  },
+  {
+    "id": "5.27",
+    "chapitre": "Prix Forward/Futures",
+    "question": "Montrez que le taux de croissance du prix futures d'un contrat sur indice est égal à l'excès du taux de rentabilité de l'indice par rapport au taux sans risque. On supposera que le taux sans risque et le rendement en dividende sont constants.",
+    "reponse": "Le prix futures sur l'indice à la date \\(t\\) pour une échéance \\(T\\) est :\n\\[F_t = S_t \\, e^{(r-q)(T-t)}\\]\n\nLe taux de croissance du futures est :\n\\[\\frac{dF_t}{F_t} = \\frac{dS_t}{S_t} + (r - q) \\, dt - (r-q) \\, dt\\]\n\nEn fait, en dérivant \\(\\ln F_t = \\ln S_t + (r-q)(T-t)\\) :\n\\[\\frac{dF_t}{F_t} = \\frac{dS_t}{S_t} - (r-q)dt\\]\n\nOr le rendement total de l'indice est \\(dS_t/S_t + q \\, dt\\), et en espérance il vaut \\(\\mu \\, dt\\) où \\(\\mu\\) est le rendement espéré de l'indice.\n\nDonc :\n\\[E\\left(\\frac{dF_t}{F_t}\\right) = (\\mu - q)dt - (r-q)dt = (\\mu - r)dt\\]\n\nLe taux de croissance espéré du prix futures est \\(\\mu - r\\), soit l'excès de rendement de l'indice par rapport au taux sans risque.",
+    "demonstration": "<strong>1. Expression du prix futures</strong>\n\\[F_t = S_t \\, e^{(r-q)(T-t)}\\]\n\n<strong>2. Différentiation</strong>\nOn prend le logarithme :\n\\[\\ln F_t = \\ln S_t + (r-q)(T-t)\\]\nEn différentiant par rapport à \\(t\\) :\n\\[\\frac{dF_t}{F_t} = \\frac{dS_t}{S_t} - (r-q)dt\\]\n\n<strong>3. Rendement de l'indice</strong>\nLe rendement total de l'indice (appréciation + dividendes) est :\n\\[\\text{Rendement total} = \\frac{dS_t}{S_t} + q \\, dt\\]\nEn espérance : \\(E(dS_t/S_t) = (\\mu - q)dt\\)\n\n<strong>4. Conclusion</strong>\n\\[E\\left(\\frac{dF_t}{F_t}\\right) = (\\mu - q)dt - (r-q)dt = (\\mu - r)dt\\]\n\nLe taux de croissance espéré du futures est \\(\\mu - r\\), l'excès de rendement de l'indice."
+  },
+  {
+    "id": "5.28",
+    "chapitre": "Prix Forward/Futures",
+    "question": "Expliquez en détail ce qu'on entend par prix futur attendu pour une matière première donnée, à une date future fixée. Supposez que le prix futures du pétrole (Crude Oil) décroît avec la maturité au rythme de 2 % par an. Supposez de plus que les spéculateurs soient plutôt en position courte sur le contrat futures Crude Oil et les hedgers en position longue. Quelles sont les implications des arguments de Keynes et Hicks sur le prix futur attendu du pétrole ?",
+    "reponse": "Le <strong>prix futur attendu</strong> \\(E(S_T)\\) est l'espérance du prix spot à la date \\(T\\), sous la probabilité historique.\n\nSelon Keynes et Hicks, si les spéculateurs sont en position courte et les hedgers en position longue, les spéculateurs exigent une compensation pour le risque qu'ils portent. Le prix futures doit donc être <strong>supérieur</strong> au prix spot futur espéré :\n\\[F_0 > E(S_T)\\]\n\nIci le prix futures décroît avec la maturité (structure en <em>backwardation</em>), ce qui signifie que les prix futures courts sont supérieurs aux prix futures longs. Combiné au fait que \\(F_0 > E(S_T)\\), cela implique que le marché anticipe une <strong>baisse encore plus forte</strong> du prix du pétrole que ce que suggère la courbe des futures."
+  },
+  {
+    "id": "5.29",
+    "chapitre": "Prix Forward/Futures",
+    "question": "Le Value Line Index reflète les variations de valeur d'un portefeuille équi-pondéré de 1 600 actions. Jusqu'au 9 mars 1988, la variation journalière de l'indice était calculée comme une moyenne géométrique des variations des titres composant l'indice. Dans quels cas l'équation (5.8) établit-elle une relation correcte entre le prix futures et la valeur au comptant ? Si ce n'est pas le cas, cela entraîne-t-il une sous ou une surévaluation ?",
+    "reponse": "L'équation (5.8) \\(F_0 = S_0 e^{(r-q)T}\\) suppose que l'indice est calculé comme une somme pondérée des prix (ou une moyenne arithmétique des rendements).\n\nLa moyenne géométrique des rendements est toujours <strong>inférieure ou égale</strong> à la moyenne arithmétique (inégalité arithmético-géométrique). Par conséquent, l'indice Value Line (calculé en moyenne géométrique) croît moins vite qu'un portefeuille équi-pondéré répliqué physiquement.\n\nL'équation (5.8) <strong>surévalue</strong> donc le prix futures de cet indice. Le prix futures théorique basé sur cette formule est trop élevé par rapport au prix correct, ce qui entraîne une surévaluation du futures."
+  },
+  {
+    "id": "5.30",
+    "chapitre": "Prix Forward/Futures",
+    "question": "Une entreprise américaine cherche à couvrir son risque de change par rapport au dollar australien en utilisant les contrats cotés au CME. On note \\(r\\) le taux sans risque américain pour toutes les maturités et \\(r_f\\) le taux australien correspondant. On suppose que ces taux sont constants et que l'entreprise utilise à la date \\(t\\) des contrats d'échéance \\(T > t\\).\na. Montrez que le ratio de couverture optimal est égal à \\(e^{(r_f - r)(T - t)}\\), en ignorant la compensation journalière.\nb. Montrez que, si \\(T - t\\) est de l'ordre de la journée, le ratio optimal est très proche de \\(S_0/F_0\\).\nc. Montrez que l'entreprise peut utiliser la compensation journalière pour ajuster dans le temps son ratio de couverture, de façon qu'il soit toujours égal au rapport du prix spot et du prix futures, même quand la durée de couverture est supérieure à une journée.",
+    "reponse": "<strong>(a)</strong> Le prix futures est \\(F_t = S_t e^{(r - r_f)(T-t)}\\). Le ratio de couverture optimal minimise la variance de \\(\\Delta S - h \\Delta F\\). Comme \\(F\\) et \\(S\\) sont parfaitement corrélés (même sous-jacent), le ratio optimal est :\n\\[h^* = \\frac{\\sigma_S}{\\sigma_F} = \\frac{\\partial S / S}{\\partial F / F} \\cdot \\frac{F}{S}\\]\nOr \\(\\partial F / \\partial S = e^{(r-r_f)(T-t)}\\), donc \\(h^* = \\frac{S}{F} \\cdot \\frac{F}{S} \\cdot \\frac{1}{e^{(r-r_f)(T-t)}} = e^{(r_f - r)(T-t)}\\).\n\n<strong>(b)</strong> Si \\(T - t \\approx 1/365\\), alors \\(e^{(r_f - r)(T-t)} \\approx 1 + (r_f - r)/365 \\approx 1\\). Or \\(S_0/F_0 = e^{-(r-r_f)(T-t)} = e^{(r_f - r)(T-t)}\\), qui est aussi très proche de 1 pour une journée. Les deux expressions coïncident.\n\n<strong>(c)</strong> Chaque jour, grâce au marking to market, l'entreprise peut ajuster le nombre de contrats. En utilisant \\(h = S_t/F_t\\) à chaque date \\(t\\), elle maintient le ratio optimal en continu, car \\(S_t/F_t = e^{(r_f - r)(T-t)}\\) est exactement le ratio optimal pour la maturité résiduelle \\(T - t\\).",
+    "demonstration": "<strong>Partie (a) — Ratio de couverture optimal</strong>\n\nOn a \\(F_t = S_t e^{(r-r_f)(T-t)}\\).\n\nPour une variation infinitésimale :\n\\[dF = e^{(r-r_f)(T-t)} dS + S \\cdot (-(r-r_f)) e^{(r-r_f)(T-t)} dt\\]\n\nEn ignorant le terme en \\(dt\\) (sur un petit intervalle) :\n\\[dF \\approx e^{(r-r_f)(T-t)} dS\\]\n\nDonc :\n\\[dS = e^{(r_f - r)(T-t)} dF\\]\n\nPour couvrir \\(dS\\) par \\(h \\, dF\\), il faut \\(h^* = e^{(r_f - r)(T-t)}\\).\n\n<strong>Partie (b)</strong>\n\\[h^* = e^{(r_f - r)(T-t)}\\]\nOr \\(S_0/F_0 = S_0 / (S_0 e^{(r-r_f)(T-t)}) = e^{-(r-r_f)(T-t)} = e^{(r_f-r)(T-t)} = h^*\\)\n\nPour \\(T - t\\) de l'ordre d'un jour, les deux sont quasi identiques.\n\n<strong>Partie (c)</strong>\nÀ chaque date \\(t\\), le ratio optimal pour la maturité résiduelle est \\(e^{(r_f - r)(T-t)} = S_t/F_t\\). Grâce au marking to market, l'entreprise reçoit/paie les variations quotidiennes et peut réajuster sa position chaque jour pour maintenir \\(h = S_t/F_t\\)."
+  },
+  {
+    "id": "5.31",
+    "chapitre": "Prix Forward/Futures",
+    "question": "Quels sont les coûts de portage pour :\na. une action ne payant pas de dividende ?\nb. un indice d'actions ?\nc. une matière première qui supporte des coûts de stockage ?\nd. une devise étrangère ?",
+    "reponse": "<strong>(a) Action sans dividende :</strong> Le coût de portage est simplement le taux sans risque \\(r\\), car il n'y a pas de revenu intermédiaire ni de coût de stockage. \\(F_0 = S_0 e^{rT}\\).\n\n<strong>(b) Indice d'actions :</strong> Le coût de portage est \\(r - q\\), où \\(q\\) est le rendement en dividende continu. Les dividendes réduisent le coût de détention. \\(F_0 = S_0 e^{(r-q)T}\\).\n\n<strong>(c) Matière première avec coûts de stockage :</strong> Le coût de portage est \\(r + u\\), où \\(u\\) est le taux de coût de stockage (en proportion du prix). Les coûts de stockage s'ajoutent au coût de financement.\n\n<strong>(d) Devise étrangère :</strong> Le coût de portage est \\(r - r_f\\), où \\(r_f\\) est le taux sans risque étranger. Le taux étranger réduit le coût de détention (comme un rendement en dividende). \\(F_0 = S_0 e^{(r - r_f)T}\\)."
+  },
+  {
+    "id": "5.32",
+    "chapitre": "Prix Forward/Futures",
+    "question": "Le taux de change entre le franc suisse et le dollar US est de 1,0404 (dollar par franc suisse). Les taux d'intérêt aux États-Unis et en Suisse étaient respectivement de 0,25 % et 0 % par an en composition continue. Le taux de change forward 3 mois était de 1,0300 (dollar par franc suisse). Existe-t-il une stratégie d'arbitrage ? Quelle serait votre réponse si le taux de change était de 1,0500 ?",
+    "reponse": "Le taux forward théorique est :\n\\[F_0 = S_0 e^{(r_{US} - r_{CHF})T} = 1{,}0404 \\times e^{(0{,}0025 - 0) \\times 0{,}25} = 1{,}0404 \\times e^{0{,}000625} = 1{,}0411\\]\n\n<strong>Cas 1 : forward observé = 1,0300</strong>\nLe forward observé (1,0300) < forward théorique (1,0411). Le CHF est sous-évalué sur le forward.\n<strong>Arbitrage :</strong> Emprunter en USD à 0,25 %, convertir en CHF au spot (1,0404), placer les CHF à 0 %, et acheter le forward à 1,0300 (= vendre CHF à terme à 1,0300 $/CHF). Profit = écart entre 1,0411 et 1,0300.\n\n<strong>Cas 2 : forward observé = 1,0500</strong>\nLe forward observé (1,0500) > forward théorique (1,0411). Le CHF est surévalué sur le forward.\n<strong>Arbitrage :</strong> Emprunter en CHF à 0 %, convertir en USD au spot, placer les USD à 0,25 %, et vendre le forward à 1,0500. Profit = écart entre 1,0500 et 1,0411."
+  },
+  {
+    "id": "5.33",
+    "chapitre": "Prix Forward/Futures",
+    "question": "Un indice est à 1 200. Le taux sans risque à 3 mois est de 3 % par an et le taux de dividende pour les trois prochains mois est de 1,2 % par an. Le taux sans risque à 6 mois est de 3,5 % et le taux de dividende pour les six prochains mois est de 1 %. Estimez les prix futures des contrats sur l'indice pour les échéances 3 mois et 6 mois. Tous les taux sont d'intérêt et de dividende sont des taux continus.",
+    "reponse": "<strong>Futures à 3 mois :</strong>\n\\[F_0 = 1\\,200 \\times e^{(0{,}03 - 0{,}012) \\times 0{,}25} = 1\\,200 \\times e^{0{,}0045} = 1\\,205{,}41\\]\n\n<strong>Futures à 6 mois :</strong>\n\\[F_0 = 1\\,200 \\times e^{(0{,}035 - 0{,}01) \\times 0{,}5} = 1\\,200 \\times e^{0{,}0125} = 1\\,215{,}09\\]"
+  },
+  {
+    "id": "5.34",
+    "chapitre": "Prix Forward/Futures",
+    "question": "Le taux de change dollar US/euro est de 1,2000 $/€. Le taux de change forward à 6 mois est de 1,1950 $/€. Le taux US à 6 mois est de 1 % par an en composition continue. Quel est le taux euro pour ce même horizon de 6 mois ?",
+    "reponse": "De la parité couverte des taux d'intérêt :\n\\[F_0 = S_0 \\, e^{(r_{US} - r_{EUR}) \\times T}\\]\n\nDonc :\n\\[1{,}1950 = 1{,}2000 \\times e^{(0{,}01 - r_{EUR}) \\times 0{,}5}\\]\n\n\\[\\frac{1{,}1950}{1{,}2000} = e^{(0{,}01 - r_{EUR}) \\times 0{,}5}\\]\n\n\\[\\ln(0{,}99583) = (0{,}01 - r_{EUR}) \\times 0{,}5\\]\n\n\\[-0{,}004175 = (0{,}01 - r_{EUR}) \\times 0{,}5\\]\n\n\\[-0{,}00835 = 0{,}01 - r_{EUR}\\]\n\n\\[r_{EUR} = 0{,}01835 = 1{,}835\\%\\]\n\nLe taux euro à 6 mois est d'environ <strong>1,84 %</strong> par an en composition continue."
+  },
+  {
+    "id": "5.35",
+    "chapitre": "Prix Forward/Futures",
+    "question": "Le prix spot du baril de pétrole est de 50 $ et le coût de stockage est de 3 $ pour un an, payable en fin d'année. Le taux sans risque continu est de 5 % par an en composition continue. Donnez une borne supérieure pour le prix futures du pétrole à un an.",
+    "reponse": "Le pétrole est un actif de consommation. On ne peut qu'établir une borne supérieure pour le prix futures.\n\nLa valeur actuelle du coût de stockage est :\n\\[U = 3 \\times e^{-0{,}05 \\times 1} = 3 \\times 0{,}9512 = 2{,}854\\]\n\nLa borne supérieure est :\n\\[F_0 \\leq (S_0 + U) \\, e^{rT} = (50 + 2{,}854) \\times e^{0{,}05} = 52{,}854 \\times 1{,}05127 = 55{,}56\\,\\$\\]\n\nLe prix futures du pétrole à un an ne peut pas dépasser <strong>55,56 $</strong>. S'il dépassait cette borne, un arbitragiste pourrait acheter le pétrole spot, le stocker et vendre le futures pour réaliser un profit sans risque."
+  },
+  {
+    "id": "5.36",
+    "chapitre": "Prix Forward/Futures",
+    "question": "Une firme ne sait pas exactement quand elle paiera ou recevra une somme en devises. Elle cherche à négocier avec sa banque un contrat forward qui spécifie une période de livraison (plutôt qu'une date) : l'entreprise se réserve le choix de la date exacte de livraison. En vous mettant à la place du banquier, comment feriez-vous pour évaluer le produit financier demandé par l'entreprise ?",
+    "reponse": "Le banquier doit évaluer le contrat en tenant compte du fait que l'entreprise choisira la date de livraison la plus favorable pour elle.\n\nSi la devise étrangère est en <em>contango</em> (\\(r > r_f\\), forward croissant avec la maturité) :\n- Un <strong>acheteur</strong> de devise choisira de prendre livraison au <strong>début</strong> de la période (forward le plus bas)\n- Un <strong>vendeur</strong> de devise choisira de livrer à la <strong>fin</strong> de la période (forward le plus élevé)\n\nSi la devise est en <em>backwardation</em> (\\(r < r_f\\), forward décroissant) : les choix sont inversés.\n\nLe banquier doit donc pricer le contrat au forward le plus défavorable pour lui (le plus favorable pour le client), ce qui correspond au pire cas sur la période de livraison. En pratique, il applique le prix forward correspondant à la date que le client choisira rationnellement."
+  },
+  {
+    "id": "5.37",
+    "chapitre": "Prix Forward/Futures",
+    "question": "Une entreprise négocie un contrat forward avec une banque pour vendre une devise au prix \\(K_1\\) à la date \\(T_1\\). Le taux de change en \\(T_1\\) est égal à \\(S_1 > K_1\\). L'entreprise demande à la banque de prolonger la position jusqu'à une date \\(T_2 > T_1\\). La banque donne son accord en spécifiant un nouveau taux de change \\(K_2\\). Comment \\(K_2\\) est-il calculé ?",
+    "reponse": "En \\(T_1\\), le contrat initial a une valeur pour la banque de \\(S_1 - K_1 > 0\\) (la banque achète la devise à \\(K_1\\) alors qu'elle vaut \\(S_1\\)).\n\nPour prolonger jusqu'à \\(T_2\\), la banque crée un nouveau contrat forward. Le nouveau prix de livraison \\(K_2\\) doit incorporer :\n1. Le prix forward de \\(T_1\\) à \\(T_2\\) : \\(F = S_1 e^{(r - r_f)(T_2 - T_1)}\\)\n2. La compensation de la valeur du contrat initial : la banque a gagné \\(S_1 - K_1\\) qu'elle peut réinvestir\n\nLa valeur \\(S_1 - K_1\\) capitalisée jusqu'à \\(T_2\\) vaut \\((S_1 - K_1)e^{r(T_2 - T_1)}\\).\n\nLe nouveau prix de livraison est :\n\\[K_2 = F - (S_1 - K_1)e^{r(T_2 - T_1)} = S_1 e^{(r-r_f)(T_2-T_1)} - (S_1 - K_1)e^{r(T_2-T_1)}\\]\n\nSimplification :\n\\[K_2 = K_1 e^{r(T_2 - T_1)} - S_1(e^{r(T_2-T_1)} - e^{(r-r_f)(T_2-T_1)})\\]\n\nLe principe est que la valeur nette du nouveau contrat en \\(T_1\\) doit compenser exactement la perte de l'entreprise sur le contrat initial."
   }
 ]

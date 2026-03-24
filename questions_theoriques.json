@@ -233,5 +233,65 @@
     "chapitre": "Les Marchés de Taux d'Intérêt",
     "question": "Expliquez les implications des théories de la préférence pour la liquidité et des anticipations sur les taux forward et les taux spot futurs espérés.",
     "reponse": "Selon la théorie des anticipations, les taux longs reflètent les anticipations de taux courts futurs. Selon la théorie de la préférence pour la liquidité, les taux longs sont supérieurs aux taux courts futurs espérés."
+  },
+  {
+    "id": "5.1",
+    "chapitre": "Prix Forward/Futures",
+    "question": "Quelle est la différence entre un actif d'investissement et un actif de consommation ?",
+    "reponse": "Un <strong>actif d'investissement</strong> est un actif détenu par un nombre significatif d'investisseurs à des fins d'investissement (exemples : actions, obligations, or). Un <strong>actif de consommation</strong> est un actif détenu principalement à des fins de consommation ou d'utilisation dans un processus de production (exemples : pétrole, cuivre, blé).\n\nLa distinction est importante car les arguments d'arbitrage permettent de déterminer exactement le prix forward d'un actif d'investissement à partir du prix spot, mais seulement de fixer une borne supérieure pour le prix forward d'un actif de consommation."
+  },
+  {
+    "id": "5.2",
+    "chapitre": "Prix Forward/Futures",
+    "question": "Expliquez le mécanisme de vente à découvert d'une action.",
+    "reponse": "La vente à découvert consiste à vendre des titres que l'on ne possède pas. Le vendeur emprunte les titres auprès d'un broker (qui les détient pour le compte d'un client) et les vend sur le marché. Le vendeur doit ensuite racheter les titres pour les restituer au prêteur. Pendant la durée de l'emprunt, le vendeur à découvert doit verser au prêteur tout dividende ou revenu versé sur les titres."
+  },
+  {
+    "id": "5.3",
+    "chapitre": "Prix Forward/Futures",
+    "question": "Quelle est la formule du prix forward d'un contrat sur un actif d'investissement qui ne paie pas de cash-flows intermédiaires ?",
+    "reponse": "\\[F_0 = S_0 \\, e^{rT}\\]\noù \\(S_0\\) est le prix spot actuel, \\(r\\) le taux sans risque en composition continue et \\(T\\) la maturité du contrat forward."
+  },
+  {
+    "id": "5.4",
+    "chapitre": "Prix Forward/Futures",
+    "question": "Quelle est la formule du prix forward d'un contrat sur un actif d'investissement qui paie un revenu intermédiaire connu ?",
+    "reponse": "\\[F_0 = (S_0 - I) \\, e^{rT}\\]\noù \\(I\\) est la valeur actuelle des revenus intermédiaires versés pendant la durée du contrat.\n\nSi le revenu est exprimé comme un taux de rendement continu \\(q\\) :\n\\[F_0 = S_0 \\, e^{(r-q)T}\\]"
+  },
+  {
+    "id": "5.5",
+    "chapitre": "Prix Forward/Futures",
+    "question": "Quelle est la différence entre un revenu payé en continu à taux constant et un montant de revenu intermédiaire connu ?",
+    "reponse": "Un <strong>revenu payé en continu à taux constant</strong> (taux \\(q\\)) signifie que le revenu est proportionnel au prix de l'actif et versé de manière continue : la formule du forward est \\(F_0 = S_0 e^{(r-q)T}\\).\n\nUn <strong>montant de revenu intermédiaire connu</strong> est un flux en valeur absolue (montant fixe) versé à des dates précises : la formule est \\(F_0 = (S_0 - I)e^{rT}\\), où \\(I\\) est la valeur actuelle de ces revenus.\n\nExemple : un dividende en pourcentage du cours est un taux continu ; un coupon fixe d'obligation est un revenu en montant connu."
+  },
+  {
+    "id": "5.6",
+    "chapitre": "Prix Forward/Futures",
+    "question": "Qu'entend-on par l'expression « arbitrage sur indice » ?",
+    "reponse": "L'arbitrage sur indice (<em>index arbitrage</em>) consiste à exploiter les écarts entre le prix futures observé sur un indice boursier et sa valeur théorique \\(F_0 = S_0 e^{(r-q)T}\\).\n\nSi \\(F_0 > S_0 e^{(r-q)T}\\), on achète les actions de l'indice et on vend le futures.\nSi \\(F_0 < S_0 e^{(r-q)T}\\), on vend à découvert les actions et on achète le futures.\n\nCes opérations sont souvent réalisées par des <em>program traders</em> qui exécutent simultanément un grand nombre d'ordres sur les actions composant l'indice."
+  },
+  {
+    "id": "5.7",
+    "chapitre": "Prix Forward/Futures",
+    "question": "Quelle est la formule d'évaluation d'un contrat forward, exprimée en fonction du prix forward ?",
+    "reponse": "La valeur d'une position longue sur un contrat forward est :\n\\[f = (F_0 - K) \\, e^{-rT}\\]\noù \\(F_0\\) est le prix forward actuel, \\(K\\) est le prix de livraison fixé à l'initiation du contrat, \\(r\\) est le taux sans risque et \\(T\\) le temps restant jusqu'à l'échéance.\n\nÀ l'initiation, \\(K = F_0\\) donc \\(f = 0\\). Par la suite, la valeur fluctue avec \\(F_0\\)."
+  },
+  {
+    "id": "5.8",
+    "chapitre": "Prix Forward/Futures",
+    "question": "Quelle est la formule d'évaluation d'un taux de change forward, exprimée en fonction du taux de change spot ?",
+    "reponse": "\\[F_0 = S_0 \\, e^{(r - r_f)T}\\]\noù \\(S_0\\) est le taux de change spot (unités de monnaie domestique par unité de devise étrangère), \\(r\\) est le taux sans risque domestique et \\(r_f\\) est le taux sans risque étranger, tous deux en composition continue.\n\nC'est la relation de <strong>parité couverte des taux d'intérêt</strong> (<em>covered interest rate parity</em>). La devise étrangère est traitée comme un actif procurant un rendement continu \\(r_f\\)."
+  },
+  {
+    "id": "5.9",
+    "chapitre": "Prix Forward/Futures",
+    "question": "Expliquez les expressions « rendement d'opportunité » et « coût de portage ». Quelle relation peut-on établir entre prix futures, prix spot, rendement d'opportunité et coût de portage ?",
+    "reponse": "Le <strong>coût de portage</strong> (<em>cost of carry</em>) mesure le coût de détention de l'actif : coût de financement (intérêts) plus coûts de stockage, moins les revenus perçus.\n\nLe <strong>rendement d'opportunité</strong> (<em>convenience yield</em>) \\(y\\) reflète les avantages non monétaires liés à la détention physique de l'actif (utile pour les actifs de consommation : garantie d'approvisionnement, etc.).\n\nLa relation générale est :\n\\[F_0 = S_0 \\, e^{(c - y)T}\\]\noù \\(c\\) est le coût de portage et \\(y\\) le rendement d'opportunité.\n\nPour un actif d'investissement, \\(y = 0\\) et on a \\(F_0 = S_0 e^{cT}\\)."
+  },
+  {
+    "id": "5.10",
+    "chapitre": "Prix Forward/Futures",
+    "question": "Dans quelles circonstances le prix futures est-il plus élevé que l'espérance du prix spot futur selon (a) Keynes et Hicks et (b) des considérations de risque systématique ?",
+    "reponse": "<strong>(a) Keynes et Hicks :</strong> Selon leur théorie, si les hedgers sont majoritairement en position courte (vendeurs) et les spéculateurs en position longue (acheteurs), le prix futures est inférieur à l'espérance du prix spot futur (<em>normal backwardation</em>). Inversement, si les hedgers sont majoritairement en position longue et les spéculateurs en position courte, le prix futures est supérieur à l'espérance du prix spot futur (<em>contango</em>).\n\n<strong>(b) Risque systématique :</strong> Le prix futures est supérieur à l'espérance du prix spot futur (\\(F_0 > E(S_T)\\)) quand le sous-jacent est négativement corrélé avec le marché (bêta négatif). Dans ce cas, le taux de rendement espéré \\(k\\) est inférieur au taux sans risque \\(r\\), ce qui implique \\(F_0 = E(S_T) e^{(r-k)T} > E(S_T)\\)."
   }
 ]
