@@ -54,6 +54,19 @@
       }
     ]
   },
+  "theorique-5.5": {
+    "easeFactor": 2.5,
+    "interval": 1,
+    "repetitions": 1,
+    "nextReview": "2026-03-25",
+    "lastRating": "good",
+    "history": [
+      {
+        "date": "2026-03-24",
+        "rating": "good"
+      }
+    ]
+  },
   "probleme-1.22": {
     "easeFactor": 2.8,
     "interval": 14,
@@ -899,7 +912,7 @@
         }
       }
     },
-    "lastModified": "2026-03-24T21:55:44.273Z"
+    "lastModified": "2026-03-24T21:56:53.078Z"
   },
   "probleme-1.14": {
     "easeFactor": 2.65,
