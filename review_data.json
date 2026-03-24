@@ -912,7 +912,7 @@
         }
       }
     },
-    "lastModified": "2026-03-24T21:56:53.078Z"
+    "lastModified": "2026-03-24T21:57:43.245Z"
   },
   "probleme-1.14": {
     "easeFactor": 2.65,
@@ -1151,6 +1151,19 @@
       {
         "date": "2026-03-18",
         "rating": "easy"
+      }
+    ]
+  },
+  "theorique-5.6": {
+    "easeFactor": 2.35,
+    "interval": 0,
+    "repetitions": 0,
+    "nextReview": "2026-03-24",
+    "lastRating": "hard",
+    "history": [
+      {
+        "date": "2026-03-24",
+        "rating": "hard"
       }
     ]
   },
