@@ -334,154 +334,6 @@
       }
     ]
   },
-  "probleme-1.11": {
-    "easeFactor": 2.65,
-    "interval": 10,
-    "repetitions": 3,
-    "nextReview": "2026-03-29",
-    "lastRating": "easy",
-    "history": [
-      {
-        "date": "2026-03-14",
-        "rating": "easy"
-      },
-      {
-        "date": "2026-03-18",
-        "rating": "easy"
-      }
-    ]
-  },
-  "theorique-5.2": {
-    "easeFactor": 2.5,
-    "interval": 1,
-    "repetitions": 1,
-    "nextReview": "2026-03-25",
-    "lastRating": "good",
-    "history": [
-      {
-        "date": "2026-03-24",
-        "rating": "good"
-      }
-    ]
-  },
-  "probleme-1.38": {
-    "easeFactor": 2.65,
-    "interval": 3,
-    "repetitions": 2,
-    "nextReview": "2026-03-19",
-    "lastRating": "easy",
-    "history": [
-      {
-        "date": "2026-03-14",
-        "rating": "good"
-      },
-      {
-        "date": "2026-03-16",
-        "rating": "easy"
-      }
-    ]
-  },
-  "probleme-1.39": {
-    "easeFactor": 2.8,
-    "interval": 14,
-    "repetitions": 2,
-    "nextReview": "2026-03-31",
-    "lastRating": "easy",
-    "history": [
-      {
-        "date": "2026-03-14",
-        "rating": "easy"
-      },
-      {
-        "date": "2026-03-18",
-        "rating": "easy"
-      }
-    ]
-  },
-  "probleme-1.27": {
-    "easeFactor": 2.8,
-    "interval": 14,
-    "repetitions": 2,
-    "nextReview": "2026-03-31",
-    "lastRating": "easy",
-    "history": [
-      {
-        "date": "2026-03-14",
-        "rating": "easy"
-      },
-      {
-        "date": "2026-03-18",
-        "rating": "easy"
-      }
-    ]
-  },
-  "theorique-1.10": {
-    "easeFactor": 2.8,
-    "interval": 14,
-    "repetitions": 2,
-    "nextReview": "2026-03-31",
-    "lastRating": "easy",
-    "history": [
-      {
-        "date": "2026-03-14",
-        "rating": "easy"
-      },
-      {
-        "date": "2026-03-18",
-        "rating": "easy"
-      }
-    ]
-  },
-  "theorique-2.5": {
-    "easeFactor": 2.65,
-    "interval": 10,
-    "repetitions": 3,
-    "nextReview": "2026-03-28",
-    "lastRating": "easy",
-    "history": [
-      {
-        "date": "2026-03-14",
-        "rating": "good"
-      },
-      {
-        "date": "2026-03-15",
-        "rating": "good"
-      },
-      {
-        "date": "2026-03-18",
-        "rating": "easy"
-      }
-    ]
-  },
-  "theorique-3.5": {
-    "easeFactor": 2.0999999999999996,
-    "interval": 8,
-    "repetitions": 2,
-    "nextReview": "2026-03-27",
-    "lastRating": "good",
-    "history": [
-      {
-        "date": "2026-03-14",
-        "rating": "again"
-      },
-      {
-        "date": "2026-03-14",
-        "rating": "again"
-      },
-      {
-        "date": "2026-03-15",
-        "rating": "hard"
-      },
-      {
-        "date": "2026-03-15",
-        "rating": "easy"
-      },
-      {
-        "date": "2026-03-19",
-        "rating": "easy"
-      }
-    ]
-  },
   "probleme-1.39": {
     "easeFactor": 2.8,
     "interval": 14,
@@ -1064,16 +916,23 @@
           "theorique-5.4",
           "theorique-5.5",
           "theorique-5.6",
-          "theorique-5.7"
+          "theorique-5.7",
+          "theorique-5.8",
+          "theorique-5.9",
+          "theorique-5.10",
+          "probleme-5.11",
+          "probleme-5.12",
+          "probleme-5.13",
+          "probleme-5.14"
         ],
         "masteredAt": null,
         "introducedToday": {
-          "date": "2026-03-24",
+          "date": "2026-03-25",
           "count": 7
         }
       }
     },
-    "lastModified": "2026-03-24T21:58:59.383Z"
+    "lastModified": "2026-03-25T07:18:43.756Z"
   },
   "probleme-1.14": {
     "easeFactor": 2.65,
