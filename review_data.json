@@ -932,7 +932,7 @@
         }
       }
     },
-    "lastModified": "2026-03-25T07:18:43.756Z"
+    "lastModified": "2026-03-25T07:19:32.875Z"
   },
   "probleme-1.14": {
     "easeFactor": 2.65,
@@ -1149,15 +1149,19 @@
     ]
   },
   "theorique-5.1": {
-    "easeFactor": 2.5,
-    "interval": 1,
-    "repetitions": 1,
-    "nextReview": "2026-03-25",
-    "lastRating": "good",
+    "easeFactor": 2.65,
+    "interval": 3,
+    "repetitions": 2,
+    "nextReview": "2026-03-28",
+    "lastRating": "easy",
     "history": [
       {
         "date": "2026-03-24",
         "rating": "good"
+      },
+      {
+        "date": "2026-03-25",
+        "rating": "easy"
       }
     ]
   },
