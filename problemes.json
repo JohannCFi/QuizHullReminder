@@ -676,7 +676,7 @@
     "id": "5.12",
     "chapitre": "Prix Forward/Futures",
     "question": "Vous prenez une position longue sur un forward 6 mois portant sur une action ND quand l'action cote 30 €, et le taux sans risque continu est 5 % par an. Quel est le prix forward ?",
-    "reponse": "L'action ne verse pas de dividende (ND), donc :\n\\[F_0 = S_0 \\, e^{rT} = 30 \\times e^{0{,}05 \\times 0{,}5} = 30 \\times e^{0{,}025} = 30{,}76\\,€\\]"
+    "reponse": "L'action ne verse pas de dividende (ND), donc :\n\\[F_0 = S_0 \\, e^{rT} = 30 \\times e^{0{,}05 \\times 0{,}5} = 30 \\times e^{0{,}025} = 30{,}76\\,\\text{€}\\]"
   },
   {
     "id": "5.13",
