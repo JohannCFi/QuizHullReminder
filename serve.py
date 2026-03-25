@@ -405,6 +405,17 @@ def telegram_poll_loop():
             time.sleep(2)
 
 
+# Sync local review data with Vercel/GitHub on startup
+print("[sync] Synchronisation avec le serveur...")
+server_data = fetch_from_vercel()
+if server_data is not None:
+    local_data = load_review_data()
+    merged = merge_review_data(local_data, server_data)
+    save_review_data(merged)
+    print("[sync] Fichier local mis à jour.")
+else:
+    print("[sync] Impossible de synchroniser, utilisation des données locales.")
+
 # Start Telegram bot in background thread
 bot_thread = threading.Thread(target=telegram_poll_loop, daemon=True)
 bot_thread.start()
