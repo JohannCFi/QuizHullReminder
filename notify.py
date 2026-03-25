@@ -157,19 +157,32 @@ def check_mastery(review_data):
 
 def send_telegram(bot_token, chat_id, message):
     url = f"https://api.telegram.org/bot{bot_token}/sendMessage"
-    data = json.dumps({
+    payload = {
         "chat_id": chat_id,
         "text": message,
         "parse_mode": "Markdown"
-    }).encode("utf-8")
+    }
+    data = json.dumps(payload).encode("utf-8")
 
     req = urllib.request.Request(
         url,
         data=data,
         headers={"Content-Type": "application/json"}
     )
-    with urllib.request.urlopen(req) as resp:
-        return json.loads(resp.read().decode("utf-8"))
+    try:
+        with urllib.request.urlopen(req) as resp:
+            return json.loads(resp.read().decode("utf-8"))
+    except urllib.error.HTTPError:
+        # Markdown parsing failed — retry without formatting
+        payload.pop("parse_mode")
+        data = json.dumps(payload).encode("utf-8")
+        req = urllib.request.Request(
+            url,
+            data=data,
+            headers={"Content-Type": "application/json"}
+        )
+        with urllib.request.urlopen(req) as resp:
+            return json.loads(resp.read().decode("utf-8"))
 
 
 def send_notification_if_due():

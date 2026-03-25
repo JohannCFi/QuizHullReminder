@@ -380,27 +380,38 @@ def telegram_poll_loop():
                 if msg_chat_id != str(chat_id):
                     continue
 
-                if text.startswith("/reviser"):
-                    args = text[len("/reviser"):].strip()
-                    handle_reviser(args, bot_token, chat_id)
-                elif text.startswith("/stop"):
-                    args = text[len("/stop"):].strip()
-                    handle_stop(args, bot_token, chat_id)
-                elif text.startswith("/status"):
-                    handle_status(bot_token, chat_id)
-                elif text.startswith("/start"):
-                    send_telegram(bot_token, chat_id,
-                        "👋 *Quiz Hull Bot*\n\n"
-                        "Commandes disponibles :\n"
-                        "• /reviser [chapitre] — Activer la révision\n"
-                        "• /stop [chapitre] — Arrêter la révision\n"
-                        "• /status — Voir le statut\n\n"
-                        "Ex: /reviser 1 ou /reviser Introduction"
-                    )
+                try:
+                    if text.startswith("/reviser"):
+                        args = text[len("/reviser"):].strip()
+                        handle_reviser(args, bot_token, chat_id)
+                    elif text.startswith("/stop"):
+                        args = text[len("/stop"):].strip()
+                        handle_stop(args, bot_token, chat_id)
+                    elif text.startswith("/status"):
+                        handle_status(bot_token, chat_id)
+                    elif text.startswith("/start"):
+                        send_telegram(bot_token, chat_id,
+                            "👋 *Quiz Hull Bot*\n\n"
+                            "Commandes disponibles :\n"
+                            "• /reviser [chapitre] — Activer la révision\n"
+                            "• /stop [chapitre] — Arrêter la révision\n"
+                            "• /status — Voir le statut\n\n"
+                            "Ex: /reviser 1 ou /reviser Introduction"
+                        )
+                except Exception as cmd_err:
+                    import traceback
+                    print(f"[Telegram Bot] Erreur commande '{text}': {cmd_err}")
+                    traceback.print_exc()
+                    try:
+                        send_telegram(bot_token, chat_id, f"Erreur: {cmd_err}")
+                    except Exception:
+                        pass
 
         except Exception as e:
             if "timed out" not in str(e).lower():
+                import traceback
                 print(f"[Telegram Bot] Erreur: {e}")
+                traceback.print_exc()
             import time
             time.sleep(2)
 
