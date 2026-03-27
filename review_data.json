@@ -1295,16 +1295,23 @@
           "probleme-5.18",
           "probleme-5.19",
           "probleme-5.20",
-          "probleme-5.21"
+          "probleme-5.21",
+          "probleme-5.22",
+          "probleme-5.23",
+          "probleme-5.24",
+          "probleme-5.25",
+          "probleme-5.26",
+          "probleme-5.27",
+          "probleme-5.28"
         ],
         "masteredAt": null,
         "introducedToday": {
-          "date": "2026-03-26",
+          "date": "2026-03-27",
           "count": 7
         }
       }
     },
-    "lastModified": "2026-03-26T09:50:42.990Z"
+    "lastModified": "2026-03-27T07:24:06.179Z"
   },
   "theorique-5.4": {
     "easeFactor": 2.4499999999999997,
