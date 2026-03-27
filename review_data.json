@@ -1311,7 +1311,7 @@
         }
       }
     },
-    "lastModified": "2026-03-27T07:27:26.586Z"
+    "lastModified": "2026-03-27T07:28:21.892Z"
   },
   "theorique-5.4": {
     "easeFactor": 2.4499999999999997,
@@ -1510,9 +1510,9 @@
   },
   "probleme-5.16": {
     "easeFactor": 2.3,
-    "interval": 1,
-    "repetitions": 1,
-    "nextReview": "2026-03-27",
+    "interval": 2,
+    "repetitions": 2,
+    "nextReview": "2026-03-29",
     "lastRating": "good",
     "history": [
       {
@@ -1521,6 +1521,10 @@
       },
       {
         "date": "2026-03-26",
+        "rating": "good"
+      },
+      {
+        "date": "2026-03-27",
         "rating": "good"
       }
     ]
