@@ -329,14 +329,18 @@
   },
   "probleme-5.26": {
     "easeFactor": 2.35,
-    "interval": 0,
-    "repetitions": 0,
-    "nextReview": "2026-03-28",
-    "lastRating": "hard",
+    "interval": 1,
+    "repetitions": 1,
+    "nextReview": "2026-03-29",
+    "lastRating": "good",
     "history": [
       {
         "date": "2026-03-28",
         "rating": "hard"
+      },
+      {
+        "date": "2026-03-28",
+        "rating": "good"
       }
     ]
   },
@@ -441,7 +445,7 @@
         }
       }
     },
-    "lastModified": "2026-03-28T19:35:36.048Z"
+    "lastModified": "2026-03-28T19:38:03.051Z"
   },
   "probleme-1.22": {
     "easeFactor": 2.8,
