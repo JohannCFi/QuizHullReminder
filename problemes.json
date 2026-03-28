@@ -706,7 +706,7 @@
     "id": "5.17",
     "chapitre": "Prix Forward/Futures",
     "question": "Une position longue sur un forward à un an sur une action ND est prise quand l'action cote 40 € et le taux sans risque est de 5 % (en continu).\na. Quel est le prix forward et quelle est la valeur initiale du contrat ?\nb. Six mois plus tard, l'action cote 45 € et le taux sans risque est toujours 5 %. Quel est le prix forward et quelle est la valeur du contrat ?",
-    "reponse": "<strong>(a)</strong> Le prix forward à 1 an est :\n\\[F_0 = 40 \\times e^{0{,}05 \\times 1} = 42{,}05\\,€\\]\nLa valeur initiale du contrat est \\(f = 0\\) (par définition, le prix de livraison est fixé à \\(K = F_0 = 42{,}05\\)).\n\n<strong>(b)</strong> Six mois plus tard, le nouveau prix forward pour la maturité résiduelle de 6 mois est :\n\\[F_0 = 45 \\times e^{0{,}05 \\times 0{,}5} = 46{,}14\\,€\\]\nLa valeur du contrat (initié avec \\(K = 42{,}05\\)) est :\n\\[f = (46{,}14 - 42{,}05) \\times e^{-0{,}05 \\times 0{,}5} = 4{,}09 \\times 0{,}9753 = 3{,}99\\,€\\]"
+    "reponse": "<strong>(a)</strong> Le prix forward à 1 an est :\n\\[F_0 = 40 \\times e^{0{,}05 \\times 1} = 42{,}05\\,\\text{€}\\]\nLa valeur initiale du contrat est \\(f = 0\\) (par définition, le prix de livraison est fixé à \\(K = F_0 = 42{,}05\\)).\n\n<strong>(b)</strong> Six mois plus tard, le nouveau prix forward pour la maturité résiduelle de 6 mois est :\n\\[F_0 = 45 \\times e^{0{,}05 \\times 0{,}5} = 46{,}14\\,\\text{€}\\]\nLa valeur du contrat (initié avec \\(K = 42{,}05\\)) est :\n\\[f = (46{,}14 - 42{,}05) \\times e^{-0{,}05 \\times 0{,}5} = 4{,}09 \\times 0{,}9753 = 3{,}99\\,\\text{€}\\]"
   },
   {
     "id": "5.18",
