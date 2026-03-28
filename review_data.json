@@ -573,15 +573,19 @@
     ]
   },
   "probleme-5.23": {
-    "easeFactor": 2.3,
+    "easeFactor": 2.15,
     "interval": 0,
     "repetitions": 0,
     "nextReview": "2026-03-28",
-    "lastRating": "again",
+    "lastRating": "hard",
     "history": [
       {
         "date": "2026-03-28",
         "rating": "again"
+      },
+      {
+        "date": "2026-03-28",
+        "rating": "hard"
       }
     ]
   },
@@ -1682,7 +1686,7 @@
         }
       }
     },
-    "lastModified": "2026-03-28T13:49:58.731Z"
+    "lastModified": "2026-03-28T13:51:47.192Z"
   },
   "theorique-2.7": {
     "easeFactor": 2.15,
