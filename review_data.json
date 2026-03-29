@@ -1336,7 +1336,7 @@
         }
       }
     },
-    "lastModified": "2026-03-29T10:18:18.846Z"
+    "lastModified": "2026-03-29T10:18:40.791Z"
   },
   "theorique-5.4": {
     "easeFactor": 2.5999999999999996,
@@ -1449,10 +1449,10 @@
     ]
   },
   "theorique-5.8": {
-    "easeFactor": 2.4499999999999997,
-    "interval": 3,
-    "repetitions": 2,
-    "nextReview": "2026-03-29",
+    "easeFactor": 2.5999999999999996,
+    "interval": 10,
+    "repetitions": 3,
+    "nextReview": "2026-04-07",
     "lastRating": "easy",
     "history": [
       {
@@ -1465,6 +1465,10 @@
       },
       {
         "date": "2026-03-26",
+        "rating": "easy"
+      },
+      {
+        "date": "2026-03-29",
         "rating": "easy"
       }
     ]
