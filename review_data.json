@@ -1205,10 +1205,10 @@
     ]
   },
   "theorique-5.5": {
-    "easeFactor": 2.8,
-    "interval": 10,
-    "repetitions": 3,
-    "nextReview": "2026-04-06",
+    "easeFactor": 2.9499999999999997,
+    "interval": 36,
+    "repetitions": 4,
+    "nextReview": "2026-05-12",
     "lastRating": "easy",
     "history": [
       {
@@ -1221,6 +1221,10 @@
       },
       {
         "date": "2026-03-28",
+        "rating": "easy"
+      },
+      {
+        "date": "2026-04-06",
         "rating": "easy"
       }
     ]
@@ -1268,10 +1272,10 @@
     ]
   },
   "theorique-5.7": {
-    "easeFactor": 2.8,
-    "interval": 10,
-    "repetitions": 3,
-    "nextReview": "2026-04-06",
+    "easeFactor": 2.9499999999999997,
+    "interval": 36,
+    "repetitions": 4,
+    "nextReview": "2026-05-12",
     "lastRating": "easy",
     "history": [
       {
@@ -1284,6 +1288,10 @@
       },
       {
         "date": "2026-03-28",
+        "rating": "easy"
+      },
+      {
+        "date": "2026-04-06",
         "rating": "easy"
       }
     ]
@@ -1340,13 +1348,13 @@
         }
       }
     },
-    "lastModified": "2026-04-06T15:09:33.753Z"
+    "lastModified": "2026-04-06T15:10:34.196Z"
   },
   "theorique-5.4": {
-    "easeFactor": 2.5999999999999996,
-    "interval": 10,
-    "repetitions": 3,
-    "nextReview": "2026-04-06",
+    "easeFactor": 2.7499999999999996,
+    "interval": 34,
+    "repetitions": 4,
+    "nextReview": "2026-05-10",
     "lastRating": "easy",
     "history": [
       {
@@ -1363,6 +1371,10 @@
       },
       {
         "date": "2026-03-28",
+        "rating": "easy"
+      },
+      {
+        "date": "2026-04-06",
         "rating": "easy"
       }
     ]
@@ -1393,10 +1405,10 @@
     ]
   },
   "theorique-5.6": {
-    "easeFactor": 2.65,
-    "interval": 10,
-    "repetitions": 3,
-    "nextReview": "2026-04-06",
+    "easeFactor": 2.8,
+    "interval": 34,
+    "repetitions": 4,
+    "nextReview": "2026-05-10",
     "lastRating": "easy",
     "history": [
       {
@@ -1413,6 +1425,10 @@
       },
       {
         "date": "2026-03-28",
+        "rating": "easy"
+      },
+      {
+        "date": "2026-04-06",
         "rating": "easy"
       }
     ]
