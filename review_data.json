@@ -1336,7 +1336,7 @@
         }
       }
     },
-    "lastModified": "2026-04-02T16:12:07.399Z"
+    "lastModified": "2026-04-06T15:08:04.149Z"
   },
   "theorique-5.4": {
     "easeFactor": 2.5999999999999996,
@@ -1582,11 +1582,11 @@
     ]
   },
   "probleme-5.16": {
-    "easeFactor": 2.3,
-    "interval": 5,
-    "repetitions": 3,
-    "nextReview": "2026-04-02",
-    "lastRating": "good",
+    "easeFactor": 2.4499999999999997,
+    "interval": 15,
+    "repetitions": 4,
+    "nextReview": "2026-04-17",
+    "lastRating": "easy",
     "history": [
       {
         "date": "2026-03-26",
@@ -1603,6 +1603,10 @@
       {
         "date": "2026-03-29",
         "rating": "good"
+      },
+      {
+        "date": "2026-04-02",
+        "rating": "easy"
       }
     ]
   },
@@ -1687,10 +1691,10 @@
     ]
   },
   "probleme-5.21": {
-    "easeFactor": 2.3,
-    "interval": 3,
-    "repetitions": 3,
-    "nextReview": "2026-04-02",
+    "easeFactor": 2.4499999999999997,
+    "interval": 9,
+    "repetitions": 4,
+    "nextReview": "2026-04-11",
     "lastRating": "easy",
     "history": [
       {
@@ -1707,6 +1711,10 @@
       },
       {
         "date": "2026-03-30",
+        "rating": "easy"
+      },
+      {
+        "date": "2026-04-02",
         "rating": "easy"
       }
     ]
@@ -1866,10 +1874,10 @@
     ]
   },
   "probleme-5.27": {
-    "easeFactor": 2.3,
-    "interval": 4,
-    "repetitions": 1,
-    "nextReview": "2026-04-03",
+    "easeFactor": 2.4499999999999997,
+    "interval": 12,
+    "repetitions": 2,
+    "nextReview": "2026-04-18",
     "lastRating": "easy",
     "history": [
       {
@@ -1882,6 +1890,10 @@
       },
       {
         "date": "2026-03-30",
+        "rating": "easy"
+      },
+      {
+        "date": "2026-04-06",
         "rating": "easy"
       }
     ]
