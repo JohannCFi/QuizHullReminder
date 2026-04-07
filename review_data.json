@@ -1476,7 +1476,6 @@
       }
     ]
   },
-<<<<<<< HEAD
   "probleme-5.17": {
     "easeFactor": 2.65,
     "interval": 10,
@@ -1515,8 +1514,6 @@
       }
     ]
   },
-=======
->>>>>>> 2506cbe8ba194df0379693f72e3305a091c9bd37
   "_revision_config": {
     "chapters": {
       "Prix Forward/Futures": {
@@ -1571,61 +1568,6 @@
     },
     "lastModified": "2026-04-07T12:35:01.027Z"
   },
-<<<<<<< HEAD
-  "probleme-5.18": {
-    "easeFactor": 2.8,
-    "interval": 14,
-    "repetitions": 2,
-    "nextReview": "2026-04-11",
-    "lastRating": "easy",
-    "history": [
-      {
-        "date": "2026-03-26",
-        "rating": "easy"
-      },
-      {
-=======
-  "probleme-1.30": {
-    "easeFactor": 2.5,
-    "interval": 3,
-    "repetitions": 2,
-    "nextReview": "2026-03-19",
-    "lastRating": "good",
-    "history": [
-      {
-        "date": "2026-03-14",
-        "rating": "good"
-      },
-      {
-        "date": "2026-03-16",
-        "rating": "good"
-      }
-    ]
-  },
-  "probleme-5.17": {
-    "easeFactor": 2.65,
-    "interval": 10,
-    "repetitions": 3,
-    "nextReview": "2026-04-07",
-    "lastRating": "easy",
-    "history": [
-      {
-        "date": "2026-03-26",
-        "rating": "good"
-      },
-      {
-        "date": "2026-03-27",
-        "rating": "good"
-      },
-      {
->>>>>>> 2506cbe8ba194df0379693f72e3305a091c9bd37
-        "date": "2026-03-29",
-        "rating": "easy"
-      }
-    ]
-  },
-<<<<<<< HEAD
-=======
   "probleme-5.18": {
     "easeFactor": 2.8,
     "interval": 14,
@@ -1643,7 +1585,6 @@
       }
     ]
   },
->>>>>>> 2506cbe8ba194df0379693f72e3305a091c9bd37
   "probleme-1.35": {
     "easeFactor": 2.65,
     "interval": 3,
