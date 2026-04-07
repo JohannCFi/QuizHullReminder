@@ -259,6 +259,21 @@
       border-radius: 2px;
       transition: width 0.3s;
     }
+    .revision-reset-btn {
+      background: none;
+      border: 1px solid #e2e8f0;
+      border-radius: 6px;
+      color: #a0aec0;
+      cursor: pointer;
+      font-size: 0.7rem;
+      padding: 3px 7px;
+      flex-shrink: 0;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .revision-reset-btn:hover { border-color: #e53e3e; color: #e53e3e; }
+    body.dark .revision-reset-btn { border-color: #4a5568; color: #718096; }
+    body.dark .revision-reset-btn:hover { border-color: #fc8181; color: #fc8181; }
+
     .revision-switch {
       position: relative;
       width: 44px;
@@ -1415,8 +1430,23 @@
       info.appendChild(stats);
       if (isActive) info.appendChild(progressBar);
 
-      row.appendChild(switchLabel);
-      row.appendChild(info);
+      const hasProgress = chConf && (chConf.introducedQuestions || []).length > 0;
+      if (hasProgress) {
+        const resetBtn = document.createElement('button');
+        resetBtn.className = 'revision-reset-btn';
+        resetBtn.textContent = '↺ reset';
+        resetBtn.title = 'Réinitialiser la progression de ce chapitre';
+        resetBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          resetChapterRevision(ch);
+        });
+        row.appendChild(switchLabel);
+        row.appendChild(info);
+        row.appendChild(resetBtn);
+      } else {
+        row.appendChild(switchLabel);
+        row.appendChild(info);
+      }
       list.appendChild(row);
     });
   }
@@ -1441,6 +1471,19 @@
         if (!chConf.activatedAt) chConf.activatedAt = todayStr();
       }
     }
+    saveReviewData();
+    buildRevisionToggles();
+    updateRevisionButton();
+  }
+
+  function resetChapterRevision(chapter) {
+    if (!revisionConfig.chapters) return;
+    const chConf = revisionConfig.chapters[chapter];
+    if (!chConf) return;
+    chConf.introducedQuestions = [];
+    chConf.introducedToday = null;
+    chConf.activatedAt = todayStr();
+    chConf.masteredAt = null;
     saveReviewData();
     buildRevisionToggles();
     updateRevisionButton();
