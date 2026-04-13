@@ -290,6 +290,19 @@
       }
     ]
   },
+  "theorique-4.7": {
+    "easeFactor": 2.65,
+    "interval": 4,
+    "repetitions": 1,
+    "nextReview": "2026-04-17",
+    "lastRating": "easy",
+    "history": [
+      {
+        "date": "2026-04-13",
+        "rating": "easy"
+      }
+    ]
+  },
   "probleme-5.17": {
     "easeFactor": 2.65,
     "interval": 10,
@@ -1084,7 +1097,7 @@
         }
       }
     },
-    "lastModified": "2026-04-13T13:20:36.478Z"
+    "lastModified": "2026-04-13T13:20:54.533Z"
   },
   "probleme-1.33": {
     "easeFactor": 2.5,
