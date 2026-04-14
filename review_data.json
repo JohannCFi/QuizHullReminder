@@ -1374,7 +1374,7 @@
         }
       }
     },
-    "lastModified": "2026-04-14T09:20:15.922Z"
+    "lastModified": "2026-04-14T09:23:33.926Z"
   },
   "theorique-5.4": {
     "easeFactor": 2.7499999999999996,
@@ -2113,6 +2113,19 @@
       {
         "date": "2026-04-14",
         "rating": "hard"
+      }
+    ]
+  },
+  "theorique-4.10": {
+    "easeFactor": 2.3,
+    "interval": 0,
+    "repetitions": 0,
+    "nextReview": "2026-04-14",
+    "lastRating": "again",
+    "history": [
+      {
+        "date": "2026-04-14",
+        "rating": "again"
       }
     ]
   }
